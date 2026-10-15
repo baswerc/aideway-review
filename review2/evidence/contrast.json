@@ -1,0 +1,74 @@
+[
+  {
+    "theme": "dark",
+    "statusToken": "green",
+    "foreground": "#1faa5b",
+    "surface": "#212121",
+    "backgroundAlpha": 0.18,
+    "contrast": 4.1,
+    "assumption": "status badge muted background composited over bg-surface; source calculation, not browser measurement"
+  },
+  {
+    "theme": "dark",
+    "statusToken": "amber",
+    "foreground": "#d6a625",
+    "surface": "#212121",
+    "backgroundAlpha": 0.16,
+    "contrast": 5.31,
+    "assumption": "status badge muted background composited over bg-surface; source calculation, not browser measurement"
+  },
+  {
+    "theme": "dark",
+    "statusToken": "red",
+    "foreground": "#ef4444",
+    "surface": "#212121",
+    "backgroundAlpha": 0.18,
+    "contrast": 3.52,
+    "assumption": "status badge muted background composited over bg-surface; source calculation, not browser measurement"
+  },
+  {
+    "theme": "dark",
+    "statusToken": "accent",
+    "foreground": "#5a8fbf",
+    "surface": "#212121",
+    "backgroundAlpha": 0.18,
+    "contrast": 3.65,
+    "assumption": "status badge muted background composited over bg-surface; source calculation, not browser measurement"
+  },
+  {
+    "theme": "light",
+    "statusToken": "green",
+    "foreground": "#29a360",
+    "surface": "#ffffff",
+    "backgroundAlpha": 0.1,
+    "contrast": 2.91,
+    "assumption": "status badge muted background composited over bg-surface; source calculation, not browser measurement"
+  },
+  {
+    "theme": "light",
+    "statusToken": "amber",
+    "foreground": "#bf941f",
+    "surface": "#ffffff",
+    "backgroundAlpha": 0.12,
+    "contrast": 2.52,
+    "assumption": "status badge muted background composited over bg-surface; source calculation, not browser measurement"
+  },
+  {
+    "theme": "light",
+    "statusToken": "red",
+    "foreground": "#ea1f30",
+    "surface": "#ffffff",
+    "backgroundAlpha": 0.08,
+    "contrast": 3.92,
+    "assumption": "status badge muted background composited over bg-surface; source calculation, not browser measurement"
+  },
+  {
+    "theme": "light",
+    "statusToken": "accent",
+    "foreground": "#2e5a88",
+    "surface": "#ffffff",
+    "backgroundAlpha": 0.1,
+    "contrast": 6.16,
+    "assumption": "status badge muted background composited over bg-surface; source calculation, not browser measurement"
+  }
+]

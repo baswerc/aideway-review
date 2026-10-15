@@ -1,0 +1,97 @@
+Compiled from "DispatchQueuedMessagesJob.kt"
+public final class org.tekfive.relaykt.queue.DispatchQueuedMessagesJob implements org.tekfive.keep.job.Job {
+  public static final org.tekfive.relaykt.queue.DispatchQueuedMessagesJob$Companion Companion;
+
+  private static final long defaultInternalSeconds;
+
+  private static final boolean runImmediatelyOnFirstSchedule;
+
+  private static final boolean exclusiveExecution;
+
+  private static final boolean estimateRuntime;
+
+  public org.tekfive.relaykt.queue.DispatchQueuedMessagesJob();
+    Code:
+         0: aload_0
+         1: invokespecial #10                 // Method java/lang/Object."<init>":()V
+         4: return
+
+  public org.tekfive.keep.job.JobResult execute(org.tekfive.keep.job.JobContext);
+    Code:
+         0: aload_1
+         1: ldc           #17                 // String context
+         3: invokestatic  #23                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+         6: iconst_0
+         7: istore_2
+         8: aload_1
+         9: lconst_0
+        10: iconst_1
+        11: aconst_null
+        12: invokestatic  #29                 // InterfaceMethod org/tekfive/keep/job/JobContext.checkIn$default:(Lorg/tekfive/keep/job/JobContext;JILjava/lang/Object;)V
+        15: getstatic     #35                 // Field org/tekfive/relaykt/queue/MessageQueueProcessor.INSTANCE:Lorg/tekfive/relaykt/queue/MessageQueueProcessor;
+        18: lconst_0
+        19: aload_1
+        20: invokedynamic #55,  0             // InvokeDynamic #0:invoke:(Lorg/tekfive/keep/job/JobContext;)Lkotlin/jvm/functions/Function0;
+        25: iconst_1
+        26: aconst_null
+        27: invokestatic  #59                 // Method org/tekfive/relaykt/queue/MessageQueueProcessor.processOnce$default:(Lorg/tekfive/relaykt/queue/MessageQueueProcessor;JLkotlin/jvm/functions/Function0;ILjava/lang/Object;)I
+        30: istore_3
+        31: iload_2
+        32: iload_3
+        33: iadd
+        34: istore_2
+        35: iload_3
+        36: ifgt          8
+        39: new           #61                 // class org/tekfive/keep/job/JobCompleted
+        42: dup
+        43: iload_2
+        44: invokedynamic #73,  0             // InvokeDynamic #1:makeConcatWithConstants:(I)Ljava/lang/String;
+        49: invokespecial #76                 // Method org/tekfive/keep/job/JobCompleted."<init>":(Ljava/lang/String;)V
+        52: checkcast     #78                 // class org/tekfive/keep/job/JobResult
+        55: areturn
+
+  private static final kotlin.Unit execute$lambda$0(org.tekfive.keep.job.JobContext);
+    Code:
+         0: aload_0
+         1: lconst_0
+         2: iconst_1
+         3: aconst_null
+         4: invokestatic  #29                 // InterfaceMethod org/tekfive/keep/job/JobContext.checkIn$default:(Lorg/tekfive/keep/job/JobContext;JILjava/lang/Object;)V
+         7: getstatic     #87                 // Field kotlin/Unit.INSTANCE:Lkotlin/Unit;
+        10: areturn
+
+  public static final long access$getDefaultInternalSeconds$cp();
+    Code:
+         0: getstatic     #94                 // Field defaultInternalSeconds:J
+         3: lreturn
+
+  public static final boolean access$getRunImmediatelyOnFirstSchedule$cp();
+    Code:
+         0: getstatic     #100                // Field runImmediatelyOnFirstSchedule:Z
+         3: ireturn
+
+  public static final boolean access$getExclusiveExecution$cp();
+    Code:
+         0: getstatic     #104                // Field exclusiveExecution:Z
+         3: ireturn
+
+  public static final boolean access$getEstimateRuntime$cp();
+    Code:
+         0: getstatic     #108                // Field estimateRuntime:Z
+         3: ireturn
+
+  static {};
+    Code:
+         0: new           #111                // class org/tekfive/relaykt/queue/DispatchQueuedMessagesJob$Companion
+         3: dup
+         4: aconst_null
+         5: invokespecial #114                // Method org/tekfive/relaykt/queue/DispatchQueuedMessagesJob$Companion."<init>":(Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+         8: putstatic     #118                // Field Companion:Lorg/tekfive/relaykt/queue/DispatchQueuedMessagesJob$Companion;
+        11: ldc2_w        #119                // long 20l
+        14: putstatic     #94                 // Field defaultInternalSeconds:J
+        17: iconst_1
+        18: putstatic     #100                // Field runImmediatelyOnFirstSchedule:Z
+        21: iconst_1
+        22: putstatic     #104                // Field exclusiveExecution:Z
+        25: return
+}

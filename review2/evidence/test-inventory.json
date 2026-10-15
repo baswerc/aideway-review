@@ -1,0 +1,101 @@
+[
+  {
+    "task": "test",
+    "suite": "org.aideway.event.AuditCleanupTest",
+    "tests": "6",
+    "failures": "0",
+    "skipped": "0",
+    "skipReasons": []
+  },
+  {
+    "task": "test",
+    "suite": "org.aideway.workflow.nodes.types.triggers.file.FileTriggerJobDbTest",
+    "tests": "34",
+    "failures": "0",
+    "skipped": "0",
+    "skipReasons": []
+  },
+  {
+    "task": "nerIntegrationTest",
+    "suite": "org.aideway.integration.classification.DataAnonymizationIntegrationTest",
+    "tests": "3",
+    "failures": "0",
+    "skipped": "3",
+    "skipReasons": [
+      {
+        "test": "redacts detected identifiers in structured json()",
+        "reason": "org.opentest4j.TestAbortedException: Assumption failed: NER Python environment is not available \u2014 set it up per backend/src/main/python/README.md."
+      },
+      {
+        "test": "synthesizes realistic replacements in text()",
+        "reason": "org.opentest4j.TestAbortedException: Assumption failed: NER Python environment is not available \u2014 set it up per backend/src/main/python/README.md."
+      },
+      {
+        "test": "redacts detected identifiers in text()",
+        "reason": "org.opentest4j.TestAbortedException: Assumption failed: NER Python environment is not available \u2014 set it up per backend/src/main/python/README.md."
+      }
+    ]
+  },
+  {
+    "task": "nerIntegrationTest",
+    "suite": "org.aideway.integration.classification.DataClassificationIntegrationTest",
+    "tests": "10",
+    "failures": "0",
+    "skipped": "10",
+    "skipReasons": [
+      {
+        "test": "custom global information type matches by whole-value pattern()",
+        "reason": "org.opentest4j.TestAbortedException: Assumption failed: NER Python environment is not available \u2014 set it up per backend/src/main/python/README.md."
+      },
+      {
+        "test": "medical record number source classifies mrn fields by name()",
+        "reason": "org.opentest4j.TestAbortedException: Assumption failed: NER Python environment is not available \u2014 set it up per backend/src/main/python/README.md."
+      },
+      {
+        "test": "unstructured referral note detects identity and contact data()",
+        "reason": "org.opentest4j.TestAbortedException: Assumption failed: NER Python environment is not available \u2014 set it up per backend/src/main/python/README.md."
+      },
+      {
+        "test": "field patterns classify a field by its name()",
+        "reason": "org.opentest4j.TestAbortedException: Assumption failed: NER Python environment is not available \u2014 set it up per backend/src/main/python/README.md."
+      },
+      {
+        "test": "structured patient record classifies fields with description context()",
+        "reason": "org.opentest4j.TestAbortedException: Assumption failed: NER Python environment is not available \u2014 set it up per backend/src/main/python/README.md."
+      },
+      {
+        "test": "base64 encoded text is classified in its decoded form()",
+        "reason": "org.opentest4j.TestAbortedException: Assumption failed: NER Python environment is not available \u2014 set it up per backend/src/main/python/README.md."
+      },
+      {
+        "test": "classify email field()",
+        "reason": "org.opentest4j.TestAbortedException: Assumption failed: NER Python environment is not available \u2014 set it up per backend/src/main/python/README.md."
+      },
+      {
+        "test": "custom global information type matches inside unstructured text by pattern()",
+        "reason": "org.opentest4j.TestAbortedException: Assumption failed: NER Python environment is not available \u2014 set it up per backend/src/main/python/README.md."
+      },
+      {
+        "test": "internal domain email addresses are detected in unstructured text()",
+        "reason": "org.opentest4j.TestAbortedException: Assumption failed: NER Python environment is not available \u2014 set it up per backend/src/main/python/README.md."
+      },
+      {
+        "test": "medical record number source detects prefixed identifiers in text()",
+        "reason": "org.opentest4j.TestAbortedException: Assumption failed: NER Python environment is not available \u2014 set it up per backend/src/main/python/README.md."
+      }
+    ]
+  },
+  {
+    "task": "nerIntegrationTest",
+    "suite": "org.aideway.integration.PipelineNerIntegrationTest",
+    "tests": "1",
+    "failures": "0",
+    "skipped": "1",
+    "skipReasons": [
+      {
+        "test": "Marin Keller is detected as a person name()",
+        "reason": "org.opentest4j.TestAbortedException: Assumption failed: NER Python environment is not available \u2014 set it up per backend/src/main/python/README.md."
+      }
+    ]
+  }
+]

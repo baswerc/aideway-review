@@ -1,0 +1,624 @@
+Compiled from "TlsCertificatePins.kt"
+final class org.tekfive.relaykt.tls.TlsCertificatePins$PinnedTrustManager extends javax.net.ssl.X509ExtendedTrustManager {
+  private final javax.net.ssl.X509TrustManager delegate;
+
+  private final java.util.Set<java.lang.String> pins;
+
+  private final java.lang.String caCertificate;
+
+  public org.tekfive.relaykt.tls.TlsCertificatePins$PinnedTrustManager(javax.net.ssl.X509TrustManager, java.util.Set<java.lang.String>, java.lang.String);
+    Code:
+         0: aload_1
+         1: ldc           #11                 // String delegate
+         3: invokestatic  #17                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+         6: aload_2
+         7: ldc           #19                 // String pins
+         9: invokestatic  #17                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+        12: aload_0
+        13: invokespecial #22                 // Method javax/net/ssl/X509ExtendedTrustManager."<init>":()V
+        16: aload_0
+        17: aload_1
+        18: putfield      #25                 // Field delegate:Ljavax/net/ssl/X509TrustManager;
+        21: aload_0
+        22: aload_2
+        23: putfield      #28                 // Field pins:Ljava/util/Set;
+        26: aload_0
+        27: aload_3
+        28: putfield      #32                 // Field caCertificate:Ljava/lang/String;
+        31: return
+
+  public void checkServerTrusted(java.security.cert.X509Certificate[], java.lang.String);
+    Code:
+         0: aload_0
+         1: aload_1
+         2: invokespecial #40                 // Method requireChain:([Ljava/security/cert/X509Certificate;)[Ljava/security/cert/X509Certificate;
+         5: astore_3
+         6: aload_0
+         7: aload_3
+         8: invokespecial #44                 // Method serverTrust:([Ljava/security/cert/X509Certificate;)Ljavax/net/ssl/X509TrustManager;
+        11: astore        4
+        13: aload         4
+        15: aload_3
+        16: aload_2
+        17: invokeinterface #48,  3           // InterfaceMethod javax/net/ssl/X509TrustManager.checkServerTrusted:([Ljava/security/cert/X509Certificate;Ljava/lang/String;)V
+        22: aload_0
+        23: aload_3
+        24: aload         4
+        26: invokespecial #52                 // Method checkPins:([Ljava/security/cert/X509Certificate;Ljavax/net/ssl/X509TrustManager;)V
+        29: return
+
+  public void checkServerTrusted(java.security.cert.X509Certificate[], java.lang.String, java.net.Socket);
+    Code:
+         0: aload_0
+         1: aload_1
+         2: invokespecial #40                 // Method requireChain:([Ljava/security/cert/X509Certificate;)[Ljava/security/cert/X509Certificate;
+         5: astore        4
+         7: aload_0
+         8: aload         4
+        10: invokespecial #44                 // Method serverTrust:([Ljava/security/cert/X509Certificate;)Ljavax/net/ssl/X509TrustManager;
+        13: astore        5
+        15: aload         5
+        17: instanceof    #4                  // class javax/net/ssl/X509ExtendedTrustManager
+        20: ifeq          38
+        23: aload         5
+        25: checkcast     #4                  // class javax/net/ssl/X509ExtendedTrustManager
+        28: aload         4
+        30: aload_2
+        31: aload_3
+        32: invokevirtual #60                 // Method javax/net/ssl/X509ExtendedTrustManager.checkServerTrusted:([Ljava/security/cert/X509Certificate;Ljava/lang/String;Ljava/net/Socket;)V
+        35: goto          48
+        38: aload         5
+        40: aload         4
+        42: aload_2
+        43: invokeinterface #48,  3           // InterfaceMethod javax/net/ssl/X509TrustManager.checkServerTrusted:([Ljava/security/cert/X509Certificate;Ljava/lang/String;)V
+        48: aload_0
+        49: aload         4
+        51: aload         5
+        53: invokespecial #52                 // Method checkPins:([Ljava/security/cert/X509Certificate;Ljavax/net/ssl/X509TrustManager;)V
+        56: return
+
+  public void checkServerTrusted(java.security.cert.X509Certificate[], java.lang.String, javax.net.ssl.SSLEngine);
+    Code:
+         0: aload_0
+         1: aload_1
+         2: invokespecial #40                 // Method requireChain:([Ljava/security/cert/X509Certificate;)[Ljava/security/cert/X509Certificate;
+         5: astore        4
+         7: aload_0
+         8: aload         4
+        10: invokespecial #44                 // Method serverTrust:([Ljava/security/cert/X509Certificate;)Ljavax/net/ssl/X509TrustManager;
+        13: astore        5
+        15: aload         5
+        17: instanceof    #4                  // class javax/net/ssl/X509ExtendedTrustManager
+        20: ifeq          38
+        23: aload         5
+        25: checkcast     #4                  // class javax/net/ssl/X509ExtendedTrustManager
+        28: aload         4
+        30: aload_2
+        31: aload_3
+        32: invokevirtual #66                 // Method javax/net/ssl/X509ExtendedTrustManager.checkServerTrusted:([Ljava/security/cert/X509Certificate;Ljava/lang/String;Ljavax/net/ssl/SSLEngine;)V
+        35: goto          48
+        38: aload         5
+        40: aload         4
+        42: aload_2
+        43: invokeinterface #48,  3           // InterfaceMethod javax/net/ssl/X509TrustManager.checkServerTrusted:([Ljava/security/cert/X509Certificate;Ljava/lang/String;)V
+        48: aload_0
+        49: aload         4
+        51: aload         5
+        53: invokespecial #52                 // Method checkPins:([Ljava/security/cert/X509Certificate;Ljavax/net/ssl/X509TrustManager;)V
+        56: return
+
+  public void checkClientTrusted(java.security.cert.X509Certificate[], java.lang.String);
+    Code:
+         0: aload_0
+         1: getfield      #25                 // Field delegate:Ljavax/net/ssl/X509TrustManager;
+         4: aload_0
+         5: aload_1
+         6: invokespecial #40                 // Method requireChain:([Ljava/security/cert/X509Certificate;)[Ljava/security/cert/X509Certificate;
+         9: aload_2
+        10: invokeinterface #71,  3           // InterfaceMethod javax/net/ssl/X509TrustManager.checkClientTrusted:([Ljava/security/cert/X509Certificate;Ljava/lang/String;)V
+        15: return
+
+  public void checkClientTrusted(java.security.cert.X509Certificate[], java.lang.String, java.net.Socket);
+    Code:
+         0: aload_0
+         1: aload_1
+         2: invokespecial #40                 // Method requireChain:([Ljava/security/cert/X509Certificate;)[Ljava/security/cert/X509Certificate;
+         5: astore        4
+         7: aload_0
+         8: getfield      #25                 // Field delegate:Ljavax/net/ssl/X509TrustManager;
+        11: instanceof    #4                  // class javax/net/ssl/X509ExtendedTrustManager
+        14: ifeq          34
+        17: aload_0
+        18: getfield      #25                 // Field delegate:Ljavax/net/ssl/X509TrustManager;
+        21: checkcast     #4                  // class javax/net/ssl/X509ExtendedTrustManager
+        24: aload         4
+        26: aload_2
+        27: aload_3
+        28: invokevirtual #73                 // Method javax/net/ssl/X509ExtendedTrustManager.checkClientTrusted:([Ljava/security/cert/X509Certificate;Ljava/lang/String;Ljava/net/Socket;)V
+        31: goto          46
+        34: aload_0
+        35: getfield      #25                 // Field delegate:Ljavax/net/ssl/X509TrustManager;
+        38: aload         4
+        40: aload_2
+        41: invokeinterface #71,  3           // InterfaceMethod javax/net/ssl/X509TrustManager.checkClientTrusted:([Ljava/security/cert/X509Certificate;Ljava/lang/String;)V
+        46: return
+
+  public void checkClientTrusted(java.security.cert.X509Certificate[], java.lang.String, javax.net.ssl.SSLEngine);
+    Code:
+         0: aload_0
+         1: aload_1
+         2: invokespecial #40                 // Method requireChain:([Ljava/security/cert/X509Certificate;)[Ljava/security/cert/X509Certificate;
+         5: astore        4
+         7: aload_0
+         8: getfield      #25                 // Field delegate:Ljavax/net/ssl/X509TrustManager;
+        11: instanceof    #4                  // class javax/net/ssl/X509ExtendedTrustManager
+        14: ifeq          34
+        17: aload_0
+        18: getfield      #25                 // Field delegate:Ljavax/net/ssl/X509TrustManager;
+        21: checkcast     #4                  // class javax/net/ssl/X509ExtendedTrustManager
+        24: aload         4
+        26: aload_2
+        27: aload_3
+        28: invokevirtual #75                 // Method javax/net/ssl/X509ExtendedTrustManager.checkClientTrusted:([Ljava/security/cert/X509Certificate;Ljava/lang/String;Ljavax/net/ssl/SSLEngine;)V
+        31: goto          46
+        34: aload_0
+        35: getfield      #25                 // Field delegate:Ljavax/net/ssl/X509TrustManager;
+        38: aload         4
+        40: aload_2
+        41: invokeinterface #71,  3           // InterfaceMethod javax/net/ssl/X509TrustManager.checkClientTrusted:([Ljava/security/cert/X509Certificate;Ljava/lang/String;)V
+        46: return
+
+  public java.security.cert.X509Certificate[] getAcceptedIssuers();
+    Code:
+         0: aload_0
+         1: getfield      #25                 // Field delegate:Ljavax/net/ssl/X509TrustManager;
+         4: invokeinterface #79,  1           // InterfaceMethod javax/net/ssl/X509TrustManager.getAcceptedIssuers:()[Ljava/security/cert/X509Certificate;
+         9: dup
+        10: ldc           #81                 // String getAcceptedIssuers(...)
+        12: invokestatic  #84                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullExpressionValue:(Ljava/lang/Object;Ljava/lang/String;)V
+        15: areturn
+
+  private final java.security.cert.X509Certificate[] requireChain(java.security.cert.X509Certificate[]);
+    Code:
+         0: aload_1
+         1: astore_2
+         2: aload_2
+         3: ifnull        19
+         6: aload_2
+         7: arraylength
+         8: ifne          15
+        11: iconst_1
+        12: goto          16
+        15: iconst_0
+        16: ifeq          23
+        19: iconst_1
+        20: goto          24
+        23: iconst_0
+        24: ifeq          37
+        27: new           #86                 // class java/security/cert/CertificateException
+        30: dup
+        31: ldc           #88                 // String The server did not provide a certificate chain
+        33: invokespecial #91                 // Method java/security/cert/CertificateException."<init>":(Ljava/lang/String;)V
+        36: athrow
+        37: iconst_0
+        38: istore_2
+        39: aload_1
+        40: arraylength
+        41: istore_3
+        42: iload_3
+        43: anewarray     #93                 // class java/security/cert/X509Certificate
+        46: astore        4
+        48: iload_2
+        49: iload_3
+        50: if_icmpge     71
+        53: iload_2
+        54: istore        5
+        56: aload         4
+        58: iload         5
+        60: aload_1
+        61: iload         5
+        63: aaload
+        64: aastore
+        65: iinc          2, 1
+        68: goto          48
+        71: aload         4
+        73: areturn
+
+  private final javax.net.ssl.X509TrustManager serverTrust(java.security.cert.X509Certificate[]);
+    Code:
+         0: aload_1
+         1: invokestatic  #99                 // Method kotlin/collections/ArraysKt.first:([Ljava/lang/Object;)Ljava/lang/Object;
+         4: checkcast     #93                 // class java/security/cert/X509Certificate
+         7: invokevirtual #102                // Method java/security/cert/X509Certificate.checkValidity:()V
+        10: aload_0
+        11: getfield      #32                 // Field caCertificate:Ljava/lang/String;
+        14: checkcast     #104                // class java/lang/CharSequence
+        17: astore_2
+        18: aload_2
+        19: ifnull        29
+        22: aload_2
+        23: invokestatic  #110                // Method kotlin/text/StringsKt.isBlank:(Ljava/lang/CharSequence;)Z
+        26: ifeq          33
+        29: iconst_1
+        30: goto          34
+        33: iconst_0
+        34: ifne          42
+        37: aload_0
+        38: getfield      #25                 // Field delegate:Ljavax/net/ssl/X509TrustManager;
+        41: areturn
+        42: aload_1
+        43: astore_3
+        44: iconst_0
+        45: istore        4
+        47: aload_3
+        48: astore        5
+        50: new           #112                // class java/util/ArrayList
+        53: dup
+        54: invokespecial #113                // Method java/util/ArrayList."<init>":()V
+        57: checkcast     #115                // class java/util/Collection
+        60: astore        6
+        62: iconst_0
+        63: istore        7
+        65: iconst_0
+        66: istore        8
+        68: aload         5
+        70: arraylength
+        71: istore        9
+        73: iload         8
+        75: iload         9
+        77: if_icmpge     130
+        80: aload         5
+        82: iload         8
+        84: aaload
+        85: astore        10
+        87: aload         10
+        89: astore        11
+        91: iconst_0
+        92: istore        12
+        94: aload_0
+        95: getfield      #28                 // Field pins:Ljava/util/Set;
+        98: getstatic     #121                // Field org/tekfive/relaykt/tls/TlsCertificatePins.INSTANCE:Lorg/tekfive/relaykt/tls/TlsCertificatePins;
+       101: aload         11
+       103: invokevirtual #125                // Method org/tekfive/relaykt/tls/TlsCertificatePins.pin:(Ljava/security/cert/X509Certificate;)Ljava/lang/String;
+       106: invokeinterface #131,  2          // InterfaceMethod java/util/Set.contains:(Ljava/lang/Object;)Z
+       111: ifeq          124
+       114: aload         6
+       116: aload         10
+       118: invokeinterface #134,  2          // InterfaceMethod java/util/Collection.add:(Ljava/lang/Object;)Z
+       123: pop
+       124: iinc          8, 1
+       127: goto          73
+       130: aload         6
+       132: checkcast     #136                // class java/util/List
+       135: nop
+       136: astore_2
+       137: aload_2
+       138: invokeinterface #140,  1          // InterfaceMethod java/util/List.isEmpty:()Z
+       143: ifeq          151
+       146: aload_0
+       147: getfield      #25                 // Field delegate:Ljavax/net/ssl/X509TrustManager;
+       150: areturn
+       151: invokestatic  #146                // Method java/security/KeyStore.getDefaultType:()Ljava/lang/String;
+       154: invokestatic  #150                // Method java/security/KeyStore.getInstance:(Ljava/lang/String;)Ljava/security/KeyStore;
+       157: astore_3
+       158: aload_3
+       159: aconst_null
+       160: aconst_null
+       161: invokevirtual #154                // Method java/security/KeyStore.load:(Ljava/io/InputStream;[C)V
+       164: aload_2
+       165: checkcast     #156                // class java/lang/Iterable
+       168: astore        4
+       170: iconst_0
+       171: istore        5
+       173: iconst_0
+       174: istore        6
+       176: aload         4
+       178: invokeinterface #160,  1          // InterfaceMethod java/lang/Iterable.iterator:()Ljava/util/Iterator;
+       183: astore        7
+       185: aload         7
+       187: invokeinterface #165,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+       192: ifeq          259
+       195: aload         7
+       197: invokeinterface #169,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       202: astore        8
+       204: iload         6
+       206: iinc          6, 1
+       209: istore        9
+       211: iload         9
+       213: ifge          219
+       216: invokestatic  #174                // Method kotlin/collections/CollectionsKt.throwIndexOverflow:()V
+       219: iload         9
+       221: aload         8
+       223: checkcast     #93                 // class java/security/cert/X509Certificate
+       226: astore        10
+       228: istore        11
+       230: iconst_0
+       231: istore        12
+       233: aload         10
+       235: invokevirtual #102                // Method java/security/cert/X509Certificate.checkValidity:()V
+       238: aload_3
+       239: iload         11
+       241: invokedynamic #186,  0            // InvokeDynamic #0:makeConcatWithConstants:(I)Ljava/lang/String;
+       246: aload         10
+       248: checkcast     #188                // class java/security/cert/Certificate
+       251: invokevirtual #192                // Method java/security/KeyStore.setCertificateEntry:(Ljava/lang/String;Ljava/security/cert/Certificate;)V
+       254: nop
+       255: nop
+       256: goto          185
+       259: nop
+       260: invokestatic  #197                // Method javax/net/ssl/TrustManagerFactory.getDefaultAlgorithm:()Ljava/lang/String;
+       263: invokestatic  #200                // Method javax/net/ssl/TrustManagerFactory.getInstance:(Ljava/lang/String;)Ljavax/net/ssl/TrustManagerFactory;
+       266: astore        4
+       268: aload         4
+       270: aload_3
+       271: invokevirtual #204                // Method javax/net/ssl/TrustManagerFactory.init:(Ljava/security/KeyStore;)V
+       274: aload         4
+       276: invokevirtual #208                // Method javax/net/ssl/TrustManagerFactory.getTrustManagers:()[Ljavax/net/ssl/TrustManager;
+       279: dup
+       280: ldc           #210                // String getTrustManagers(...)
+       282: invokestatic  #84                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullExpressionValue:(Ljava/lang/Object;Ljava/lang/String;)V
+       285: checkcast     #212                // class "[Ljava/lang/Object;"
+       288: astore        5
+       290: iconst_0
+       291: istore        6
+       293: aload         5
+       295: astore        7
+       297: new           #112                // class java/util/ArrayList
+       300: dup
+       301: invokespecial #113                // Method java/util/ArrayList."<init>":()V
+       304: checkcast     #115                // class java/util/Collection
+       307: astore        8
+       309: iconst_0
+       310: istore        9
+       312: iconst_0
+       313: istore        10
+       315: aload         7
+       317: arraylength
+       318: istore        11
+       320: iload         10
+       322: iload         11
+       324: if_icmpge     358
+       327: aload         7
+       329: iload         10
+       331: aaload
+       332: astore        12
+       334: aload         12
+       336: instanceof    #46                 // class javax/net/ssl/X509TrustManager
+       339: ifeq          352
+       342: aload         8
+       344: aload         12
+       346: invokeinterface #134,  2          // InterfaceMethod java/util/Collection.add:(Ljava/lang/Object;)Z
+       351: pop
+       352: iinc          10, 1
+       355: goto          320
+       358: aload         8
+       360: checkcast     #136                // class java/util/List
+       363: nop
+       364: invokestatic  #216                // Method kotlin/collections/CollectionsKt.single:(Ljava/util/List;)Ljava/lang/Object;
+       367: checkcast     #46                 // class javax/net/ssl/X509TrustManager
+       370: areturn
+
+  private final void checkPins(java.security.cert.X509Certificate[], javax.net.ssl.X509TrustManager);
+    Code:
+         0: aload_0
+         1: getfield      #28                 // Field pins:Ljava/util/Set;
+         4: invokeinterface #251,  1          // InterfaceMethod java/util/Set.isEmpty:()Z
+         9: ifeq          13
+        12: return
+        13: nop
+        14: aload_2
+        15: invokeinterface #79,  1           // InterfaceMethod javax/net/ssl/X509TrustManager.getAcceptedIssuers:()[Ljava/security/cert/X509Certificate;
+        20: dup
+        21: ldc           #81                 // String getAcceptedIssuers(...)
+        23: invokestatic  #84                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullExpressionValue:(Ljava/lang/Object;Ljava/lang/String;)V
+        26: checkcast     #212                // class "[Ljava/lang/Object;"
+        29: astore        5
+        31: iconst_0
+        32: istore        6
+        34: aload         5
+        36: astore        7
+        38: new           #112                // class java/util/ArrayList
+        41: dup
+        42: aload         5
+        44: arraylength
+        45: invokespecial #254                // Method java/util/ArrayList."<init>":(I)V
+        48: checkcast     #115                // class java/util/Collection
+        51: astore        8
+        53: iconst_0
+        54: istore        9
+        56: iconst_0
+        57: istore        10
+        59: aload         7
+        61: arraylength
+        62: istore        11
+        64: iload         10
+        66: iload         11
+        68: if_icmpge     117
+        71: aload         7
+        73: iload         10
+        75: aaload
+        76: astore        12
+        78: aload         8
+        80: aload         12
+        82: checkcast     #93                 // class java/security/cert/X509Certificate
+        85: astore        13
+        87: astore        15
+        89: iconst_0
+        90: istore        14
+        92: new           #256                // class java/security/cert/TrustAnchor
+        95: dup
+        96: aload         13
+        98: aconst_null
+        99: invokespecial #259                // Method java/security/cert/TrustAnchor."<init>":(Ljava/security/cert/X509Certificate;[B)V
+       102: aload         15
+       104: swap
+       105: invokeinterface #134,  2          // InterfaceMethod java/util/Collection.add:(Ljava/lang/Object;)Z
+       110: pop
+       111: iinc          10, 1
+       114: goto          64
+       117: aload         8
+       119: checkcast     #136                // class java/util/List
+       122: nop
+       123: checkcast     #156                // class java/lang/Iterable
+       126: invokestatic  #263                // Method kotlin/collections/CollectionsKt.toSet:(Ljava/lang/Iterable;)Ljava/util/Set;
+       129: astore        4
+       131: new           #265                // class java/security/cert/X509CertSelector
+       134: dup
+       135: invokespecial #266                // Method java/security/cert/X509CertSelector."<init>":()V
+       138: astore        6
+       140: aload         6
+       142: astore        7
+       144: iconst_0
+       145: istore        8
+       147: aload         7
+       149: aload_1
+       150: invokestatic  #99                 // Method kotlin/collections/ArraysKt.first:([Ljava/lang/Object;)Ljava/lang/Object;
+       153: checkcast     #93                 // class java/security/cert/X509Certificate
+       156: invokevirtual #270                // Method java/security/cert/X509CertSelector.setCertificate:(Ljava/security/cert/X509Certificate;)V
+       159: aload         6
+       161: astore        5
+       163: new           #272                // class java/security/cert/PKIXBuilderParameters
+       166: dup
+       167: aload         4
+       169: aload         5
+       171: checkcast     #274                // class java/security/cert/CertSelector
+       174: invokespecial #277                // Method java/security/cert/PKIXBuilderParameters."<init>":(Ljava/util/Set;Ljava/security/cert/CertSelector;)V
+       177: astore        7
+       179: aload         7
+       181: astore        8
+       183: iconst_0
+       184: istore        9
+       186: aload         8
+       188: iconst_0
+       189: invokevirtual #281                // Method java/security/cert/PKIXBuilderParameters.setRevocationEnabled:(Z)V
+       192: aload         8
+       194: ldc_w         #283                // String Collection
+       197: new           #285                // class java/security/cert/CollectionCertStoreParameters
+       200: dup
+       201: aload_1
+       202: invokestatic  #289                // Method kotlin/collections/ArraysKt.toList:([Ljava/lang/Object;)Ljava/util/List;
+       205: checkcast     #115                // class java/util/Collection
+       208: invokespecial #292                // Method java/security/cert/CollectionCertStoreParameters."<init>":(Ljava/util/Collection;)V
+       211: checkcast     #294                // class java/security/cert/CertStoreParameters
+       214: invokestatic  #299                // Method java/security/cert/CertStore.getInstance:(Ljava/lang/String;Ljava/security/cert/CertStoreParameters;)Ljava/security/cert/CertStore;
+       217: invokevirtual #303                // Method java/security/cert/PKIXBuilderParameters.addCertStore:(Ljava/security/cert/CertStore;)V
+       220: nop
+       221: aload         7
+       223: astore        6
+       225: ldc_w         #305                // String PKIX
+       228: invokestatic  #310                // Method java/security/cert/CertPathBuilder.getInstance:(Ljava/lang/String;)Ljava/security/cert/CertPathBuilder;
+       231: aload         6
+       233: checkcast     #312                // class java/security/cert/CertPathParameters
+       236: invokevirtual #316                // Method java/security/cert/CertPathBuilder.build:(Ljava/security/cert/CertPathParameters;)Ljava/security/cert/CertPathBuilderResult;
+       239: dup
+       240: ldc_w         #318                // String null cannot be cast to non-null type java.security.cert.PKIXCertPathBuilderResult
+       243: invokestatic  #321                // Method kotlin/jvm/internal/Intrinsics.checkNotNull:(Ljava/lang/Object;Ljava/lang/String;)V
+       246: checkcast     #323                // class java/security/cert/PKIXCertPathBuilderResult
+       249: astore        4
+       251: goto          272
+       254: astore        5
+       256: new           #86                 // class java/security/cert/CertificateException
+       259: dup
+       260: ldc_w         #325                // String Unable to validate the pinned server certificate path
+       263: aload         5
+       265: checkcast     #327                // class java/lang/Throwable
+       268: invokespecial #330                // Method java/security/cert/CertificateException."<init>":(Ljava/lang/String;Ljava/lang/Throwable;)V
+       271: athrow
+       272: aload         4
+       274: astore_3
+       275: aload_3
+       276: invokevirtual #334                // Method java/security/cert/PKIXCertPathBuilderResult.getCertPath:()Ljava/security/cert/CertPath;
+       279: invokevirtual #340                // Method java/security/cert/CertPath.getCertificates:()Ljava/util/List;
+       282: dup
+       283: ldc_w         #342                // String getCertificates(...)
+       286: invokestatic  #84                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullExpressionValue:(Ljava/lang/Object;Ljava/lang/String;)V
+       289: checkcast     #156                // class java/lang/Iterable
+       292: astore        5
+       294: iconst_0
+       295: istore        6
+       297: aload         5
+       299: astore        7
+       301: new           #112                // class java/util/ArrayList
+       304: dup
+       305: invokespecial #113                // Method java/util/ArrayList."<init>":()V
+       308: checkcast     #115                // class java/util/Collection
+       311: astore        8
+       313: iconst_0
+       314: istore        9
+       316: aload         7
+       318: invokeinterface #160,  1          // InterfaceMethod java/lang/Iterable.iterator:()Ljava/util/Iterator;
+       323: astore        10
+       325: aload         10
+       327: invokeinterface #165,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+       332: ifeq          365
+       335: aload         10
+       337: invokeinterface #169,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       342: astore        11
+       344: aload         11
+       346: instanceof    #93                 // class java/security/cert/X509Certificate
+       349: ifeq          325
+       352: aload         8
+       354: aload         11
+       356: invokeinterface #134,  2          // InterfaceMethod java/util/Collection.add:(Ljava/lang/Object;)Z
+       361: pop
+       362: goto          325
+       365: aload         8
+       367: checkcast     #136                // class java/util/List
+       370: nop
+       371: checkcast     #115                // class java/util/Collection
+       374: aload_3
+       375: invokevirtual #346                // Method java/security/cert/PKIXCertPathBuilderResult.getTrustAnchor:()Ljava/security/cert/TrustAnchor;
+       378: invokevirtual #350                // Method java/security/cert/TrustAnchor.getTrustedCert:()Ljava/security/cert/X509Certificate;
+       381: invokestatic  #354                // Method kotlin/collections/CollectionsKt.plus:(Ljava/util/Collection;Ljava/lang/Object;)Ljava/util/List;
+       384: astore        4
+       386: aload         4
+       388: checkcast     #156                // class java/lang/Iterable
+       391: astore        5
+       393: iconst_0
+       394: istore        6
+       396: aload         5
+       398: instanceof    #115                // class java/util/Collection
+       401: ifeq          421
+       404: aload         5
+       406: checkcast     #115                // class java/util/Collection
+       409: invokeinterface #355,  1          // InterfaceMethod java/util/Collection.isEmpty:()Z
+       414: ifeq          421
+       417: iconst_1
+       418: goto          489
+       421: aload         5
+       423: invokeinterface #160,  1          // InterfaceMethod java/lang/Iterable.iterator:()Ljava/util/Iterator;
+       428: astore        7
+       430: aload         7
+       432: invokeinterface #165,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+       437: ifeq          488
+       440: aload         7
+       442: invokeinterface #169,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       447: astore        8
+       449: aload         8
+       451: checkcast     #93                 // class java/security/cert/X509Certificate
+       454: astore        9
+       456: iconst_0
+       457: istore        10
+       459: aload_0
+       460: getfield      #28                 // Field pins:Ljava/util/Set;
+       463: getstatic     #121                // Field org/tekfive/relaykt/tls/TlsCertificatePins.INSTANCE:Lorg/tekfive/relaykt/tls/TlsCertificatePins;
+       466: aload         9
+       468: invokestatic  #358                // Method kotlin/jvm/internal/Intrinsics.checkNotNull:(Ljava/lang/Object;)V
+       471: aload         9
+       473: invokevirtual #125                // Method org/tekfive/relaykt/tls/TlsCertificatePins.pin:(Ljava/security/cert/X509Certificate;)Ljava/lang/String;
+       476: invokeinterface #131,  2          // InterfaceMethod java/util/Set.contains:(Ljava/lang/Object;)Z
+       481: ifeq          430
+       484: iconst_0
+       485: goto          489
+       488: iconst_1
+       489: ifeq          503
+       492: new           #86                 // class java/security/cert/CertificateException
+       495: dup
+       496: ldc_w         #360                // String The server certificate chain did not match a configured TLS pin
+       499: invokespecial #91                 // Method java/security/cert/CertificateException."<init>":(Ljava/lang/String;)V
+       502: athrow
+       503: return
+      Exception table:
+         from    to  target type
+            13   251   254   Class java/security/GeneralSecurityException
+}

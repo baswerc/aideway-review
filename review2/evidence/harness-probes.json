@@ -1,0 +1,32 @@
+[
+  {
+    "probe": "audit crash is reported as success",
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "probe": "documented multi-prefix audit command",
+    "exit": 2,
+    "stdout": "",
+    "stderr": "audit: unexpected argument: 67-keyset-sealed\n"
+  },
+  {
+    "probe": "container audit against declared Compose flags",
+    "exit": 0,
+    "stdout": "{\"id\":\"container.readonly_root.nginx\",\"severity\":\"fail\",\"message\":\"container aideway-nginx-1 does not have a read-only root filesystem \u2014 set read_only: true in compose\",\"fix\":\"add read_only: true to the nginx service in docker-compose.yml\"}\n{\"id\":\"container.no_new_privs.nginx\",\"severity\":\"pass\",\"message\":\"container aideway-nginx-1 has no-new-privileges set\"}\n{\"id\":\"container.cap_drop_all.nginx\",\"severity\":\"pass\",\"message\":\"container aideway-nginx-1 drops ALL capabilities\"}\n{\"id\":\"container.readonly_root.server\",\"severity\":\"pass\",\"message\":\"container aideway-server-1 has a read-only root filesystem\"}\n{\"id\":\"container.no_new_privs.server\",\"severity\":\"pass\",\"message\":\"container aideway-server-1 has no-new-privileges set\"}\n{\"id\":\"container.cap_drop_all.server\",\"severity\":\"pass\",\"message\":\"container aideway-server-1 drops ALL capabilities\"}\n{\"id\":\"container.readonly_root.vllm\",\"severity\":\"fail\",\"message\":\"container aideway-vllm-1 does not have a read-only root filesystem \u2014 set read_only: true in compose\",\"fix\":\"add read_only: true to the vllm service in docker-compose.yml\"}\n{\"id\":\"container.no_new_privs.vllm\",\"severity\":\"pass\",\"message\":\"container aideway-vllm-1 has no-new-privileges set\"}\n{\"id\":\"container.cap_drop_all.vllm\",\"severity\":\"pass\",\"message\":\"container aideway-vllm-1 drops ALL capabilities\"}\n{\"id\":\"container.work_tmpfs\",\"severity\":\"warn\",\"message\":\"server container does not mount /tmp/aideway-work as tmpfs \u2014 temporary PHI data may be written to disk\",\"fix\":\"add /tmp/aideway-work to tmpfs in docker-compose.yml for the server service\"}\n",
+    "stderr": ""
+  },
+  {
+    "probe": "docs build without pandoc",
+    "exit": 1,
+    "stdout": "",
+    "stderr": "2026-10-15T10:33:30Z [error] docs: pandoc not found on PATH; install pandoc to build the manual\n"
+  },
+  {
+    "probe": "shell evaluation of an inert config value",
+    "exit": 0,
+    "stdout": "REVIEW2_SENTINEL\n",
+    "stderr": ""
+  }
+]

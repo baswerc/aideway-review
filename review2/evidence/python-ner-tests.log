@@ -1,0 +1,42 @@
+Downloading Hugging Face model: example/custom-gliner
+Caching GLiNER dependencies: example/custom-gliner
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import sys; from gliner import GLiNER; GLiNER.from_pretrained(sys.argv[1], map_location='cpu')
+                                           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tmphk93054e/gliner.py", line 18, in from_pretrained
+    raise OSError('dependency unavailable')
+OSError: dependency unavailable
+.Downloading Hugging Face model: example/custom-gliner
+Caching GLiNER dependencies: example/custom-gliner
+Verifying offline GLiNER load: example/custom-gliner
+.Downloading Hugging Face model: example/medical
+.Downloading Hugging Face model: example/custom-gliner
+Caching GLiNER dependencies: example/custom-gliner
+Verifying offline GLiNER load: example/custom-gliner
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import sys; from gliner import GLiNER; GLiNER.from_pretrained(sys.argv[1], map_location='cpu')
+                                           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tmpmobdu00v/gliner.py", line 22, in from_pretrained
+    raise OSError('tokenizer missing from offline cache')
+OSError: tokenizer missing from offline cache
+..............Request failed: ProtocolError
+Request failed: ProtocolError
+Request failed: ProtocolError
+Request failed: ProtocolError
+Request failed: ProtocolError
+Request failed: ProtocolError
+Request failed: ProtocolError
+Request failed: ProtocolError
+Request failed: ProtocolError
+Request failed: ProtocolError
+Request failed: ProtocolError
+..Request failed: ValueError
+.Request failed: MemoryError
+.....Request failed: ProtocolError
+..
+----------------------------------------------------------------------
+Ran 27 tests in 0.361s
+
+OK

@@ -1,0 +1,98 @@
+[
+  {
+    "source": "projects/docs/guides/installation/02.md",
+    "target": "../administration/02.md#verify-adminsecurity-access"
+  },
+  {
+    "source": "projects/docs/guides/installation/04.md",
+    "target": "../administration/08.md#configure-a-pathology-report-trigger"
+  },
+  {
+    "source": "projects/docs/guides/installation/05.md",
+    "target": "../administration/02.md#verify-adminsecurity-access"
+  },
+  {
+    "source": "projects/docs/guides/installation/05.md",
+    "target": "../administration/02.md#application-setup-and-verification"
+  },
+  {
+    "source": "projects/docs/guides/installation/03.md",
+    "target": "../administration/14.md"
+  },
+  {
+    "source": "projects/docs/guides/installation/03.md",
+    "target": "../administration/14.md#configure-smtp"
+  },
+  {
+    "source": "projects/docs/guides/installation/03.md",
+    "target": "../administration/14.md#send-a-test-message"
+  },
+  {
+    "source": "projects/docs/guides/installation/03.md",
+    "target": "../administration/14.md#test-mfa-delivery"
+  },
+  {
+    "source": "projects/docs/guides/installation/01.md",
+    "target": "../administration/01.md"
+  },
+  {
+    "source": "projects/docs/guides/operation/04.md",
+    "target": "../administration/02.md#application-setup-and-verification"
+  },
+  {
+    "source": "projects/docs/guides/operation/04.md",
+    "target": "../administration/09.md#executions"
+  },
+  {
+    "source": "projects/docs/guides/operation/04.md",
+    "target": "../administration/13.md"
+  },
+  {
+    "source": "projects/docs/guides/operation/04.md",
+    "target": "../administration/04.md"
+  },
+  {
+    "source": "projects/docs/guides/operation/04.md",
+    "target": "../administration/16.md"
+  },
+  {
+    "source": "projects/docs/guides/operation/04.md",
+    "target": "../administration/02.md#verify-adminsecurity-access"
+  },
+  {
+    "source": "projects/docs/guides/operation/04.md",
+    "target": "../administration/05.md"
+  },
+  {
+    "source": "projects/docs/guides/operation/04.md",
+    "target": "../administration/07.md#register-the-model-service"
+  },
+  {
+    "source": "projects/docs/guides/operation/04.md",
+    "target": "../administration/07.md#update-the-vllm-certificate-pin"
+  },
+  {
+    "source": "projects/docs/guides/operation/04.md",
+    "target": "../administration/07.md#update-the-vllm-certificate-pin"
+  },
+  {
+    "source": "projects/docs/guides/operation/04.md",
+    "target": "../administration/02.md#application-setup-and-verification"
+  },
+  {
+    "source": "projects/docs/guides/operation/07.md",
+    "target": "../administration/07.md#update-the-vllm-certificate-pin"
+  },
+  {
+    "source": "projects/docs/guides/operation/07.md",
+    "target": "../administration/08.md#configure-a-pathology-report-trigger"
+  },
+  {
+    "source": "projects/docs/guides/operation/07.md",
+    "target": "../administration/13.md#runtime-diagnostics"
+  },
+  {
+    "source": "projects/docs/guides/operation/07.md",
+    "target": "../administration/16.md#troubleshooting"
+  }
+]

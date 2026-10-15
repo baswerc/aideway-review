@@ -1,0 +1,7 @@
+......................................sssssss.Release blocked: no frozen baseline migration.
+.Release blocked: V1_Init.kt imports live application models. Freeze its schema and seed SQL before the first release.
+.
+----------------------------------------------------------------------
+Ran 48 tests in 34.989s
+
+OK (skipped=7)

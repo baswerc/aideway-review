@@ -1,0 +1,34 @@
+[
+  {
+    "filename": "polyglotkt-core-v1.0.3.jar",
+    "sha256": "852bf38bd715ef57f18a0d12067e2b1d669d6735a50d5f390b54947616f8f64c"
+  },
+  {
+    "filename": "polyglotkt-anthropic-v1.0.3.jar",
+    "sha256": "43251b292e6b42353808fec36a12f969969574cff6198a4b326dc0c378054020"
+  },
+  {
+    "filename": "relaykt-v1.0.9.jar",
+    "sha256": "28734d5e1f217507639bbcc7c4c36d624cfc644bdcf9014f89db8c88f5fc3baf"
+  },
+  {
+    "filename": "polyglotkt-openai-compatible-v1.0.3.jar",
+    "sha256": "9a174b43ee941c1464c3b79e351cf5316e2a2985984680f9df907539e2c551f5"
+  },
+  {
+    "filename": "jfk-v1.0.4.jar",
+    "sha256": "e600bcd235d16d42aad6b2f7243923399420b8e44b10ddeb11eb81cda422cbb3"
+  },
+  {
+    "filename": "keep-v1.0.15.jar",
+    "sha256": "237433ed66a1f55da4de5f304be56923c7c277e5e69e11c5678487912c321953"
+  },
+  {
+    "filename": "polyglotkt-gemini-v1.0.3.jar",
+    "sha256": "01216a2c3aa73d4f3677af3288092f3fcdec08f9ee219f8c129fb20b50f0d256"
+  },
+  {
+    "filename": "kviash-v1.0.3.jar",
+    "sha256": "ae1c636c67f62ec45c66fc8f30e7b5c85bccd2bd738101074cd7110ead46a854"
+  }
+]

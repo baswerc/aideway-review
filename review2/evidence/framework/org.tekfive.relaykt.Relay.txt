@@ -1,0 +1,639 @@
+Compiled from "Relay.kt"
+public final class org.tekfive.relaykt.Relay {
+  public static final org.tekfive.relaykt.Relay INSTANCE;
+
+  private static final org.slf4j.Logger log;
+
+  private static final org.tekfive.ack.Ack<java.lang.Long> maxAttachmentsSizeBytesAck;
+
+  private static volatile org.tekfive.relaykt.endpoint.EndpointResolver endpointResolver;
+
+  private static volatile java.util.concurrent.Executor asyncExecutor;
+
+  public static final java.lang.String NAMESPACE;
+
+  private org.tekfive.relaykt.Relay();
+    Code:
+         0: aload_0
+         1: invokespecial #8                  // Method java/lang/Object."<init>":()V
+         4: return
+
+  public final org.tekfive.ack.Ack<java.lang.Long> getMaxAttachmentsSizeBytesAck();
+    Code:
+         0: getstatic     #18                 // Field maxAttachmentsSizeBytesAck:Lorg/tekfive/ack/Ack;
+         3: areturn
+
+  public final void registerEndpointResolver(org.tekfive.relaykt.endpoint.EndpointResolver);
+    Code:
+         0: aload_1
+         1: ldc           #22                 // String resolver
+         3: invokestatic  #28                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+         6: aload_1
+         7: putstatic     #32                 // Field endpointResolver:Lorg/tekfive/relaykt/endpoint/EndpointResolver;
+        10: return
+
+  public final void setAsyncExecutor(java.util.concurrent.Executor);
+    Code:
+         0: aload_1
+         1: ldc           #36                 // String executor
+         3: invokestatic  #28                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+         6: aload_1
+         7: putstatic     #40                 // Field asyncExecutor:Ljava/util/concurrent/Executor;
+        10: return
+
+  public final org.tekfive.relaykt.endpoint.Endpoint resolveEndpoint(java.lang.String);
+    Code:
+         0: aload_1
+         1: ldc           #44                 // String endpointId
+         3: invokestatic  #28                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+         6: getstatic     #32                 // Field endpointResolver:Lorg/tekfive/relaykt/endpoint/EndpointResolver;
+         9: dup
+        10: ifnonnull     24
+        13: pop
+        14: new           #46                 // class java/lang/IllegalStateException
+        17: dup
+        18: ldc           #48                 // String No EndpointResolver registered. Call Relay.registerEndpointResolver() at startup.
+        20: invokespecial #51                 // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+        23: athrow
+        24: astore_2
+        25: aload_2
+        26: aload_1
+        27: invokeinterface #56,  2           // InterfaceMethod org/tekfive/relaykt/endpoint/EndpointResolver.resolve:(Ljava/lang/String;)Lorg/tekfive/relaykt/endpoint/Endpoint;
+        32: dup
+        33: ifnonnull     51
+        36: pop
+        37: new           #58                 // class java/lang/IllegalArgumentException
+        40: dup
+        41: aload_1
+        42: invokedynamic #70,  0             // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+        47: invokespecial #71                 // Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+        50: athrow
+        51: areturn
+
+  public final org.tekfive.relaykt.endpoint.Endpoint findEndpoint(java.lang.String);
+    Code:
+         0: aload_1
+         1: ldc           #44                 // String endpointId
+         3: invokestatic  #28                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+         6: getstatic     #32                 // Field endpointResolver:Lorg/tekfive/relaykt/endpoint/EndpointResolver;
+         9: dup
+        10: ifnull        22
+        13: aload_1
+        14: invokeinterface #56,  2           // InterfaceMethod org/tekfive/relaykt/endpoint/EndpointResolver.resolve:(Ljava/lang/String;)Lorg/tekfive/relaykt/endpoint/Endpoint;
+        19: goto          24
+        22: pop
+        23: aconst_null
+        24: areturn
+
+  public final void reset();
+    Code:
+         0: aconst_null
+         1: putstatic     #32                 // Field endpointResolver:Lorg/tekfive/relaykt/endpoint/EndpointResolver;
+         4: invokestatic  #85                 // Method java/util/concurrent/Executors.newVirtualThreadPerTaskExecutor:()Ljava/util/concurrent/ExecutorService;
+         7: dup
+         8: ldc           #87                 // String newVirtualThreadPerTaskExecutor(...)
+        10: invokestatic  #90                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullExpressionValue:(Ljava/lang/Object;Ljava/lang/String;)V
+        13: checkcast     #92                 // class java/util/concurrent/Executor
+        16: putstatic     #40                 // Field asyncExecutor:Ljava/util/concurrent/Executor;
+        19: return
+
+  public final <M extends org.tekfive.relaykt.Message> org.tekfive.relaykt.SendResult send(M, org.tekfive.relaykt.endpoint.Endpoint);
+    Code:
+         0: aload_1
+         1: ldc           #99                 // String message
+         3: invokestatic  #28                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+         6: aload_2
+         7: ldc           #101                // String endpoint
+         9: invokestatic  #28                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+        12: aload_2
+        13: aload_1
+        14: invokevirtual #107                // Method org/tekfive/relaykt/Message.getChannel:()Lorg/tekfive/relaykt/Channel;
+        17: invokevirtual #111                // Method org/tekfive/relaykt/endpoint/Endpoint.providerFor:(Lorg/tekfive/relaykt/Channel;)Lorg/tekfive/relaykt/provider/Provider;
+        20: astore_3
+        21: aload_0
+        22: aload_1
+        23: aload_3
+        24: aload_2
+        25: invokevirtual #115                // Method validate:(Lorg/tekfive/relaykt/Message;Lorg/tekfive/relaykt/provider/Provider;Lorg/tekfive/relaykt/endpoint/Endpoint;)V
+        28: nop
+        29: aload_3
+        30: aload_1
+        31: aload_2
+        32: invokevirtual #119                // Method org/tekfive/relaykt/endpoint/Endpoint.getConfiguration:()Lorg/tekfive/jfk/JsonObject;
+        35: invokeinterface #124,  3          // InterfaceMethod org/tekfive/relaykt/provider/Provider.send:(Lorg/tekfive/relaykt/Message;Lorg/tekfive/jfk/JsonObject;)Lorg/tekfive/relaykt/SendResult;
+        40: astore        4
+        42: goto          55
+        45: astore        5
+        47: aload_0
+        48: aload         5
+        50: aload_3
+        51: invokevirtual #128                // Method classify:(Ljava/lang/Exception;Lorg/tekfive/relaykt/provider/Provider;)Lorg/tekfive/relaykt/RelayException;
+        54: athrow
+        55: aload         4
+        57: areturn
+      Exception table:
+         from    to  target type
+            28    42    45   Class java/lang/Exception
+
+  public final <M extends org.tekfive.relaykt.Message> org.tekfive.relaykt.SendResult send(M, java.lang.String);
+    Code:
+         0: aload_1
+         1: ldc           #99                 // String message
+         3: invokestatic  #28                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+         6: aload_2
+         7: ldc           #44                 // String endpointId
+         9: invokestatic  #28                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+        12: aload_0
+        13: aload_1
+        14: aload_0
+        15: aload_2
+        16: invokevirtual #140                // Method resolveEndpoint:(Ljava/lang/String;)Lorg/tekfive/relaykt/endpoint/Endpoint;
+        19: invokevirtual #142                // Method send:(Lorg/tekfive/relaykt/Message;Lorg/tekfive/relaykt/endpoint/Endpoint;)Lorg/tekfive/relaykt/SendResult;
+        22: areturn
+
+  public final <M extends org.tekfive.relaykt.Message> java.util.concurrent.CompletableFuture<org.tekfive.relaykt.SendResult> sendAsync(M, org.tekfive.relaykt.endpoint.Endpoint);
+    Code:
+         0: aload_1
+         1: ldc           #99                 // String message
+         3: invokestatic  #28                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+         6: aload_2
+         7: ldc           #101                // String endpoint
+         9: invokestatic  #28                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+        12: aload_2
+        13: aload_1
+        14: invokevirtual #107                // Method org/tekfive/relaykt/Message.getChannel:()Lorg/tekfive/relaykt/Channel;
+        17: invokevirtual #111                // Method org/tekfive/relaykt/endpoint/Endpoint.providerFor:(Lorg/tekfive/relaykt/Channel;)Lorg/tekfive/relaykt/provider/Provider;
+        20: astore_3
+        21: aload_0
+        22: aload_1
+        23: aload_3
+        24: aload_2
+        25: invokevirtual #115                // Method validate:(Lorg/tekfive/relaykt/Message;Lorg/tekfive/relaykt/provider/Provider;Lorg/tekfive/relaykt/endpoint/Endpoint;)V
+        28: aload_3
+        29: aload_1
+        30: aload_2
+        31: invokedynamic #165,  0            // InvokeDynamic #1:get:(Lorg/tekfive/relaykt/provider/Provider;Lorg/tekfive/relaykt/Message;Lorg/tekfive/relaykt/endpoint/Endpoint;)Ljava/util/function/Supplier;
+        36: getstatic     #40                 // Field asyncExecutor:Ljava/util/concurrent/Executor;
+        39: invokestatic  #171                // Method java/util/concurrent/CompletableFuture.supplyAsync:(Ljava/util/function/Supplier;Ljava/util/concurrent/Executor;)Ljava/util/concurrent/CompletableFuture;
+        42: dup
+        43: ldc           #173                // String supplyAsync(...)
+        45: invokestatic  #90                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullExpressionValue:(Ljava/lang/Object;Ljava/lang/String;)V
+        48: areturn
+
+  public final <M extends org.tekfive.relaykt.Message> java.util.concurrent.CompletableFuture<org.tekfive.relaykt.SendResult> sendAsync(M, java.lang.String);
+    Code:
+         0: aload_1
+         1: ldc           #99                 // String message
+         3: invokestatic  #28                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+         6: aload_2
+         7: ldc           #44                 // String endpointId
+         9: invokestatic  #28                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+        12: aload_0
+        13: aload_1
+        14: aload_0
+        15: aload_2
+        16: invokevirtual #140                // Method resolveEndpoint:(Ljava/lang/String;)Lorg/tekfive/relaykt/endpoint/Endpoint;
+        19: invokevirtual #177                // Method sendAsync:(Lorg/tekfive/relaykt/Message;Lorg/tekfive/relaykt/endpoint/Endpoint;)Ljava/util/concurrent/CompletableFuture;
+        22: areturn
+
+  public final long enqueue(org.tekfive.relaykt.Message, org.tekfive.relaykt.endpoint.Endpoint, org.tekfive.relaykt.queue.QueueOptions);
+    Code:
+         0: aload_1
+         1: ldc           #99                 // String message
+         3: invokestatic  #28                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+         6: aload_2
+         7: ldc           #101                // String endpoint
+         9: invokestatic  #28                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+        12: aload_3
+        13: ldc           #181                // String options
+        15: invokestatic  #28                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+        18: aload_2
+        19: aload_1
+        20: invokevirtual #107                // Method org/tekfive/relaykt/Message.getChannel:()Lorg/tekfive/relaykt/Channel;
+        23: invokevirtual #111                // Method org/tekfive/relaykt/endpoint/Endpoint.providerFor:(Lorg/tekfive/relaykt/Channel;)Lorg/tekfive/relaykt/provider/Provider;
+        26: astore        4
+        28: aload_0
+        29: aload_1
+        30: aload         4
+        32: aload_2
+        33: invokevirtual #115                // Method validate:(Lorg/tekfive/relaykt/Message;Lorg/tekfive/relaykt/provider/Provider;Lorg/tekfive/relaykt/endpoint/Endpoint;)V
+        36: getstatic     #187                // Field org/tekfive/relaykt/queue/MessageQueue.INSTANCE:Lorg/tekfive/relaykt/queue/MessageQueue;
+        39: aload_1
+        40: aload_2
+        41: aload_3
+        42: invokevirtual #189                // Method org/tekfive/relaykt/queue/MessageQueue.enqueue:(Lorg/tekfive/relaykt/Message;Lorg/tekfive/relaykt/endpoint/Endpoint;Lorg/tekfive/relaykt/queue/QueueOptions;)J
+        45: lreturn
+
+  public static long enqueue$default(org.tekfive.relaykt.Relay, org.tekfive.relaykt.Message, org.tekfive.relaykt.endpoint.Endpoint, org.tekfive.relaykt.queue.QueueOptions, int, java.lang.Object);
+    Code:
+         0: iload         4
+         2: iconst_4
+         3: iand
+         4: ifeq          24
+         7: new           #194                // class org/tekfive/relaykt/queue/QueueOptions
+        10: dup
+        11: aconst_null
+        12: aconst_null
+        13: aconst_null
+        14: iconst_0
+        15: iconst_0
+        16: aconst_null
+        17: bipush        63
+        19: aconst_null
+        20: invokespecial #197                // Method org/tekfive/relaykt/queue/QueueOptions."<init>":(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;IZLjava/lang/Integer;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+        23: astore_3
+        24: aload_0
+        25: aload_1
+        26: aload_2
+        27: aload_3
+        28: invokevirtual #198                // Method enqueue:(Lorg/tekfive/relaykt/Message;Lorg/tekfive/relaykt/endpoint/Endpoint;Lorg/tekfive/relaykt/queue/QueueOptions;)J
+        31: lreturn
+
+  public final long enqueue(org.tekfive.relaykt.Message, java.lang.String, org.tekfive.relaykt.queue.QueueOptions);
+    Code:
+         0: aload_1
+         1: ldc           #99                 // String message
+         3: invokestatic  #28                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+         6: aload_2
+         7: ldc           #44                 // String endpointId
+         9: invokestatic  #28                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+        12: aload_3
+        13: ldc           #181                // String options
+        15: invokestatic  #28                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+        18: aload_0
+        19: aload_1
+        20: aload_0
+        21: aload_2
+        22: invokevirtual #140                // Method resolveEndpoint:(Ljava/lang/String;)Lorg/tekfive/relaykt/endpoint/Endpoint;
+        25: aload_3
+        26: invokevirtual #198                // Method enqueue:(Lorg/tekfive/relaykt/Message;Lorg/tekfive/relaykt/endpoint/Endpoint;Lorg/tekfive/relaykt/queue/QueueOptions;)J
+        29: lreturn
+
+  public static long enqueue$default(org.tekfive.relaykt.Relay, org.tekfive.relaykt.Message, java.lang.String, org.tekfive.relaykt.queue.QueueOptions, int, java.lang.Object);
+    Code:
+         0: iload         4
+         2: iconst_4
+         3: iand
+         4: ifeq          24
+         7: new           #194                // class org/tekfive/relaykt/queue/QueueOptions
+        10: dup
+        11: aconst_null
+        12: aconst_null
+        13: aconst_null
+        14: iconst_0
+        15: iconst_0
+        16: aconst_null
+        17: bipush        63
+        19: aconst_null
+        20: invokespecial #197                // Method org/tekfive/relaykt/queue/QueueOptions."<init>":(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;IZLjava/lang/Integer;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+        23: astore_3
+        24: aload_0
+        25: aload_1
+        26: aload_2
+        27: aload_3
+        28: invokevirtual #202                // Method enqueue:(Lorg/tekfive/relaykt/Message;Ljava/lang/String;Lorg/tekfive/relaykt/queue/QueueOptions;)J
+        31: lreturn
+
+  public final org.tekfive.relaykt.DeliveryStatus status(java.lang.String, org.tekfive.relaykt.endpoint.Endpoint);
+    Code:
+         0: aload_1
+         1: ldc           #206                // String messageId
+         3: invokestatic  #28                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+         6: aload_2
+         7: ldc           #101                // String endpoint
+         9: invokestatic  #28                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+        12: aload_2
+        13: invokevirtual #210                // Method org/tekfive/relaykt/endpoint/Endpoint.getProvider:()Lorg/tekfive/relaykt/provider/Provider;
+        16: astore_3
+        17: aload_3
+        18: getstatic     #216                // Field org/tekfive/relaykt/Capability.STATUS_LOOKUP:Lorg/tekfive/relaykt/Capability;
+        21: invokeinterface #220,  2          // InterfaceMethod org/tekfive/relaykt/provider/Provider.supports:(Lorg/tekfive/relaykt/Capability;)Z
+        26: ifeq          39
+        29: aload_1
+        30: checkcast     #222                // class java/lang/CharSequence
+        33: invokestatic  #228                // Method kotlin/text/StringsKt.isBlank:(Ljava/lang/CharSequence;)Z
+        36: ifeq          41
+        39: aconst_null
+        40: areturn
+        41: nop
+        42: aload_3
+        43: aload_1
+        44: aload_2
+        45: invokevirtual #119                // Method org/tekfive/relaykt/endpoint/Endpoint.getConfiguration:()Lorg/tekfive/jfk/JsonObject;
+        48: invokeinterface #231,  3          // InterfaceMethod org/tekfive/relaykt/provider/Provider.status:(Ljava/lang/String;Lorg/tekfive/jfk/JsonObject;)Lorg/tekfive/relaykt/DeliveryStatus;
+        53: astore        4
+        55: goto          68
+        58: astore        5
+        60: aload_0
+        61: aload         5
+        63: aload_3
+        64: invokevirtual #128                // Method classify:(Ljava/lang/Exception;Lorg/tekfive/relaykt/provider/Provider;)Lorg/tekfive/relaykt/RelayException;
+        67: athrow
+        68: aload         4
+        70: areturn
+      Exception table:
+         from    to  target type
+            41    55    58   Class java/lang/Exception
+
+  public final void validate(org.tekfive.relaykt.Message, org.tekfive.relaykt.provider.Provider<?>, org.tekfive.relaykt.endpoint.Endpoint);
+    Code:
+         0: aload_1
+         1: ldc           #99                 // String message
+         3: invokestatic  #28                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+         6: aload_2
+         7: ldc           #235                // String provider
+         9: invokestatic  #28                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+        12: aload_3
+        13: ldc           #101                // String endpoint
+        15: invokestatic  #28                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+        18: nop
+        19: aload_2
+        20: aload_3
+        21: invokevirtual #119                // Method org/tekfive/relaykt/endpoint/Endpoint.getConfiguration:()Lorg/tekfive/jfk/JsonObject;
+        24: invokeinterface #239,  2          // InterfaceMethod org/tekfive/relaykt/provider/Provider.validateConfiguration:(Lorg/tekfive/jfk/JsonObject;)V
+        29: goto          69
+        32: astore        4
+        34: new           #241                // class org/tekfive/relaykt/RelayException
+        37: dup
+        38: aload_3
+        39: invokevirtual #245                // Method org/tekfive/relaykt/endpoint/Endpoint.getId:()Ljava/lang/String;
+        42: aload_2
+        43: invokeinterface #246,  1          // InterfaceMethod org/tekfive/relaykt/provider/Provider.getId:()Ljava/lang/String;
+        48: invokedynamic #251,  0            // InvokeDynamic #2:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+        53: iconst_0
+        54: getstatic     #256                // Field org/tekfive/relaykt/provider/ProviderConfigurations.INSTANCE:Lorg/tekfive/relaykt/provider/ProviderConfigurations;
+        57: aload         4
+        59: checkcast     #258                // class java/lang/Throwable
+        62: invokevirtual #262                // Method org/tekfive/relaykt/provider/ProviderConfigurations.unwrap:(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+        65: invokespecial #265                // Method org/tekfive/relaykt/RelayException."<init>":(Ljava/lang/String;ZLjava/lang/Throwable;)V
+        68: athrow
+        69: aload_1
+        70: invokevirtual #269                // Method org/tekfive/relaykt/Message.getAttachments:()Ljava/util/List;
+        73: checkcast     #271                // class java/util/Collection
+        76: invokeinterface #275,  1          // InterfaceMethod java/util/Collection.isEmpty:()Z
+        81: ifne          88
+        84: iconst_1
+        85: goto          89
+        88: iconst_0
+        89: ifeq          165
+        92: aload_0
+        93: aload_2
+        94: getstatic     #278                // Field org/tekfive/relaykt/Capability.ATTACHMENTS:Lorg/tekfive/relaykt/Capability;
+        97: invokespecial #282                // Method requireCapability:(Lorg/tekfive/relaykt/provider/Provider;Lorg/tekfive/relaykt/Capability;)V
+       100: aload_3
+       101: invokevirtual #286                // Method org/tekfive/relaykt/endpoint/Endpoint.getMaxAttachmentsSizeBytes:()Ljava/lang/Long;
+       104: dup
+       105: ifnull        114
+       108: invokevirtual #292                // Method java/lang/Long.longValue:()J
+       111: goto          127
+       114: pop
+       115: getstatic     #18                 // Field maxAttachmentsSizeBytesAck:Lorg/tekfive/ack/Ack;
+       118: invokevirtual #297                // Method org/tekfive/ack/Ack.invoke:()Ljava/lang/Object;
+       121: checkcast     #299                // class java/lang/Number
+       124: invokevirtual #300                // Method java/lang/Number.longValue:()J
+       127: lstore        4
+       129: aload_1
+       130: invokevirtual #303                // Method org/tekfive/relaykt/Message.getAttachmentsSizeBytes:()J
+       133: lstore        6
+       135: lload         6
+       137: lload         4
+       139: lcmp
+       140: ifle          165
+       143: new           #241                // class org/tekfive/relaykt/RelayException
+       146: dup
+       147: lload         6
+       149: lload         4
+       151: invokedynamic #308,  0            // InvokeDynamic #3:makeConcatWithConstants:(JJ)Ljava/lang/String;
+       156: iconst_0
+       157: aconst_null
+       158: bipush        6
+       160: aconst_null
+       161: invokespecial #311                // Method org/tekfive/relaykt/RelayException."<init>":(Ljava/lang/String;ZLjava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+       164: athrow
+       165: aload_1
+       166: invokevirtual #314                // Method org/tekfive/relaykt/Message.getAllRecipients:()Ljava/util/List;
+       169: invokeinterface #320,  1          // InterfaceMethod java/util/List.size:()I
+       174: iconst_1
+       175: if_icmple     186
+       178: aload_0
+       179: aload_2
+       180: getstatic     #323                // Field org/tekfive/relaykt/Capability.MULTIPLE_RECIPIENTS:Lorg/tekfive/relaykt/Capability;
+       183: invokespecial #282                // Method requireCapability:(Lorg/tekfive/relaykt/provider/Provider;Lorg/tekfive/relaykt/Capability;)V
+       186: aload_1
+       187: instanceof    #325                // class org/tekfive/relaykt/team/TeamMessage
+       190: ifeq          214
+       193: aload_1
+       194: checkcast     #325                // class org/tekfive/relaykt/team/TeamMessage
+       197: invokevirtual #329                // Method org/tekfive/relaykt/team/TeamMessage.getPriority:()Lorg/tekfive/relaykt/team/TeamMessagePriority;
+       200: getstatic     #335                // Field org/tekfive/relaykt/team/TeamMessagePriority.NORMAL:Lorg/tekfive/relaykt/team/TeamMessagePriority;
+       203: if_acmpeq     214
+       206: aload_0
+       207: aload_2
+       208: getstatic     #338                // Field org/tekfive/relaykt/Capability.PRIORITY:Lorg/tekfive/relaykt/Capability;
+       211: invokespecial #282                // Method requireCapability:(Lorg/tekfive/relaykt/provider/Provider;Lorg/tekfive/relaykt/Capability;)V
+       214: return
+      Exception table:
+         from    to  target type
+            18    29    32   Class java/lang/Exception
+
+  private final void requireCapability(org.tekfive.relaykt.provider.Provider<?>, org.tekfive.relaykt.Capability);
+    Code:
+         0: aload_1
+         1: aload_2
+         2: invokeinterface #220,  2          // InterfaceMethod org/tekfive/relaykt/provider/Provider.supports:(Lorg/tekfive/relaykt/Capability;)Z
+         7: ifne          25
+        10: new           #344                // class org/tekfive/relaykt/UnsupportedCapabilityException
+        13: dup
+        14: aload_2
+        15: aload_1
+        16: invokeinterface #246,  1          // InterfaceMethod org/tekfive/relaykt/provider/Provider.getId:()Ljava/lang/String;
+        21: invokespecial #347                // Method org/tekfive/relaykt/UnsupportedCapabilityException."<init>":(Lorg/tekfive/relaykt/Capability;Ljava/lang/String;)V
+        24: athrow
+        25: return
+
+  public final org.tekfive.relaykt.RelayException classify(java.lang.Exception, org.tekfive.relaykt.provider.Provider<?>);
+    Code:
+         0: aload_1
+         1: ldc_w         #350                // String e
+         4: invokestatic  #28                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+         7: aload_2
+         8: ldc           #235                // String provider
+        10: invokestatic  #28                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+        13: getstatic     #256                // Field org/tekfive/relaykt/provider/ProviderConfigurations.INSTANCE:Lorg/tekfive/relaykt/provider/ProviderConfigurations;
+        16: aload_1
+        17: checkcast     #258                // class java/lang/Throwable
+        20: invokevirtual #262                // Method org/tekfive/relaykt/provider/ProviderConfigurations.unwrap:(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+        23: astore_3
+        24: aload_3
+        25: astore        4
+        27: aload         4
+        29: instanceof    #241                // class org/tekfive/relaykt/RelayException
+        32: ifeq          42
+        35: aload_3
+        36: checkcast     #241                // class org/tekfive/relaykt/RelayException
+        39: goto          328
+        42: aload         4
+        44: instanceof    #352                // class org/tekfive/relaykt/provider/ProviderException
+        47: ifeq          138
+        50: aload_3
+        51: checkcast     #352                // class org/tekfive/relaykt/provider/ProviderException
+        54: invokevirtual #356                // Method org/tekfive/relaykt/provider/ProviderException.getStatusCode:()Ljava/lang/Integer;
+        57: astore        5
+        59: aload         5
+        61: ifnull        82
+        64: getstatic     #360                // Field org/tekfive/relaykt/RelayException.Companion:Lorg/tekfive/relaykt/RelayException$Companion;
+        67: aload         5
+        69: invokevirtual #365                // Method java/lang/Integer.intValue:()I
+        72: invokevirtual #371                // Method org/tekfive/relaykt/RelayException$Companion.isRecoverableStatus:(I)Z
+        75: ifeq          82
+        78: iconst_1
+        79: goto          83
+        82: iconst_0
+        83: istore        6
+        85: aload         5
+        87: dup
+        88: ifnull        99
+        91: invokedynamic #376,  0            // InvokeDynamic #4:makeConcatWithConstants:(Ljava/lang/Integer;)Ljava/lang/String;
+        96: goto          103
+        99: pop
+       100: ldc_w         #378                // String
+       103: astore        7
+       105: new           #241                // class org/tekfive/relaykt/RelayException
+       108: dup
+       109: aload_2
+       110: invokeinterface #246,  1          // InterfaceMethod org/tekfive/relaykt/provider/Provider.getId:()Ljava/lang/String;
+       115: aload         7
+       117: aload_3
+       118: invokevirtual #381                // Method java/lang/Throwable.getMessage:()Ljava/lang/String;
+       121: invokedynamic #386,  0            // InvokeDynamic #5:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+       126: iload         6
+       128: aload_1
+       129: checkcast     #258                // class java/lang/Throwable
+       132: invokespecial #265                // Method org/tekfive/relaykt/RelayException."<init>":(Ljava/lang/String;ZLjava/lang/Throwable;)V
+       135: goto          328
+       138: aload         4
+       140: instanceof    #388                // class java/io/IOException
+       143: ifeq          172
+       146: new           #241                // class org/tekfive/relaykt/RelayException
+       149: dup
+       150: aload_2
+       151: invokeinterface #246,  1          // InterfaceMethod org/tekfive/relaykt/provider/Provider.getId:()Ljava/lang/String;
+       156: invokedynamic #391,  0            // InvokeDynamic #6:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+       161: iconst_1
+       162: aload_1
+       163: checkcast     #258                // class java/lang/Throwable
+       166: invokespecial #265                // Method org/tekfive/relaykt/RelayException."<init>":(Ljava/lang/String;ZLjava/lang/Throwable;)V
+       169: goto          328
+       172: aload         4
+       174: instanceof    #46                 // class java/lang/IllegalStateException
+       177: ifeq          206
+       180: new           #241                // class org/tekfive/relaykt/RelayException
+       183: dup
+       184: aload_2
+       185: invokeinterface #246,  1          // InterfaceMethod org/tekfive/relaykt/provider/Provider.getId:()Ljava/lang/String;
+       190: invokedynamic #394,  0            // InvokeDynamic #7:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+       195: iconst_0
+       196: aload_1
+       197: checkcast     #258                // class java/lang/Throwable
+       200: invokespecial #265                // Method org/tekfive/relaykt/RelayException."<init>":(Ljava/lang/String;ZLjava/lang/Throwable;)V
+       203: goto          328
+       206: aload         4
+       208: instanceof    #58                 // class java/lang/IllegalArgumentException
+       211: ifeq          240
+       214: new           #241                // class org/tekfive/relaykt/RelayException
+       217: dup
+       218: aload_2
+       219: invokeinterface #246,  1          // InterfaceMethod org/tekfive/relaykt/provider/Provider.getId:()Ljava/lang/String;
+       224: invokedynamic #397,  0            // InvokeDynamic #8:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+       229: iconst_0
+       230: aload_1
+       231: checkcast     #258                // class java/lang/Throwable
+       234: invokespecial #265                // Method org/tekfive/relaykt/RelayException."<init>":(Ljava/lang/String;ZLjava/lang/Throwable;)V
+       237: goto          328
+       240: aload         4
+       242: instanceof    #399                // class java/lang/InterruptedException
+       245: ifeq          280
+       248: invokestatic  #405                // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+       251: invokevirtual #408                // Method java/lang/Thread.interrupt:()V
+       254: new           #241                // class org/tekfive/relaykt/RelayException
+       257: dup
+       258: aload_2
+       259: invokeinterface #246,  1          // InterfaceMethod org/tekfive/relaykt/provider/Provider.getId:()Ljava/lang/String;
+       264: invokedynamic #411,  0            // InvokeDynamic #9:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+       269: iconst_1
+       270: aload_1
+       271: checkcast     #258                // class java/lang/Throwable
+       274: invokespecial #265                // Method org/tekfive/relaykt/RelayException."<init>":(Ljava/lang/String;ZLjava/lang/Throwable;)V
+       277: goto          328
+       280: getstatic     #415                // Field log:Lorg/slf4j/Logger;
+       283: ldc_w         #417                // String Unclassified provider failure from \'{}\'
+       286: aload_2
+       287: invokeinterface #246,  1          // InterfaceMethod org/tekfive/relaykt/provider/Provider.getId:()Ljava/lang/String;
+       292: aload_1
+       293: invokeinterface #423,  4          // InterfaceMethod org/slf4j/Logger.debug:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+       298: new           #241                // class org/tekfive/relaykt/RelayException
+       301: dup
+       302: aload_2
+       303: invokeinterface #246,  1          // InterfaceMethod org/tekfive/relaykt/provider/Provider.getId:()Ljava/lang/String;
+       308: aload_3
+       309: invokevirtual #427                // Method java/lang/Object.getClass:()Ljava/lang/Class;
+       312: invokevirtual #432                // Method java/lang/Class.getSimpleName:()Ljava/lang/String;
+       315: invokedynamic #435,  0            // InvokeDynamic #10:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+       320: iconst_0
+       321: aload_1
+       322: checkcast     #258                // class java/lang/Throwable
+       325: invokespecial #265                // Method org/tekfive/relaykt/RelayException."<init>":(Ljava/lang/String;ZLjava/lang/Throwable;)V
+       328: areturn
+
+  private static final org.tekfive.relaykt.SendResult sendAsync$lambda$0(org.tekfive.relaykt.provider.Provider, org.tekfive.relaykt.Message, org.tekfive.relaykt.endpoint.Endpoint);
+    Code:
+         0: nop
+         1: aload_0
+         2: aload_1
+         3: aload_2
+         4: invokevirtual #119                // Method org/tekfive/relaykt/endpoint/Endpoint.getConfiguration:()Lorg/tekfive/jfk/JsonObject;
+         7: invokeinterface #124,  3          // InterfaceMethod org/tekfive/relaykt/provider/Provider.send:(Lorg/tekfive/relaykt/Message;Lorg/tekfive/jfk/JsonObject;)Lorg/tekfive/relaykt/SendResult;
+        12: astore_3
+        13: goto          28
+        16: astore        4
+        18: getstatic     #444                // Field INSTANCE:Lorg/tekfive/relaykt/Relay;
+        21: aload         4
+        23: aload_0
+        24: invokevirtual #128                // Method classify:(Ljava/lang/Exception;Lorg/tekfive/relaykt/provider/Provider;)Lorg/tekfive/relaykt/RelayException;
+        27: athrow
+        28: aload_3
+        29: areturn
+      Exception table:
+         from    to  target type
+             0    13    16   Class java/lang/Exception
+
+  static {};
+    Code:
+         0: new           #2                  // class org/tekfive/relaykt/Relay
+         3: dup
+         4: invokespecial #449                // Method "<init>":()V
+         7: putstatic     #444                // Field INSTANCE:Lorg/tekfive/relaykt/Relay;
+        10: ldc           #2                  // class org/tekfive/relaykt/Relay
+        12: invokestatic  #455                // Method org/slf4j/LoggerFactory.getLogger:(Ljava/lang/Class;)Lorg/slf4j/Logger;
+        15: putstatic     #415                // Field log:Lorg/slf4j/Logger;
+        18: getstatic     #458                // Field org/tekfive/ack/Ack.Companion:Lorg/tekfive/ack/Ack$Companion;
+        21: ldc_w         #460                // String MAX_ATTACHMENTS_SIZE_BYTES
+        24: ldc2_w        #461                // long 26214400l
+        27: invokestatic  #466                // Method java/lang/Long.valueOf:(J)Ljava/lang/Long;
+        30: lconst_0
+        31: invokestatic  #466                // Method java/lang/Long.valueOf:(J)Ljava/lang/Long;
+        34: aconst_null
+        35: ldc_w         #468                // String RELAY
+        38: ldc_w         #470                // String Default maximum total size in bytes of all attachments on a single message.
+        41: bipush        8
+        43: aconst_null
+        44: invokestatic  #476                // Method org/tekfive/ack/Ack$Companion.long$default:(Lorg/tekfive/ack/Ack$Companion;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Long;Ljava/lang/Long;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lorg/tekfive/ack/Ack;
+        47: putstatic     #18                 // Field maxAttachmentsSizeBytesAck:Lorg/tekfive/ack/Ack;
+        50: invokestatic  #85                 // Method java/util/concurrent/Executors.newVirtualThreadPerTaskExecutor:()Ljava/util/concurrent/ExecutorService;
+        53: dup
+        54: ldc           #87                 // String newVirtualThreadPerTaskExecutor(...)
+        56: invokestatic  #90                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullExpressionValue:(Ljava/lang/Object;Ljava/lang/String;)V
+        59: checkcast     #92                 // class java/util/concurrent/Executor
+        62: putstatic     #40                 // Field asyncExecutor:Ljava/util/concurrent/Executor;
+        65: return
+}

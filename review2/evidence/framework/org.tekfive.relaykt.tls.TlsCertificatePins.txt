@@ -1,0 +1,448 @@
+Compiled from "TlsCertificatePins.kt"
+public final class org.tekfive.relaykt.tls.TlsCertificatePins {
+  public static final org.tekfive.relaykt.tls.TlsCertificatePins INSTANCE;
+
+  private static final java.lang.String SHA256_PREFIX;
+
+  private static final int SHA256_BYTES;
+
+  private static final java.util.concurrent.ConcurrentHashMap<org.tekfive.relaykt.tls.TlsCertificatePins$TrustKey, javax.net.ssl.SSLSocketFactory> smtpSocketFactories;
+
+  private org.tekfive.relaykt.tls.TlsCertificatePins();
+    Code:
+         0: aload_0
+         1: invokespecial #8                  // Method java/lang/Object."<init>":()V
+         4: return
+
+  public final java.util.List<java.lang.String> normalize(java.util.List<java.lang.String>);
+    Code:
+         0: aload_1
+         1: ldc           #18                 // String pins
+         3: invokestatic  #24                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+         6: aload_1
+         7: checkcast     #26                 // class java/lang/Iterable
+        10: astore_2
+        11: iconst_0
+        12: istore_3
+        13: aload_2
+        14: astore        4
+        16: new           #28                 // class java/util/ArrayList
+        19: dup
+        20: aload_2
+        21: bipush        10
+        23: invokestatic  #34                 // Method kotlin/collections/CollectionsKt.collectionSizeOrDefault:(Ljava/lang/Iterable;I)I
+        26: invokespecial #37                 // Method java/util/ArrayList."<init>":(I)V
+        29: checkcast     #39                 // class java/util/Collection
+        32: astore        5
+        34: iconst_0
+        35: istore        6
+        37: aload         4
+        39: invokeinterface #43,  1           // InterfaceMethod java/lang/Iterable.iterator:()Ljava/util/Iterator;
+        44: astore        7
+        46: aload         7
+        48: invokeinterface #49,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+        53: ifeq          103
+        56: aload         7
+        58: invokeinterface #53,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        63: astore        8
+        65: aload         5
+        67: aload         8
+        69: checkcast     #55                 // class java/lang/String
+        72: astore        9
+        74: astore        11
+        76: iconst_0
+        77: istore        10
+        79: aload         9
+        81: checkcast     #57                 // class java/lang/CharSequence
+        84: invokestatic  #63                 // Method kotlin/text/StringsKt.trim:(Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
+        87: invokevirtual #67                 // Method java/lang/Object.toString:()Ljava/lang/String;
+        90: nop
+        91: aload         11
+        93: swap
+        94: invokeinterface #71,  2           // InterfaceMethod java/util/Collection.add:(Ljava/lang/Object;)Z
+        99: pop
+       100: goto          46
+       103: aload         5
+       105: checkcast     #73                 // class java/util/List
+       108: nop
+       109: astore_2
+       110: aload_2
+       111: astore_3
+       112: iconst_0
+       113: istore        4
+       115: aload_3
+       116: checkcast     #26                 // class java/lang/Iterable
+       119: astore        5
+       121: iconst_0
+       122: istore        6
+       124: aload         5
+       126: instanceof    #39                 // class java/util/Collection
+       129: ifeq          149
+       132: aload         5
+       134: checkcast     #39                 // class java/util/Collection
+       137: invokeinterface #76,  1           // InterfaceMethod java/util/Collection.isEmpty:()Z
+       142: ifeq          149
+       145: iconst_1
+       146: goto          203
+       149: aload         5
+       151: invokeinterface #43,  1           // InterfaceMethod java/lang/Iterable.iterator:()Ljava/util/Iterator;
+       156: astore        7
+       158: aload         7
+       160: invokeinterface #49,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+       165: ifeq          202
+       168: aload         7
+       170: invokeinterface #53,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       175: astore        8
+       177: aload         8
+       179: checkcast     #55                 // class java/lang/String
+       182: astore        9
+       184: iconst_0
+       185: istore        10
+       187: aload         9
+       189: checkcast     #57                 // class java/lang/CharSequence
+       192: invokestatic  #80                 // Method kotlin/text/StringsKt.isBlank:(Ljava/lang/CharSequence;)Z
+       195: ifeq          158
+       198: iconst_0
+       199: goto          203
+       202: iconst_1
+       203: ifne          226
+       206: iconst_0
+       207: istore        6
+       209: ldc           #82                 // String TLS certificate pins must not be blank
+       211: astore        6
+       213: new           #16                 // class java/lang/IllegalArgumentException
+       216: dup
+       217: aload         6
+       219: invokevirtual #67                 // Method java/lang/Object.toString:()Ljava/lang/String;
+       222: invokespecial #85                 // Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+       225: athrow
+       226: aload_3
+       227: invokeinterface #86,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+       232: astore        5
+       234: aload         5
+       236: invokeinterface #49,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+       241: ifeq          368
+       244: aload         5
+       246: invokeinterface #53,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       251: checkcast     #55                 // class java/lang/String
+       254: astore        6
+       256: aload         6
+       258: ldc           #88                 // String sha256/
+       260: iconst_0
+       261: iconst_2
+       262: aconst_null
+       263: invokestatic  #92                 // Method kotlin/text/StringsKt.startsWith$default:(Ljava/lang/String;Ljava/lang/String;ZILjava/lang/Object;)Z
+       266: ifne          289
+       269: iconst_0
+       270: istore        8
+       272: ldc           #94                 // String TLS certificate pins must use the sha256/<base64> format
+       274: astore        8
+       276: new           #16                 // class java/lang/IllegalArgumentException
+       279: dup
+       280: aload         8
+       282: invokevirtual #67                 // Method java/lang/Object.toString:()Ljava/lang/String;
+       285: invokespecial #85                 // Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+       288: athrow
+       289: nop
+       290: invokestatic  #100                // Method java/util/Base64.getDecoder:()Ljava/util/Base64$Decoder;
+       293: aload         6
+       295: ldc           #88                 // String sha256/
+       297: checkcast     #57                 // class java/lang/CharSequence
+       300: invokestatic  #104                // Method kotlin/text/StringsKt.removePrefix:(Ljava/lang/String;Ljava/lang/CharSequence;)Ljava/lang/String;
+       303: invokevirtual #110                // Method java/util/Base64$Decoder.decode:(Ljava/lang/String;)[B
+       306: astore        8
+       308: goto          328
+       311: astore        9
+       313: new           #16                 // class java/lang/IllegalArgumentException
+       316: dup
+       317: ldc           #112                // String TLS certificate pin is not valid Base64
+       319: aload         9
+       321: checkcast     #114                // class java/lang/Throwable
+       324: invokespecial #117                // Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;Ljava/lang/Throwable;)V
+       327: athrow
+       328: aload         8
+       330: astore        7
+       332: aload         7
+       334: arraylength
+       335: bipush        32
+       337: if_icmpne     344
+       340: iconst_1
+       341: goto          345
+       344: iconst_0
+       345: ifne          234
+       348: iconst_0
+       349: istore        9
+       351: ldc           #119                // String TLS certificate pin must contain a SHA-256 digest
+       353: astore        9
+       355: new           #16                 // class java/lang/IllegalArgumentException
+       358: dup
+       359: aload         9
+       361: invokevirtual #67                 // Method java/lang/Object.toString:()Ljava/lang/String;
+       364: invokespecial #85                 // Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+       367: athrow
+       368: nop
+       369: aload_2
+       370: checkcast     #26                 // class java/lang/Iterable
+       373: invokestatic  #123                // Method kotlin/collections/CollectionsKt.distinct:(Ljava/lang/Iterable;)Ljava/util/List;
+       376: areturn
+      Exception table:
+         from    to  target type
+           289   308   311   Class java/lang/IllegalArgumentException
+
+  public final void validateForUrl(java.lang.String, java.util.List<java.lang.String>, java.lang.String);
+    Code:
+         0: aload_1
+         1: ldc           #157                // String url
+         3: invokestatic  #24                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+         6: aload_2
+         7: ldc           #18                 // String pins
+         9: invokestatic  #24                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+        12: aload_3
+        13: ldc           #159                // String description
+        15: invokestatic  #24                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+        18: aload_0
+        19: aload_2
+        20: invokevirtual #161                // Method normalize:(Ljava/util/List;)Ljava/util/List;
+        23: astore        4
+        25: aload         4
+        27: checkcast     #39                 // class java/util/Collection
+        30: invokeinterface #76,  1           // InterfaceMethod java/util/Collection.isEmpty:()Z
+        35: ifne          42
+        38: iconst_1
+        39: goto          43
+        42: iconst_0
+        43: ifeq          90
+        46: new           #163                // class java/net/URI
+        49: dup
+        50: aload_1
+        51: invokespecial #164                // Method java/net/URI."<init>":(Ljava/lang/String;)V
+        54: invokevirtual #167                // Method java/net/URI.getScheme:()Ljava/lang/String;
+        57: ldc           #169                // String https
+        59: iconst_1
+        60: invokestatic  #173                // Method kotlin/text/StringsKt.equals:(Ljava/lang/String;Ljava/lang/String;Z)Z
+        63: ifne          90
+        66: iconst_0
+        67: istore        5
+        69: aload_3
+        70: invokedynamic #185,  0            // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+        75: astore        5
+        77: new           #16                 // class java/lang/IllegalArgumentException
+        80: dup
+        81: aload         5
+        83: invokevirtual #67                 // Method java/lang/Object.toString:()Ljava/lang/String;
+        86: invokespecial #85                 // Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+        89: athrow
+        90: return
+
+  public final java.lang.String pin(java.security.cert.X509Certificate);
+    Code:
+         0: aload_1
+         1: ldc           #190                // String certificate
+         3: invokestatic  #24                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+         6: ldc           #192                // String SHA-256
+         8: invokestatic  #198                // Method java/security/MessageDigest.getInstance:(Ljava/lang/String;)Ljava/security/MessageDigest;
+        11: aload_1
+        12: invokevirtual #204                // Method java/security/cert/X509Certificate.getPublicKey:()Ljava/security/PublicKey;
+        15: invokeinterface #210,  1          // InterfaceMethod java/security/PublicKey.getEncoded:()[B
+        20: invokevirtual #214                // Method java/security/MessageDigest.digest:([B)[B
+        23: astore_2
+        24: invokestatic  #218                // Method java/util/Base64.getEncoder:()Ljava/util/Base64$Encoder;
+        27: aload_2
+        28: invokevirtual #224                // Method java/util/Base64$Encoder.encodeToString:([B)Ljava/lang/String;
+        31: invokedynamic #227,  0            // InvokeDynamic #1:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+        36: areturn
+
+  public final javax.net.ssl.SSLSocketFactory smtpSocketFactory(java.util.List<java.lang.String>, java.lang.String);
+    Code:
+         0: aload_1
+         1: ldc           #18                 // String pins
+         3: invokestatic  #24                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+         6: aload_0
+         7: aload_1
+         8: invokevirtual #161                // Method normalize:(Ljava/util/List;)Ljava/util/List;
+        11: astore_3
+        12: aload_3
+        13: aload_2
+        14: dup
+        15: ifnull        79
+        18: checkcast     #57                 // class java/lang/CharSequence
+        21: invokestatic  #63                 // Method kotlin/text/StringsKt.trim:(Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
+        24: invokevirtual #67                 // Method java/lang/Object.toString:()Ljava/lang/String;
+        27: dup
+        28: ifnull        79
+        31: astore        5
+        33: aload         5
+        35: astore        6
+        37: astore        8
+        39: iconst_0
+        40: istore        7
+        42: aload         6
+        44: checkcast     #57                 // class java/lang/CharSequence
+        47: invokeinterface #236,  1          // InterfaceMethod java/lang/CharSequence.length:()I
+        52: ifle          59
+        55: iconst_1
+        56: goto          60
+        59: iconst_0
+        60: nop
+        61: istore        9
+        63: aload         8
+        65: iload         9
+        67: ifeq          75
+        70: aload         5
+        72: goto          81
+        75: aconst_null
+        76: goto          81
+        79: pop
+        80: aconst_null
+        81: astore        10
+        83: astore        11
+        85: new           #238                // class org/tekfive/relaykt/tls/TlsCertificatePins$TrustKey
+        88: dup
+        89: aload         11
+        91: aload         10
+        93: invokespecial #241                // Method org/tekfive/relaykt/tls/TlsCertificatePins$TrustKey."<init>":(Ljava/util/List;Ljava/lang/String;)V
+        96: astore        4
+        98: aload_3
+        99: checkcast     #39                 // class java/util/Collection
+       102: invokeinterface #76,  1           // InterfaceMethod java/util/Collection.isEmpty:()Z
+       107: ifne          114
+       110: iconst_1
+       111: goto          115
+       114: iconst_0
+       115: ifne          126
+       118: aload         4
+       120: invokevirtual #244                // Method org/tekfive/relaykt/tls/TlsCertificatePins$TrustKey.getCaCertificate:()Ljava/lang/String;
+       123: ifnull        130
+       126: iconst_1
+       127: goto          131
+       130: iconst_0
+       131: ifne          154
+       134: iconst_0
+       135: istore        5
+       137: ldc           #246                // String Custom TLS settings are required
+       139: astore        5
+       141: new           #16                 // class java/lang/IllegalArgumentException
+       144: dup
+       145: aload         5
+       147: invokevirtual #67                 // Method java/lang/Object.toString:()Ljava/lang/String;
+       150: invokespecial #85                 // Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+       153: athrow
+       154: getstatic     #250                // Field smtpSocketFactories:Ljava/util/concurrent/ConcurrentHashMap;
+       157: aload         4
+       159: aload_3
+       160: aload         4
+       162: invokedynamic #270,  0            // InvokeDynamic #2:invoke:(Ljava/util/List;Lorg/tekfive/relaykt/tls/TlsCertificatePins$TrustKey;)Lkotlin/jvm/functions/Function1;
+       167: invokedynamic #281,  0            // InvokeDynamic #3:apply:(Lkotlin/jvm/functions/Function1;)Ljava/util/function/Function;
+       172: invokevirtual #287                // Method java/util/concurrent/ConcurrentHashMap.computeIfAbsent:(Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+       175: dup
+       176: ldc_w         #289                // String computeIfAbsent(...)
+       179: invokestatic  #292                // Method kotlin/jvm/internal/Intrinsics.checkNotNullExpressionValue:(Ljava/lang/Object;Ljava/lang/String;)V
+       182: checkcast     #294                // class javax/net/ssl/SSLSocketFactory
+       185: areturn
+
+  public static javax.net.ssl.SSLSocketFactory smtpSocketFactory$default(org.tekfive.relaykt.tls.TlsCertificatePins, java.util.List, java.lang.String, int, java.lang.Object);
+    Code:
+         0: iload_3
+         1: iconst_2
+         2: iand
+         3: ifeq          8
+         6: aconst_null
+         7: astore_2
+         8: aload_0
+         9: aload_1
+        10: aload_2
+        11: invokevirtual #303                // Method smtpSocketFactory:(Ljava/util/List;Ljava/lang/String;)Ljavax/net/ssl/SSLSocketFactory;
+        14: areturn
+
+  public final javax.net.ssl.X509TrustManager trustManager(java.util.List<java.lang.String>, java.lang.String);
+    Code:
+         0: aload_1
+         1: ldc           #18                 // String pins
+         3: invokestatic  #24                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+         6: getstatic     #312                // Field org/tekfive/relaykt/tls/TlsCertificates.INSTANCE:Lorg/tekfive/relaykt/tls/TlsCertificates;
+         9: aload_2
+        10: invokevirtual #315                // Method org/tekfive/relaykt/tls/TlsCertificates.trustManager:(Ljava/lang/String;)Ljavax/net/ssl/X509TrustManager;
+        13: astore_3
+        14: aload_0
+        15: aload_1
+        16: invokevirtual #161                // Method normalize:(Ljava/util/List;)Ljava/util/List;
+        19: astore        4
+        21: aload         4
+        23: invokeinterface #316,  1          // InterfaceMethod java/util/List.isEmpty:()Z
+        28: ifeq          33
+        31: aload_3
+        32: areturn
+        33: new           #318                // class org/tekfive/relaykt/tls/TlsCertificatePins$PinnedTrustManager
+        36: dup
+        37: aload_3
+        38: aload         4
+        40: checkcast     #26                 // class java/lang/Iterable
+        43: invokestatic  #322                // Method kotlin/collections/CollectionsKt.toSet:(Ljava/lang/Iterable;)Ljava/util/Set;
+        46: aload_2
+        47: invokespecial #325                // Method org/tekfive/relaykt/tls/TlsCertificatePins$PinnedTrustManager."<init>":(Ljavax/net/ssl/X509TrustManager;Ljava/util/Set;Ljava/lang/String;)V
+        50: checkcast     #327                // class javax/net/ssl/X509TrustManager
+        53: areturn
+
+  public static javax.net.ssl.X509TrustManager trustManager$default(org.tekfive.relaykt.tls.TlsCertificatePins, java.util.List, java.lang.String, int, java.lang.Object);
+    Code:
+         0: iload_3
+         1: iconst_2
+         2: iand
+         3: ifeq          8
+         6: aconst_null
+         7: astore_2
+         8: aload_0
+         9: aload_1
+        10: aload_2
+        11: invokevirtual #333                // Method trustManager:(Ljava/util/List;Ljava/lang/String;)Ljavax/net/ssl/X509TrustManager;
+        14: areturn
+
+  private static final javax.net.ssl.SSLSocketFactory smtpSocketFactory$lambda$2(java.util.List, org.tekfive.relaykt.tls.TlsCertificatePins$TrustKey, org.tekfive.relaykt.tls.TlsCertificatePins$TrustKey);
+    Code:
+         0: aload_2
+         1: ldc_w         #334                // String it
+         4: invokestatic  #24                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+         7: ldc_w         #336                // String TLS
+        10: invokestatic  #341                // Method javax/net/ssl/SSLContext.getInstance:(Ljava/lang/String;)Ljavax/net/ssl/SSLContext;
+        13: astore_3
+        14: aload_3
+        15: aconst_null
+        16: iconst_1
+        17: anewarray     #327                // class javax/net/ssl/X509TrustManager
+        20: astore        4
+        22: aload         4
+        24: iconst_0
+        25: getstatic     #343                // Field INSTANCE:Lorg/tekfive/relaykt/tls/TlsCertificatePins;
+        28: aload_0
+        29: aload_1
+        30: invokevirtual #244                // Method org/tekfive/relaykt/tls/TlsCertificatePins$TrustKey.getCaCertificate:()Ljava/lang/String;
+        33: invokevirtual #333                // Method trustManager:(Ljava/util/List;Ljava/lang/String;)Ljavax/net/ssl/X509TrustManager;
+        36: aastore
+        37: aload         4
+        39: checkcast     #345                // class "[Ljavax/net/ssl/TrustManager;"
+        42: aconst_null
+        43: invokevirtual #349                // Method javax/net/ssl/SSLContext.init:([Ljavax/net/ssl/KeyManager;[Ljavax/net/ssl/TrustManager;Ljava/security/SecureRandom;)V
+        46: aload_3
+        47: invokevirtual #353                // Method javax/net/ssl/SSLContext.getSocketFactory:()Ljavax/net/ssl/SSLSocketFactory;
+        50: areturn
+
+  private static final javax.net.ssl.SSLSocketFactory smtpSocketFactory$lambda$3(kotlin.jvm.functions.Function1, java.lang.Object);
+    Code:
+         0: aload_0
+         1: aload_1
+         2: invokeinterface #361,  2          // InterfaceMethod kotlin/jvm/functions/Function1.invoke:(Ljava/lang/Object;)Ljava/lang/Object;
+         7: checkcast     #294                // class javax/net/ssl/SSLSocketFactory
+        10: areturn
+
+  static {};
+    Code:
+         0: new           #2                  // class org/tekfive/relaykt/tls/TlsCertificatePins
+         3: dup
+         4: invokespecial #366                // Method "<init>":()V
+         7: putstatic     #343                // Field INSTANCE:Lorg/tekfive/relaykt/tls/TlsCertificatePins;
+        10: new           #283                // class java/util/concurrent/ConcurrentHashMap
+        13: dup
+        14: invokespecial #367                // Method java/util/concurrent/ConcurrentHashMap."<init>":()V
+        17: putstatic     #250                // Field smtpSocketFactories:Ljava/util/concurrent/ConcurrentHashMap;
+        20: return
+}

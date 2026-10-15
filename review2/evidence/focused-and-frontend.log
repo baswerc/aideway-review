@@ -1,0 +1,366 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.5.0/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+> Task :backend:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :backend:generateApiModels UP-TO-DATE
+> Task :backend:syncApiModels UP-TO-DATE
+> Task :backend:compileKotlin UP-TO-DATE
+> Task :backend:compileJava NO-SOURCE
+> Task :backend:processResources UP-TO-DATE
+> Task :backend:classes UP-TO-DATE
+> Task :backend:jar UP-TO-DATE
+> Task :backend:compileTestKotlin UP-TO-DATE
+> Task :backend:compileTestJava NO-SOURCE
+> Task :backend:processTestResources UP-TO-DATE
+> Task :backend:testClasses UP-TO-DATE
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::arrayBaseOffset has been called by com.google.protobuf.UnsafeUtil$MemoryAccessor (file:/root/.gradle/caches/modules-2/files-2.1/com.google.protobuf/protobuf-java/4.33.1/acc8e9e6cbad3370ea791231685c4de18771e0a3/protobuf-java-4.33.1.jar)
+WARNING: Please consider reporting this to the maintainers of class com.google.protobuf.UnsafeUtil$MemoryAccessor
+WARNING: sun.misc.Unsafe::arrayBaseOffset will be removed in a future release
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::arrayBaseOffset has been called by com.google.protobuf.UnsafeUtil$MemoryAccessor (file:/root/.gradle/caches/modules-2/files-2.1/com.google.protobuf/protobuf-java/4.33.1/acc8e9e6cbad3370ea791231685c4de18771e0a3/protobuf-java-4.33.1.jar)
+WARNING: Please consider reporting this to the maintainers of class com.google.protobuf.UnsafeUtil$MemoryAccessor
+WARNING: sun.misc.Unsafe::arrayBaseOffset will be removed in a future release
+
+> Task :backend:test
+
+AuditCleanupTest > cleanup retains conflicting evidence rather than deleting it() PASSED
+
+AuditCleanupTest > cleanup files are verified after restart and removed separately() PASSED
+
+AuditCleanupTest > cleanup restores missing database evidence before deleting its file() PASSED
+
+FileTriggerJobDbTest > files present at the first sweep are baselined and an update then fires() PASSED
+
+AuditCleanupTest > undeletable oldest batch cannot starve later evidence() PASSED
+
+AuditCleanupTest > new arrivals do not postpone returning to earlier retained files() PASSED
+
+FileTriggerJobDbTest > an ignored duplicate file name is still removed when delete event files is on() PASSED
+
+AuditCleanupTest > blocked cleanup has its own batch and reports recovery after deletion() PASSED
+
+FileTriggerJobDbTest > file ledgers store encrypted paths and retain duplicate detection() PASSED
+
+FileTriggerJobDbTest > files that arrive while the directory is disabled fire once re-enabled() PASSED
+
+FileTriggerJobDbTest > a launched file is removed when delete event files is on() PASSED
+
+FileTriggerJobDbTest > shared directory delivers before a trigger deletes the file() PASSED
+
+FileTriggerJobDbTest > an intermediate symlink swap cannot redirect file access() PASSED
+
+FileTriggerJobDbTest > a file above the size limit is recorded but not read() PASSED
+
+FileTriggerJobDbTest > file added waits for stability even with a future timestamp() PASSED
+
+FileTriggerJobDbTest > a duplicate file name is ignored after its first execution() PASSED
+
+FileTriggerJobDbTest > a completed shared delete does not emit a path delete after restart() PASSED
+
+FileTriggerJobDbTest > a replacement with the same size and mtime is not deleted() PASSED
+
+FileTriggerJobDbTest > an unreadable subdirectory reports a count without its path() PASSED
+
+FileTriggerJobDbTest > a trigger outside the path pattern does not block deletion() PASSED
+
+FileTriggerJobDbTest > a file still being written waits until it settles() PASSED
+
+FileTriggerJobDbTest > a symbolic link is reported and never read() PASSED
+
+FileTriggerJobDbTest > a recovered directory raises an info alert() PASSED
+
+FileTriggerJobDbTest > shared directory keeps a file until every workflow launches() PASSED
+
+FileTriggerJobDbTest > a rewritten file is not deleted using an old snapshot() PASSED
+
+FileTriggerJobDbTest > file added does not relaunch while waiting for another trigger to handle the file() PASSED
+
+FileTriggerJobDbTest > file added consumes existing old files on the first sweep() PASSED
+
+FileTriggerJobDbTest > an unreadable file reports a count without its path() PASSED
+
+FileTriggerJobDbTest > a file outside the path pattern is ignored() PASSED
+
+FileTriggerJobDbTest > overlapping roots withhold automatic deletion() PASSED
+
+FileTriggerJobDbTest > subdirectories are skipped when ignored() PASSED
+
+FileTriggerJobDbTest > a pending shared delete resumes before filesystem deletion() PASSED
+
+FileTriggerJobDbTest > a deleted file starts a workflow when subscribed() PASSED
+
+FileTriggerJobDbTest > a missing directory at the first sweep does not consume the baseline() PASSED
+
+FileTriggerJobDbTest > file added launches again for the same fingerprint after deletion() PASSED
+
+FileTriggerJobDbTest > subdirectories are swept when included() PASSED
+
+FileTriggerJobDbTest > an unavailable overlapping root still blocks deletion() PASSED
+
+FileTriggerJobDbTest > an empty untouched root withholds deletes() PASSED
+
+FileTriggerJobDbTest > a missing directory records the result against the instance and alerts once() PASSED
+
+FileTriggerJobDbTest > a settled new file starts one workflow and a repeated sweep does not() PASSED
+
+> Task :frontend:nodeSetup UP-TO-DATE
+> Task :frontend:npmSetup UP-TO-DATE
+
+> Task :frontend:npmInstall
+npm warn deprecated eslint@9.39.5: This version is no longer supported. Please see https://eslint.org/version-support for other options.
+
+> aideway-frontend@0.1.0 postinstall
+> node scripts/patch-pdfjs.mjs
+
+  patched node_modules/pdfjs-dist/build/pdf.mjs
+  stripped node_modules/pdfjs-dist/build/pdf.mjs.map
+  patched node_modules/pdfjs-dist/build/pdf.sandbox.mjs
+  stripped node_modules/pdfjs-dist/build/pdf.sandbox.mjs.map
+  patched node_modules/pdfjs-dist/build/pdf.worker.mjs
+  stripped node_modules/pdfjs-dist/build/pdf.worker.mjs.map
+  patched node_modules/pdfjs-dist/legacy/build/pdf.mjs
+  stripped node_modules/pdfjs-dist/legacy/build/pdf.mjs.map
+  patched node_modules/pdfjs-dist/legacy/build/pdf.sandbox.mjs
+  stripped node_modules/pdfjs-dist/legacy/build/pdf.sandbox.mjs.map
+  patched node_modules/pdfjs-dist/legacy/build/pdf.worker.mjs
+  stripped node_modules/pdfjs-dist/legacy/build/pdf.worker.mjs.map
+
+added 610 packages, and audited 611 packages in 4s
+
+199 packages are looking for funding
+  run `npm fund` for details
+
+19 vulnerabilities (3 moderate, 14 high, 2 critical)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+
+> Task :frontend:npmLint UP-TO-DATE
+
+> Task :frontend:npmTest
+
+> aideway-frontend@0.1.0 test
+> vitest run
+
+
+ RUN  v3.2.7 /opt/projects/aideway-review/projects/aideway/frontend
+
+ ✓ |dom| src/shared/ui/usePagedQuery.test.tsx (9 tests) 280ms
+stderr | src/features/workflows/useWorkflowRevisionEditor.test.tsx > useWorkflowRevisionEditor > inserts a node into an edge, rewiring source -> new -> target
+An update to TestComponent inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+ ✓ |dom| src/shared/ui/SelectControls.test.tsx (9 tests) 439ms
+ ✓ |dom| src/features/workflows/useWorkflowRevisionEditor.test.tsx (5 tests) 530ms
+ ✓ |dom| src/features/dataAudit/DataAuditsPage.test.tsx (4 tests) 1377ms
+   ✓ submits the value and rule only on Search and explains an incomplete empty result  454ms
+   ✓ expands a matched item into lifecycle and access tables without another request  301ms
+   ✓ opens only one item and preserves deleted-item and empty-access handling  451ms
+ ✓ |dom| src/features/reviewTasks/ReviewTasksPage.test.tsx (11 tests) 1453ms
+   ✓ opens the oldest pending task with context and instructions before the decision  304ms
+ ✓ |dom| src/features/dataset/FieldDialog.test.tsx (37 tests) 1978ms
+ ✓ |dom| src/features/workflows/WorkflowDialog.test.tsx (6 tests) 1961ms
+   ✓ WorkflowDialog > requires a positive whole execution limit  587ms
+   ✓ WorkflowDialog > validates optional time limits  903ms
+ ✓ |dom| src/features/workflows/useWorkflowDetailData.test.tsx (10 tests) 592ms
+ ✓ |dom| src/features/workflows/graph/WorkflowFilterRulesPanel.test.tsx (14 tests) 1458ms
+ ✓ |dom| src/features/dataset/DatasetTransferDialogs.test.tsx (9 tests) 981ms
+ ✓ |dom| src/features/notifications/NotificationsPage.test.tsx (19 tests) 2743ms
+   ✓ opens a queue item beside the list and marks only that item read  445ms
+ ✓ |dom| src/features/dataset/DraftAssignmentBoard.test.tsx (23 tests) 3032ms
+   ✓ adds one placement without changing the other and supports undo and redo  370ms
+ ✓ |dom| src/features/audit/AuditLogsPage.test.tsx (13 tests) 3163ms
+   ✓ event audit browser > styles the overview user as a link to their profile  391ms
+   ✓ event audit browser > lets group headers wrap before they reach the next column  411ms
+   ✓ event audit browser > keeps grouping usable and retries a failed catalog  1079ms
+ ✓ |dom| src/api/queryClient.test.tsx (7 tests) 108ms
+ ✓ |dom| src/features/dataAudit/DataAuditDetailPage.test.tsx (7 tests) 571ms
+   ✓ shows a continuous report with five linked sections and preserved evidence  350ms
+ ✓ |dom| src/features/dataAudit/DataAuditNavigation.test.tsx (6 tests) 1515ms
+   ✓ restores submitted criteria, page, expansion and scroll only after fresh evidence arrives  817ms
+ ✓ |dom| src/features/workflows/WorkflowDetailPage.test.tsx (4 tests) 327ms
+ ✓ |dom| src/app/router/routes.test.tsx (29 tests) 9ms
+ ✓ |dom| src/features/workflows/TriggerLaunchDialog.test.tsx (6 tests) 694ms
+ ✓ |dom| src/features/workflows/graph/WorkflowNodeSettingsPanel.test.tsx (7 tests) 990ms
+   ✓ WorkflowNodeSettingsPanel prompt selection > pins the published revision when a prompt is clicked  418ms
+ ✓ |dom| src/features/dataset/useAssignmentBoard.test.tsx (5 tests) 155ms
+ ✓ |dom| src/features/workflows/graph/ExpressionFieldControl.test.tsx (6 tests) 994ms
+   ✓ ExpressionFieldControl caret alignment > gives the visible text the same character metrics as the textarea  644ms
+ ✓ |dom| src/features/dataClassification/pipelines/PipelineDetailPage.test.tsx (5 tests) 1331ms
+   ✓ Pipeline detail page > lists stages in run order and shows the selected stage  383ms
+   ✓ Pipeline detail page > adds a stage through the section dialog  405ms
+ ✓ |dom| src/features/dataClassification/pipelines/PipelineEditorDialog.test.tsx (9 tests) 1741ms
+   ✓ Pipeline editor > keeps a selector search with its stage when reordered  314ms
+ ✓ |dom| src/features/workflows/useGraphRevisionLoader.test.tsx (2 tests) 133ms
+ ✓ |dom| src/features/dataset/DatasetDialog.test.tsx (11 tests) 1539ms
+   ✓ creates a dataset with selected labels  428ms
+ ✓ |dom| src/features/workflows/useChainEmbedding.test.tsx (2 tests) 49ms
+ ✓ |dom| src/features/dataClassification/InformationTypeDialog.test.tsx (5 tests) 1403ms
+   ✓ InformationTypeDialog > saves trimmed context phrases and allows clearing them  770ms
+ ✓ |dom| src/shared/ui/DeclaredSettingControl.test.tsx (7 tests) 324ms
+ ✓ |dom| src/features/admin/AlertDetailDialog.test.tsx (5 tests) 429ms
+ ✓ |dom| src/features/profile/AccountSettingsPage.test.tsx (9 tests) 2893ms
+   ✓ account settings > leaves an unchanged password page with empty current password  1088ms
+   ✓ account settings > rejects mismatched passwords without calling the API  391ms
+   ✓ account settings > rotates the session and clears passwords after saving  373ms
+ ✓ |dom| src/features/workflows/graph/WorkflowFhirQueryPanel.test.tsx (5 tests) 352ms
+ ✓ |dom| src/features/dataClassification/PredicateQueryControl.test.tsx (4 tests) 473ms
+ ✓ |dom| src/features/admin/LogFileDialogs.test.tsx (4 tests) 420ms
+ ✓ |dom| src/shared/ui/LogViewer.test.tsx (6 tests) 542ms
+ ✓ |dom| src/features/triggers/WatchedDirectoryTestDialog.test.tsx (3 tests) 467ms
+   ✓ Watched directory actions > submits the file name subpath and event and clears stale results when edited  316ms
+ ✓ |dom| src/features/dashboards/widgets/DatasetChartWizard.test.tsx (3 tests) 2961ms
+   ✓ dataset chart wizard > creates a bar chart with dataset, measure and presentation settings  2411ms
+   ✓ dataset chart wizard > blocks saving incomplete filters even after returning to an earlier step  305ms
+ ✓ |dom| src/features/chains/ChainsPage.test.tsx (3 tests) 528ms
+ ✓ |dom| src/shared/ui/ListEmptyState.test.tsx (5 tests) 260ms
+ ✓ |dom| src/features/prompt/PromptDialog.test.tsx (3 tests) 659ms
+   ✓ PromptDialog > focuses the name whenever the dialog opens  494ms
+ ✓ |dom| src/features/notifications/NotificationDetailPage.test.tsx (3 tests) 269ms
+ ✓ |dom| src/shared/ui/ListControls.test.tsx (5 tests) 394ms
+ ✓ |dom| src/features/services/HttpApiSpecificationTab.test.tsx (3 tests) 372ms
+ ✓ |dom| src/features/reviewTasks/HumanReviewDecisionPanel.test.tsx (2 tests) 272ms
+ ✓ |dom| src/features/workflows/WorkflowSubscriptionDialog.test.tsx (1 test) 379ms
+   ✓ WorkflowSubscriptionDialog > seeds switches from the subscription and saves the full replacement  377ms
+ ✓ |dom| src/shared/ui/FacetRail.test.tsx (4 tests) 486ms
+ ✓ |dom| src/features/settings/SettingsPage.test.tsx (2 tests) 720ms
+   ✓ SettingsPage > lists settings as table rows and reveals details on expand  475ms
+ ✓ |dom| src/features/services/ServiceDialog.test.tsx (7 tests) 847ms
+   ✓ Service connection limit > creates a service with limit   302ms
+ ✓ |dom| src/features/dataClassification/ServicePredicateControl.test.tsx (3 tests) 470ms
+ ✓ |dom| src/app/router/sidebarNavigation.test.tsx (9 tests) 5872ms
+   ✓ sidebar navigation > keeps Browse closed when opening a saved favorite directly  844ms
+   ✓ sidebar navigation > reopens Administration when search selects its current unpinned page  1033ms
+   ✓ sidebar navigation > selects a pinned page from favorite without expanding Browse  655ms
+   ✓ sidebar navigation > selects a pinned page from search without expanding Browse  483ms
+   ✓ sidebar navigation > expands Browse for an unpinned search result  472ms
+   ✓ sidebar navigation > does not mistake a pinned parent page for an unpinned child  434ms
+   ✓ sidebar navigation > navigates from a workflow back to the workflows list  1636ms
+ ✓ |dom| src/features/dataset/FieldRevisionDialog.test.tsx (2 tests) 504ms
+   ✓ field revision dialog paging > steps to the neighboring field and pauses while edits are unsaved  390ms
+ ✓ |dom| src/app/shell/Sidebar.test.tsx (21 tests) 5934ms
+   ✓ Favorites and Browse > uses short Workflows section labels for Executions and full names elsewhere  967ms
+   ✓ Favorites and Browse > uses short Data Policy section labels for Tiers and full names elsewhere  477ms
+   ✓ Favorites and Browse > uses short Data Policy section labels for Labels and full names elsewhere  447ms
+   ✓ Favorites and Browse > uses short Data Policy section labels for Pipelines and full names elsewhere  457ms
+   ✓ Favorites and Browse > starts with closed groups and keeps creation in pages  366ms
+   ✓ Favorites and Browse > pins through the API and restores favorites in a fresh query cache  317ms
+   ✓ Favorites and Browse > drags favorites in both directions and restores their saved order  349ms
+ ✓ |dom| src/features/dashboards/widgets/DatasetChartWidget.test.tsx (6 tests) 734ms
+   ✓ dataset chart rendering > renders bar marks and discloses the record window  442ms
+ ✓ |dom| src/app/shell/ReviewTasksButton.test.tsx (3 tests) 361ms
+ ✓ |dom| src/api/dataClassificationCache.test.tsx (1 test) 71ms
+ ✓ |dom| src/features/dataset/RecordQueryBuilder.test.tsx (4 tests) 283ms
+ ✓ |dom| src/features/workflows/useWorkflowDetailRouting.test.tsx (9 tests) 22ms
+ ✓ |dom| src/app/providers/AppProviders.test.tsx (1 test) 299ms
+ ✓ |dom| src/features/workflows/graph/ContentConditionRow.test.tsx (4 tests) 362ms
+ ✓ |dom| src/shared/ui/PaginationFooter.test.tsx (2 tests) 373ms
+   ✓ PaginationFooter > renders table pagination and delegates page and page-size changes  337ms
+ ✓ |dom| src/features/admin/AlertsTable.test.tsx (3 tests) 357ms
+ ✓ |dom| src/features/workflows/ExecutionList.test.tsx (2 tests) 197ms
+ ✓ |dom| src/features/workflows/graph/WorkflowMapMappingPanel.test.tsx (1 test) 72ms
+ ✓ |dom| src/features/dataset/DatasetRecordDetails.test.tsx (1 test) 229ms
+ ✓ |dom| src/features/prompt/PromptRunDialog.test.tsx (2 tests) 149ms
+ ✓ |dom| src/shared/ui/PagedComponentsPagination.test.tsx (2 tests) 276ms
+ ✓ |dom| src/features/admin/LogFilesPage.test.tsx (3 tests) 962ms
+   ✓ LogFilesPage > narrows the table by level and kind  567ms
+ ✓ |dom| src/shared/ui/ExecutionCard.test.tsx (1 test) 52ms
+ ✓ |dom| src/features/dashboards/widgets/WidgetWizardAccess.test.tsx (4 tests) 807ms
+   ✓ widget wizard type access > offers a viewer only the types whose API they may read  446ms
+ ✓ |dom| src/features/workflows/graph/WorkflowNodePanel.test.tsx (2 tests) 360ms
+ ✓ |dom| src/app/shell/breadcrumbRoutes.test.tsx (6 tests) 13ms
+ ✓ |dom| src/features/dataClassification/UserPredicateControl.test.tsx (1 test) 338ms
+   ✓ UserPredicateControl > moves a condition into a nested group by drag  337ms
+ ✓ |dom| src/features/workflows/graph/ExecutionLogsPanel.test.tsx (2 tests) 350ms
+ ✓ |dom| src/api/queryClientPolling.test.tsx (1 test) 363ms
+   ✓ useApiQuery polling > fetches once more when polling stops, so the final write is not missed  361ms
+ ✓ |dom| src/auth/ProtectedRoute.test.tsx (1 test) 186ms
+ ✓ |dom| src/features/services/FhirServiceTestDialog.test.tsx (1 test) 703ms
+   ✓ FHIR service test dialog > keeps repeated search parameters in order  700ms
+ ✓ |dom| src/features/reviewTasks/ReviewDecisionDialog.test.tsx (1 test) 457ms
+   ✓ ReviewDecisionDialog > requires and trims the reviewer justification  455ms
+ ✓ |dom| src/features/services/AiServiceTestDialog.test.tsx (4 tests) 184ms
+ ✓ |node| src/features/workflows/graph/expressionAutocomplete.test.ts (14 tests) 7ms
+ ✓ |dom| src/shared/ui/markdownFromHtml.test.tsx (2 tests) 53ms
+ ✓ |dom| src/shared/ui/markdownHeadings.test.tsx (1 test) 17ms
+ ✓ |dom| src/app/shell/breadcrumbs.test.tsx (1 test) 3ms
+ ✓ |dom| src/shared/ui/PagedTable.test.tsx (1 test) 30ms
+ ✓ |node| src/features/dataset/fieldDisplay.test.ts (7 tests) 5ms
+ ✓ |dom| src/shared/ui/DescribedBadge.test.tsx (1 test) 163ms
+ ✓ |dom| src/shared/ui/markdownHtml.test.tsx (2 tests) 26ms
+ ✓ |dom| src/features/dashboards/widgets/RegisteredWidgets.test.tsx (10 tests) 7591ms
+   ✓ registered operational widgets > creates and renders 'Alerts' with its saved settings  1609ms
+   ✓ registered operational widgets > creates and renders 'Background jobs' with its saved settings  912ms
+   ✓ registered operational widgets > creates and renders 'Email queue' with its saved settings  928ms
+   ✓ registered operational widgets > creates and renders 'Audit events' with its saved settings  994ms
+   ✓ registered operational widgets > creates and renders 'Pending reviews' with its saved settings  504ms
+   ✓ registered operational widgets > creates and renders 'Workflow status' with its saved settings  547ms
+   ✓ registered operational widgets > creates and renders 'Service health' with its saved settings  543ms
+   ✓ registered operational widgets > creates and renders 'Scheduled triggers' with its saved settings  515ms
+   ✓ registered operational widgets > creates and renders 'Watched directories' with its saved settings  542ms
+   ✓ registered operational widgets > creates and renders 'Webhook endpoints' with its saved settings  493ms
+ ✓ |node| src/api/client.test.ts (4 tests) 32ms
+ ✓ |node| src/shared/groupTree.test.ts (6 tests) 6ms
+ ✓ |dom| src/features/reviewTasks/HumanReviewPredicatePanel.test.tsx (1 test) 349ms
+   ✓ HumanReviewPredicatePanel > writes a role predicate directly to node data  348ms
+ ✓ |dom| src/shared/ui/JsonDiffControl.test.tsx (1 test) 267ms
+ ✓ |node| src/features/dataAudit/auditItems.test.ts (4 tests) 5ms
+ ✓ |node| src/features/workflows/graph/graphConnectionModel.test.ts (3 tests) 4ms
+ ✓ |node| src/features/workflows/graph/schemaMatch.test.ts (10 tests) 4ms
+ ✓ |dom| src/features/admin/JobLogsPanel.test.tsx (1 test) 311ms
+   ✓ JobLogsPanel > filters logs by the chosen job type  309ms
+ ✓ |node| src/features/workflows/chainEmbedUndo.test.ts (3 tests) 4ms
+ ✓ |node| src/shared/dataEnum.test.ts (9 tests) 4ms
+ ✓ |node| src/api/datasetChartRecords.test.ts (9 tests) 9ms
+ ✓ |node| src/shared/ui/spreadsheet/spreadsheetState.test.ts (9 tests) 7ms
+ ✓ |node| src/features/workflows/graph/workflowGraphLayout.test.ts (2 tests) 5ms
+ ✓ |node| src/features/admin/logFileList.test.ts (4 tests) 11ms
+ ✓ |node| src/shared/declaredSettings.test.ts (3 tests) 4ms
+ ✓ |node| src/features/workflows/graph/conditionGroupModel.test.ts (3 tests) 6ms
+ ✓ |node| src/features/dashboards/dashboardList.test.ts (2 tests) 11ms
+ ✓ |node| src/shared/cron.test.ts (3 tests) 3ms
+ ✓ |node| src/api/datasetExports.test.ts (2 tests) 4ms
+ ✓ |node| src/features/workflows/graph/RevisionCompare.test.ts (9 tests) 7ms
+ ✓ |node| src/app/router/historyStack.test.ts (3 tests) 4ms
+ ✓ |node| src/api/workflowExecutions.test.ts (1 test) 21ms
+ ✓ |node| src/features/dashboards/widgets/pendingReviews.test.ts (1 test) 4ms
+ ✓ |node| src/features/dashboards/widgets/datasetWidgetFields.test.ts (1 test) 3ms
+ ✓ |node| src/api/fieldClassification.test.ts (1 test) 4ms
+ ✓ |node| src/shared/ui/JsonTreeView.test.ts (3 tests) 6ms
+ ✓ |node| src/features/dataset/recordQueryFields.test.ts (5 tests) 6ms
+ ✓ |node| src/shared/file.test.ts (1 test) 3ms
+ ✓ |node| src/features/dataset/recordQueryContext.test.ts (2 tests) 4ms
+ ✓ |node| src/shared/download.test.ts (2 tests) 4ms
+ ✓ |node| src/shared/ui/messageSchemaSummary.test.ts (1 test) 8ms
+ ✓ |node| src/features/admin/alertClipboard.test.ts (1 test) 12ms
+ ✓ |node| src/api/logFiles.test.ts (2 tests) 2ms
+ ✓ |node| src/test/columnHeaders.test.ts (8 tests) 818ms
+ ✓ |node| src/features/dashboards/widgets/registry.test.ts (5 tests) 5ms
+ ✓ |node| src/features/dashboards/widgets/datasetChartConfig.test.ts (8 tests) 4ms
+ ✓ |node| src/features/dashboards/layout.test.ts (12 tests) 4ms
+ ✓ |node| src/features/dashboards/widgets/datasetChartData.test.ts (10 tests) 6ms
+
+ Test Files  125 passed (125)
+      Tests  661 passed (661)
+   Start at  05:40:50
+   Duration  19.50s (transform 26.33s, setup 7.73s, collect 89.47s, tests 76.79s, environment 73.56s, prepare 11.92s)
+
+
+> Task :frontend:npmBuild UP-TO-DATE
+
+BUILD SUCCESSFUL in 44s
+14 actionable tasks: 3 executed, 11 up-to-date
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.5.0/userguide/configuration_cache_enabling.html

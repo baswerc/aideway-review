@@ -1,0 +1,646 @@
+Compiled from "SendQueuedMessageJob.kt"
+public final class org.tekfive.relaykt.queue.SendQueuedMessageJob implements org.tekfive.keep.job.Job {
+  public static final org.tekfive.relaykt.queue.SendQueuedMessageJob$Companion Companion;
+
+  public static final java.lang.String QUEUED_MESSAGE_ID_PROPERTY;
+
+  private static final org.tekfive.ack.Ack<java.lang.Integer> retryBaseDelaySecondsAck;
+
+  private static final org.tekfive.ack.Ack<java.lang.Integer> retryMaxDelaySecondsAck;
+
+  private static final boolean estimateRuntime;
+
+  public org.tekfive.relaykt.queue.SendQueuedMessageJob();
+    Code:
+         0: aload_0
+         1: invokespecial #10                 // Method java/lang/Object."<init>":()V
+         4: return
+
+  public org.tekfive.keep.job.JobResult execute(org.tekfive.keep.job.JobContext);
+    Code:
+         0: aload_1
+         1: ldc           #19                 // String context
+         3: invokestatic  #25                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+         6: aload_1
+         7: invokeinterface #31,  1           // InterfaceMethod org/tekfive/keep/job/JobContext.getDetails:()Lorg/tekfive/jfk/JsonObject;
+        12: dup
+        13: ifnull        40
+        16: ldc           #33                 // String queuedMessageId
+        18: invokevirtual #39                 // Method org/tekfive/jfk/JsonObject.get:(Ljava/lang/String;)Lorg/tekfive/jfk/JsonValue;
+        21: dup
+        22: ifnull        40
+        25: invokeinterface #45,  1           // InterfaceMethod org/tekfive/jfk/JsonValue.getLong:()Ljava/lang/Long;
+        30: dup
+        31: ifnull        40
+        34: invokevirtual #51                 // Method java/lang/Long.longValue:()J
+        37: goto          57
+        40: pop
+        41: new           #53                 // class org/tekfive/keep/job/JobFailed
+        44: dup
+        45: ldc           #55                 // String No queuedMessageId property provided in job details.
+        47: iconst_0
+        48: iconst_2
+        49: aconst_null
+        50: invokespecial #58                 // Method org/tekfive/keep/job/JobFailed."<init>":(Ljava/lang/String;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+        53: checkcast     #60                 // class org/tekfive/keep/job/JobResult
+        56: areturn
+        57: lstore_2
+        58: getstatic     #66                 // Field org/tekfive/relaykt/queue/QueuedMessageTable.INSTANCE:Lorg/tekfive/relaykt/queue/QueuedMessageTable;
+        61: lload_2
+        62: invokestatic  #70                 // Method java/lang/Long.valueOf:(J)Ljava/lang/Long;
+        65: invokevirtual #74                 // Method org/tekfive/relaykt/queue/QueuedMessageTable.findById:(Ljava/lang/Object;)Lorg/tekfive/keep/data/IdentifiedData;
+        68: checkcast     #76                 // class org/tekfive/relaykt/queue/QueuedMessage
+        71: dup
+        72: ifnonnull     96
+        75: pop
+        76: new           #53                 // class org/tekfive/keep/job/JobFailed
+        79: dup
+        80: lload_2
+        81: invokedynamic #88,  0             // InvokeDynamic #0:makeConcatWithConstants:(J)Ljava/lang/String;
+        86: iconst_0
+        87: iconst_2
+        88: aconst_null
+        89: invokespecial #58                 // Method org/tekfive/keep/job/JobFailed."<init>":(Ljava/lang/String;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+        92: checkcast     #60                 // class org/tekfive/keep/job/JobResult
+        95: areturn
+        96: astore        4
+        98: aload         4
+       100: invokevirtual #92                 // Method org/tekfive/relaykt/queue/QueuedMessage.getState:()Lorg/tekfive/relaykt/queue/QueuedMessageState;
+       103: getstatic     #98                 // Field org/tekfive/relaykt/queue/QueuedMessageState.PENDING:Lorg/tekfive/relaykt/queue/QueuedMessageState;
+       106: if_acmpeq     134
+       109: new           #53                 // class org/tekfive/keep/job/JobFailed
+       112: dup
+       113: lload_2
+       114: aload         4
+       116: invokevirtual #92                 // Method org/tekfive/relaykt/queue/QueuedMessage.getState:()Lorg/tekfive/relaykt/queue/QueuedMessageState;
+       119: invokedynamic #103,  0            // InvokeDynamic #1:makeConcatWithConstants:(JLorg/tekfive/relaykt/queue/QueuedMessageState;)Ljava/lang/String;
+       124: iconst_0
+       125: iconst_2
+       126: aconst_null
+       127: invokespecial #58                 // Method org/tekfive/keep/job/JobFailed."<init>":(Ljava/lang/String;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+       130: checkcast     #60                 // class org/tekfive/keep/job/JobResult
+       133: areturn
+       134: aload_0
+       135: aload         4
+       137: invokespecial #107                // Method claim:(Lorg/tekfive/relaykt/queue/QueuedMessage;)Lorg/tekfive/relaykt/queue/DeliveryAttempt;
+       140: dup
+       141: ifnonnull     165
+       144: pop
+       145: new           #53                 // class org/tekfive/keep/job/JobFailed
+       148: dup
+       149: lload_2
+       150: invokedynamic #110,  0            // InvokeDynamic #2:makeConcatWithConstants:(J)Ljava/lang/String;
+       155: iconst_0
+       156: iconst_2
+       157: aconst_null
+       158: invokespecial #58                 // Method org/tekfive/keep/job/JobFailed."<init>":(Ljava/lang/String;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+       161: checkcast     #60                 // class org/tekfive/keep/job/JobResult
+       164: areturn
+       165: astore        5
+       167: new           #112                // class org/tekfive/keep/job/JobCompleted
+       170: dup
+       171: aconst_null
+       172: iconst_1
+       173: aconst_null
+       174: invokespecial #115                // Method org/tekfive/keep/job/JobCompleted."<init>":(Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+       177: checkcast     #60                 // class org/tekfive/keep/job/JobResult
+       180: astore        6
+       182: nop
+       183: getstatic     #120                // Field org/tekfive/relaykt/Relay.INSTANCE:Lorg/tekfive/relaykt/Relay;
+       186: aload         4
+       188: invokevirtual #124                // Method org/tekfive/relaykt/queue/QueuedMessage.getEndpointId:()Ljava/lang/String;
+       191: invokevirtual #128                // Method org/tekfive/relaykt/Relay.resolveEndpoint:(Ljava/lang/String;)Lorg/tekfive/relaykt/endpoint/Endpoint;
+       194: astore        7
+       196: aload         4
+       198: invokevirtual #132                // Method org/tekfive/relaykt/queue/QueuedMessage.getMessage:()Lorg/tekfive/relaykt/Message;
+       201: astore        8
+       203: getstatic     #120                // Field org/tekfive/relaykt/Relay.INSTANCE:Lorg/tekfive/relaykt/Relay;
+       206: aload         8
+       208: aload         7
+       210: invokevirtual #136                // Method org/tekfive/relaykt/Relay.send:(Lorg/tekfive/relaykt/Message;Lorg/tekfive/relaykt/endpoint/Endpoint;)Lorg/tekfive/relaykt/SendResult;
+       213: astore        9
+       215: aload         4
+       217: getstatic     #139                // Field org/tekfive/relaykt/queue/QueuedMessageState.SENT:Lorg/tekfive/relaykt/queue/QueuedMessageState;
+       220: invokevirtual #143                // Method org/tekfive/relaykt/queue/QueuedMessage.setState:(Lorg/tekfive/relaykt/queue/QueuedMessageState;)V
+       223: aload         4
+       225: aload         9
+       227: invokevirtual #148                // Method org/tekfive/relaykt/SendResult.getMessageId:()Ljava/lang/String;
+       230: astore        10
+       232: aload         10
+       234: astore        11
+       236: astore        13
+       238: iconst_0
+       239: istore        12
+       241: aload         11
+       243: checkcast     #150                // class java/lang/CharSequence
+       246: invokestatic  #156                // Method kotlin/text/StringsKt.isBlank:(Ljava/lang/CharSequence;)Z
+       249: ifne          256
+       252: iconst_1
+       253: goto          257
+       256: iconst_0
+       257: nop
+       258: istore        14
+       260: aload         13
+       262: iload         14
+       264: ifeq          272
+       267: aload         10
+       269: goto          273
+       272: aconst_null
+       273: invokevirtual #160                // Method org/tekfive/relaykt/queue/QueuedMessage.setProviderMessageId:(Ljava/lang/String;)V
+       276: aload         5
+       278: getstatic     #165                // Field org/tekfive/relaykt/queue/DeliveryAttemptState.SENT:Lorg/tekfive/relaykt/queue/DeliveryAttemptState;
+       281: invokevirtual #170                // Method org/tekfive/relaykt/queue/DeliveryAttempt.setState:(Lorg/tekfive/relaykt/queue/DeliveryAttemptState;)V
+       284: aload_0
+       285: aload         4
+       287: aload         7
+       289: aload         9
+       291: invokespecial #174                // Method shouldTrackReceipt:(Lorg/tekfive/relaykt/queue/QueuedMessage;Lorg/tekfive/relaykt/endpoint/Endpoint;Lorg/tekfive/relaykt/SendResult;)Z
+       294: ifeq          366
+       297: nop
+       298: iconst_0
+       299: iconst_0
+       300: aload         4
+       302: aload         7
+       304: aload         8
+       306: aload         9
+       308: invokedynamic #194,  0            // InvokeDynamic #3:invoke:(Lorg/tekfive/relaykt/queue/QueuedMessage;Lorg/tekfive/relaykt/endpoint/Endpoint;Lorg/tekfive/relaykt/Message;Lorg/tekfive/relaykt/SendResult;)Lkotlin/jvm/functions/Function0;
+       313: iconst_3
+       314: aconst_null
+       315: invokestatic  #200                // Method org/tekfive/keep/db/DbConnectionKt.db$default:(ZZLkotlin/jvm/functions/Function0;ILjava/lang/Object;)Ljava/lang/Object;
+       318: pop
+       319: goto          366
+       322: astore        10
+       324: aload_1
+       325: invokeinterface #204,  1          // InterfaceMethod org/tekfive/keep/job/JobContext.getLog:()Lorg/tekfive/keep/job/JobLogger;
+       330: lload_2
+       331: invokedynamic #207,  0            // InvokeDynamic #4:makeConcatWithConstants:(J)Ljava/lang/String;
+       336: aload         10
+       338: checkcast     #209                // class java/lang/Throwable
+       341: invokevirtual #215                // Method org/tekfive/keep/job/JobLogger.error:(Ljava/lang/String;Ljava/lang/Throwable;)Ljava/lang/String;
+       344: pop
+       345: new           #53                 // class org/tekfive/keep/job/JobFailed
+       348: dup
+       349: lload_2
+       350: invokedynamic #207,  0            // InvokeDynamic #4:makeConcatWithConstants:(J)Ljava/lang/String;
+       355: iconst_0
+       356: iconst_2
+       357: aconst_null
+       358: invokespecial #58                 // Method org/tekfive/keep/job/JobFailed."<init>":(Ljava/lang/String;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+       361: checkcast     #60                 // class org/tekfive/keep/job/JobResult
+       364: astore        6
+       366: aload_0
+       367: aload         4
+       369: aload         5
+       371: aload_1
+       372: invokespecial #219                // Method finish:(Lorg/tekfive/relaykt/queue/QueuedMessage;Lorg/tekfive/relaykt/queue/DeliveryAttempt;Lorg/tekfive/keep/job/JobContext;)V
+       375: goto          628
+       378: astore        7
+       380: aload         7
+       382: instanceof    #221                // class org/tekfive/relaykt/RelayException
+       385: ifeq          396
+       388: aload         7
+       390: checkcast     #221                // class org/tekfive/relaykt/RelayException
+       393: goto          397
+       396: aconst_null
+       397: astore        8
+       399: aload         8
+       401: dup
+       402: ifnull        411
+       405: invokevirtual #225                // Method org/tekfive/relaykt/RelayException.getRecoverable:()Z
+       408: goto          413
+       411: pop
+       412: iconst_0
+       413: istore        9
+       415: aload         5
+       417: getstatic     #228                // Field org/tekfive/relaykt/queue/DeliveryAttemptState.FAILED:Lorg/tekfive/relaykt/queue/DeliveryAttemptState;
+       420: invokevirtual #170                // Method org/tekfive/relaykt/queue/DeliveryAttempt.setState:(Lorg/tekfive/relaykt/queue/DeliveryAttemptState;)V
+       423: aload         5
+       425: aload         7
+       427: invokevirtual #230                // Method java/lang/Exception.getMessage:()Ljava/lang/String;
+       430: dup
+       431: ifnull        443
+       434: sipush        2000
+       437: invokestatic  #234                // Method kotlin/text/StringsKt.take:(Ljava/lang/String;I)Ljava/lang/String;
+       440: goto          445
+       443: pop
+       444: aconst_null
+       445: invokevirtual #237                // Method org/tekfive/relaykt/queue/DeliveryAttempt.setDetails:(Ljava/lang/String;)V
+       448: aload         5
+       450: iload         9
+       452: invokestatic  #242                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+       455: invokevirtual #246                // Method org/tekfive/relaykt/queue/DeliveryAttempt.setRecoverable:(Ljava/lang/Boolean;)V
+       458: iload         9
+       460: ifeq          535
+       463: aload         4
+       465: invokevirtual #249                // Method org/tekfive/relaykt/queue/QueuedMessage.getHasAttemptsRemaining:()Z
+       468: ifeq          535
+       471: aload         4
+       473: getstatic     #252                // Field org/tekfive/relaykt/queue/QueuedMessageState.WAITING_TO_RETRY:Lorg/tekfive/relaykt/queue/QueuedMessageState;
+       476: invokevirtual #143                // Method org/tekfive/relaykt/queue/QueuedMessage.setState:(Lorg/tekfive/relaykt/queue/QueuedMessageState;)V
+       479: aload         4
+       481: invokestatic  #257                // Method java/lang/System.currentTimeMillis:()J
+       484: getstatic     #261                // Field Companion:Lorg/tekfive/relaykt/queue/SendQueuedMessageJob$Companion;
+       487: aload         4
+       489: invokevirtual #265                // Method org/tekfive/relaykt/queue/QueuedMessage.getAttemptCount:()I
+       492: invokevirtual #271                // Method org/tekfive/relaykt/queue/SendQueuedMessageJob$Companion.retryDelayMillis:(I)J
+       495: ladd
+       496: invokestatic  #70                 // Method java/lang/Long.valueOf:(J)Ljava/lang/Long;
+       499: invokevirtual #275                // Method org/tekfive/relaykt/queue/QueuedMessage.setNextAttemptAt:(Ljava/lang/Long;)V
+       502: aload_1
+       503: invokeinterface #204,  1          // InterfaceMethod org/tekfive/keep/job/JobContext.getLog:()Lorg/tekfive/keep/job/JobLogger;
+       508: lload_2
+       509: aload         4
+       511: invokevirtual #265                // Method org/tekfive/relaykt/queue/QueuedMessage.getAttemptCount:()I
+       514: aload         4
+       516: invokevirtual #278                // Method org/tekfive/relaykt/queue/QueuedMessage.getMaxAttempts:()I
+       519: invokedynamic #283,  0            // InvokeDynamic #5:makeConcatWithConstants:(JII)Ljava/lang/String;
+       524: aload         7
+       526: checkcast     #209                // class java/lang/Throwable
+       529: invokevirtual #286                // Method org/tekfive/keep/job/JobLogger.warn:(Ljava/lang/String;Ljava/lang/Throwable;)Ljava/lang/String;
+       532: goto          573
+       535: aload         4
+       537: getstatic     #288                // Field org/tekfive/relaykt/queue/QueuedMessageState.FAILED:Lorg/tekfive/relaykt/queue/QueuedMessageState;
+       540: invokevirtual #143                // Method org/tekfive/relaykt/queue/QueuedMessage.setState:(Lorg/tekfive/relaykt/queue/QueuedMessageState;)V
+       543: aload_1
+       544: invokeinterface #204,  1          // InterfaceMethod org/tekfive/keep/job/JobContext.getLog:()Lorg/tekfive/keep/job/JobLogger;
+       549: lload_2
+       550: aload         4
+       552: invokevirtual #265                // Method org/tekfive/relaykt/queue/QueuedMessage.getAttemptCount:()I
+       555: aload         4
+       557: invokevirtual #278                // Method org/tekfive/relaykt/queue/QueuedMessage.getMaxAttempts:()I
+       560: invokedynamic #291,  0            // InvokeDynamic #6:makeConcatWithConstants:(JII)Ljava/lang/String;
+       565: aload         7
+       567: checkcast     #209                // class java/lang/Throwable
+       570: invokevirtual #215                // Method org/tekfive/keep/job/JobLogger.error:(Ljava/lang/String;Ljava/lang/Throwable;)Ljava/lang/String;
+       573: pop
+       574: new           #53                 // class org/tekfive/keep/job/JobFailed
+       577: dup
+       578: aload         7
+       580: invokevirtual #230                // Method java/lang/Exception.getMessage:()Ljava/lang/String;
+       583: dup
+       584: ifnonnull     591
+       587: pop
+       588: ldc_w         #293                // String Failed to send queued message.
+       591: iconst_0
+       592: iconst_2
+       593: aconst_null
+       594: invokespecial #58                 // Method org/tekfive/keep/job/JobFailed."<init>":(Ljava/lang/String;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+       597: checkcast     #60                 // class org/tekfive/keep/job/JobResult
+       600: astore        6
+       602: aload_0
+       603: aload         4
+       605: aload         5
+       607: aload_1
+       608: invokespecial #219                // Method finish:(Lorg/tekfive/relaykt/queue/QueuedMessage;Lorg/tekfive/relaykt/queue/DeliveryAttempt;Lorg/tekfive/keep/job/JobContext;)V
+       611: goto          628
+       614: astore        7
+       616: aload_0
+       617: aload         4
+       619: aload         5
+       621: aload_1
+       622: invokespecial #219                // Method finish:(Lorg/tekfive/relaykt/queue/QueuedMessage;Lorg/tekfive/relaykt/queue/DeliveryAttempt;Lorg/tekfive/keep/job/JobContext;)V
+       625: aload         7
+       627: athrow
+       628: aload         6
+       630: areturn
+      Exception table:
+         from    to  target type
+           297   319   322   Class java/lang/Exception
+           182   366   378   Class java/lang/Exception
+           182   366   614   any
+           378   602   614   any
+           614   616   614   any
+
+  private final org.tekfive.relaykt.queue.DeliveryAttempt claim(org.tekfive.relaykt.queue.QueuedMessage);
+    Code:
+         0: iconst_0
+         1: iconst_0
+         2: aload_1
+         3: invokedynamic #332,  0            // InvokeDynamic #7:invoke:(Lorg/tekfive/relaykt/queue/QueuedMessage;)Lkotlin/jvm/functions/Function0;
+         8: iconst_3
+         9: aconst_null
+        10: invokestatic  #200                // Method org/tekfive/keep/db/DbConnectionKt.db$default:(ZZLkotlin/jvm/functions/Function0;ILjava/lang/Object;)Ljava/lang/Object;
+        13: checkcast     #167                // class org/tekfive/relaykt/queue/DeliveryAttempt
+        16: areturn
+
+  private final void finish(org.tekfive.relaykt.queue.QueuedMessage, org.tekfive.relaykt.queue.DeliveryAttempt, org.tekfive.keep.job.JobContext);
+    Code:
+         0: iconst_0
+         1: iconst_0
+         2: aload_1
+         3: invokedynamic #340,  0            // InvokeDynamic #8:invoke:(Lorg/tekfive/relaykt/queue/QueuedMessage;)Lkotlin/jvm/functions/Function0;
+         8: iconst_3
+         9: aconst_null
+        10: invokestatic  #200                // Method org/tekfive/keep/db/DbConnectionKt.db$default:(ZZLkotlin/jvm/functions/Function0;ILjava/lang/Object;)Ljava/lang/Object;
+        13: checkcast     #342                // class java/lang/Number
+        16: invokevirtual #345                // Method java/lang/Number.intValue:()I
+        19: istore        4
+        21: iload         4
+        23: iconst_1
+        24: if_icmpeq     53
+        27: aload_3
+        28: invokeinterface #204,  1          // InterfaceMethod org/tekfive/keep/job/JobContext.getLog:()Lorg/tekfive/keep/job/JobLogger;
+        33: aload_1
+        34: invokevirtual #348                // Method org/tekfive/relaykt/queue/QueuedMessage.getId:()Ljava/lang/Long;
+        37: aload_1
+        38: invokevirtual #92                 // Method org/tekfive/relaykt/queue/QueuedMessage.getState:()Lorg/tekfive/relaykt/queue/QueuedMessageState;
+        41: invokedynamic #353,  0            // InvokeDynamic #9:makeConcatWithConstants:(Ljava/lang/Long;Lorg/tekfive/relaykt/queue/QueuedMessageState;)Ljava/lang/String;
+        46: aconst_null
+        47: iconst_2
+        48: aconst_null
+        49: invokestatic  #357                // Method org/tekfive/keep/job/JobLogger.error$default:(Lorg/tekfive/keep/job/JobLogger;Ljava/lang/String;Ljava/lang/Throwable;ILjava/lang/Object;)Ljava/lang/String;
+        52: pop
+        53: aload_2
+        54: invokestatic  #257                // Method java/lang/System.currentTimeMillis:()J
+        57: invokestatic  #70                 // Method java/lang/Long.valueOf:(J)Ljava/lang/Long;
+        60: invokevirtual #360                // Method org/tekfive/relaykt/queue/DeliveryAttempt.setEndedAt:(Ljava/lang/Long;)V
+        63: iconst_0
+        64: iconst_0
+        65: aload_2
+        66: invokedynamic #368,  0            // InvokeDynamic #10:invoke:(Lorg/tekfive/relaykt/queue/DeliveryAttempt;)Lkotlin/jvm/functions/Function0;
+        71: iconst_3
+        72: aconst_null
+        73: invokestatic  #200                // Method org/tekfive/keep/db/DbConnectionKt.db$default:(ZZLkotlin/jvm/functions/Function0;ILjava/lang/Object;)Ljava/lang/Object;
+        76: pop
+        77: return
+
+  private final boolean shouldTrackReceipt(org.tekfive.relaykt.queue.QueuedMessage, org.tekfive.relaykt.endpoint.Endpoint, org.tekfive.relaykt.SendResult);
+    Code:
+         0: aload_1
+         1: invokevirtual #372                // Method org/tekfive/relaykt/queue/QueuedMessage.getTrackReceipt:()Z
+         4: ifeq          33
+         7: aload_3
+         8: invokevirtual #375                // Method org/tekfive/relaykt/SendResult.getHasMessageId:()Z
+        11: ifeq          33
+        14: aload_2
+        15: invokevirtual #379                // Method org/tekfive/relaykt/endpoint/Endpoint.getProvider:()Lorg/tekfive/relaykt/provider/Provider;
+        18: getstatic     #385                // Field org/tekfive/relaykt/Capability.STATUS_LOOKUP:Lorg/tekfive/relaykt/Capability;
+        21: invokeinterface #391,  2          // InterfaceMethod org/tekfive/relaykt/provider/Provider.supports:(Lorg/tekfive/relaykt/Capability;)Z
+        26: ifeq          33
+        29: iconst_1
+        30: goto          34
+        33: iconst_0
+        34: ireturn
+
+  private static final kotlin.Unit execute$lambda$1(org.tekfive.relaykt.queue.QueuedMessage, org.tekfive.relaykt.endpoint.Endpoint, org.tekfive.relaykt.Message, org.tekfive.relaykt.SendResult);
+    Code:
+         0: getstatic     #261                // Field Companion:Lorg/tekfive/relaykt/queue/SendQueuedMessageJob$Companion;
+         3: aload_0
+         4: aload_1
+         5: aload_2
+         6: aload_3
+         7: invokevirtual #395                // Method org/tekfive/relaykt/queue/SendQueuedMessageJob$Companion.buildReceipts$com_github_TekFive_relaykt:(Lorg/tekfive/relaykt/queue/QueuedMessage;Lorg/tekfive/relaykt/endpoint/Endpoint;Lorg/tekfive/relaykt/Message;Lorg/tekfive/relaykt/SendResult;)Ljava/util/List;
+        10: invokeinterface #401,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+        15: astore        4
+        17: aload         4
+        19: invokeinterface #406,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+        24: ifeq          54
+        27: aload         4
+        29: invokeinterface #409,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        34: checkcast     #411                // class org/tekfive/relaykt/queue/DeliveryReceipt
+        37: astore        5
+        39: getstatic     #416                // Field org/tekfive/relaykt/queue/DeliveryReceiptTable.INSTANCE:Lorg/tekfive/relaykt/queue/DeliveryReceiptTable;
+        42: aload         5
+        44: checkcast     #418                // class org/tekfive/keep/data/Data
+        47: invokevirtual #422                // Method org/tekfive/relaykt/queue/DeliveryReceiptTable.create:(Lorg/tekfive/keep/data/Data;)Lorg/tekfive/keep/data/Data;
+        50: pop
+        51: goto          17
+        54: getstatic     #427                // Field kotlin/Unit.INSTANCE:Lkotlin/Unit;
+        57: areturn
+
+  private static final org.jetbrains.exposed.v1.core.Op claim$lambda$0$0(org.tekfive.relaykt.queue.QueuedMessage);
+    Code:
+         0: getstatic     #66                 // Field org/tekfive/relaykt/queue/QueuedMessageTable.INSTANCE:Lorg/tekfive/relaykt/queue/QueuedMessageTable;
+         3: invokevirtual #438                // Method org/tekfive/relaykt/queue/QueuedMessageTable.getId:()Lorg/jetbrains/exposed/v1/core/Column;
+         6: checkcast     #440                // class org/jetbrains/exposed/v1/core/ExpressionWithColumnType
+         9: aload_0
+        10: invokevirtual #348                // Method org/tekfive/relaykt/queue/QueuedMessage.getId:()Ljava/lang/Long;
+        13: invokestatic  #446                // Method org/jetbrains/exposed/v1/core/OpBuilderKt.eq:(Lorg/jetbrains/exposed/v1/core/ExpressionWithColumnType;Ljava/lang/Object;)Lorg/jetbrains/exposed/v1/core/Op;
+        16: checkcast     #448                // class org/jetbrains/exposed/v1/core/Expression
+        19: getstatic     #66                 // Field org/tekfive/relaykt/queue/QueuedMessageTable.INSTANCE:Lorg/tekfive/relaykt/queue/QueuedMessageTable;
+        22: invokevirtual #450                // Method org/tekfive/relaykt/queue/QueuedMessageTable.getState:()Lorg/jetbrains/exposed/v1/core/Column;
+        25: checkcast     #440                // class org/jetbrains/exposed/v1/core/ExpressionWithColumnType
+        28: getstatic     #98                 // Field org/tekfive/relaykt/queue/QueuedMessageState.PENDING:Lorg/tekfive/relaykt/queue/QueuedMessageState;
+        31: invokestatic  #446                // Method org/jetbrains/exposed/v1/core/OpBuilderKt.eq:(Lorg/jetbrains/exposed/v1/core/ExpressionWithColumnType;Ljava/lang/Object;)Lorg/jetbrains/exposed/v1/core/Op;
+        34: checkcast     #448                // class org/jetbrains/exposed/v1/core/Expression
+        37: invokestatic  #454                // Method org/jetbrains/exposed/v1/core/OpBuilderKt.and:(Lorg/jetbrains/exposed/v1/core/Expression;Lorg/jetbrains/exposed/v1/core/Expression;)Lorg/jetbrains/exposed/v1/core/Op;
+        40: areturn
+
+  private static final kotlin.Unit claim$lambda$0$1(org.tekfive.relaykt.queue.QueuedMessage, long, org.tekfive.relaykt.queue.QueuedMessageTable, org.jetbrains.exposed.v1.core.statements.UpdateStatement);
+    Code:
+         0: aload_3
+         1: ldc_w         #458                // String $this$update
+         4: invokestatic  #25                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+         7: aload         4
+         9: ldc_w         #460                // String statement
+        12: invokestatic  #25                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+        15: aload         4
+        17: getstatic     #66                 // Field org/tekfive/relaykt/queue/QueuedMessageTable.INSTANCE:Lorg/tekfive/relaykt/queue/QueuedMessageTable;
+        20: invokevirtual #450                // Method org/tekfive/relaykt/queue/QueuedMessageTable.getState:()Lorg/jetbrains/exposed/v1/core/Column;
+        23: getstatic     #463                // Field org/tekfive/relaykt/queue/QueuedMessageState.PROCESSING:Lorg/tekfive/relaykt/queue/QueuedMessageState;
+        26: invokevirtual #469                // Method org/jetbrains/exposed/v1/core/statements/UpdateStatement.set:(Lorg/jetbrains/exposed/v1/core/Column;Ljava/lang/Object;)V
+        29: aload         4
+        31: getstatic     #66                 // Field org/tekfive/relaykt/queue/QueuedMessageTable.INSTANCE:Lorg/tekfive/relaykt/queue/QueuedMessageTable;
+        34: invokevirtual #471                // Method org/tekfive/relaykt/queue/QueuedMessageTable.getAttemptCount:()Lorg/jetbrains/exposed/v1/core/Column;
+        37: aload_0
+        38: invokevirtual #265                // Method org/tekfive/relaykt/queue/QueuedMessage.getAttemptCount:()I
+        41: iconst_1
+        42: iadd
+        43: invokestatic  #476                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+        46: invokevirtual #469                // Method org/jetbrains/exposed/v1/core/statements/UpdateStatement.set:(Lorg/jetbrains/exposed/v1/core/Column;Ljava/lang/Object;)V
+        49: aload         4
+        51: getstatic     #66                 // Field org/tekfive/relaykt/queue/QueuedMessageTable.INSTANCE:Lorg/tekfive/relaykt/queue/QueuedMessageTable;
+        54: invokevirtual #479                // Method org/tekfive/relaykt/queue/QueuedMessageTable.getLastStateChangeAt:()Lorg/jetbrains/exposed/v1/core/Column;
+        57: lload_1
+        58: invokestatic  #70                 // Method java/lang/Long.valueOf:(J)Ljava/lang/Long;
+        61: invokevirtual #469                // Method org/jetbrains/exposed/v1/core/statements/UpdateStatement.set:(Lorg/jetbrains/exposed/v1/core/Column;Ljava/lang/Object;)V
+        64: aload         4
+        66: getstatic     #66                 // Field org/tekfive/relaykt/queue/QueuedMessageTable.INSTANCE:Lorg/tekfive/relaykt/queue/QueuedMessageTable;
+        69: invokevirtual #482                // Method org/tekfive/relaykt/queue/QueuedMessageTable.getNextAttemptAt:()Lorg/jetbrains/exposed/v1/core/Column;
+        72: aconst_null
+        73: invokevirtual #469                // Method org/jetbrains/exposed/v1/core/statements/UpdateStatement.set:(Lorg/jetbrains/exposed/v1/core/Column;Ljava/lang/Object;)V
+        76: getstatic     #427                // Field kotlin/Unit.INSTANCE:Lkotlin/Unit;
+        79: areturn
+
+  private static final org.tekfive.relaykt.queue.DeliveryAttempt claim$lambda$0(org.tekfive.relaykt.queue.QueuedMessage);
+    Code:
+         0: invokestatic  #257                // Method java/lang/System.currentTimeMillis:()J
+         3: lstore_1
+         4: getstatic     #66                 // Field org/tekfive/relaykt/queue/QueuedMessageTable.INSTANCE:Lorg/tekfive/relaykt/queue/QueuedMessageTable;
+         7: checkcast     #486                // class org/jetbrains/exposed/v1/core/Table
+        10: aload_0
+        11: invokedynamic #492,  0            // InvokeDynamic #11:invoke:(Lorg/tekfive/relaykt/queue/QueuedMessage;)Lkotlin/jvm/functions/Function0;
+        16: aconst_null
+        17: aload_0
+        18: lload_1
+        19: invokedynamic #502,  0            // InvokeDynamic #12:invoke:(Lorg/tekfive/relaykt/queue/QueuedMessage;J)Lkotlin/jvm/functions/Function2;
+        24: iconst_2
+        25: aconst_null
+        26: invokestatic  #508                // Method org/jetbrains/exposed/v1/jdbc/QueriesKt.update$default:(Lorg/jetbrains/exposed/v1/core/Table;Lkotlin/jvm/functions/Function0;Ljava/lang/Integer;Lkotlin/jvm/functions/Function2;ILjava/lang/Object;)I
+        29: istore_3
+        30: iload_3
+        31: iconst_1
+        32: if_icmpeq     37
+        35: aconst_null
+        36: areturn
+        37: aload_0
+        38: getstatic     #463                // Field org/tekfive/relaykt/queue/QueuedMessageState.PROCESSING:Lorg/tekfive/relaykt/queue/QueuedMessageState;
+        41: invokevirtual #511                // Method org/tekfive/relaykt/queue/QueuedMessage.set_state$com_github_TekFive_relaykt:(Lorg/tekfive/relaykt/queue/QueuedMessageState;)V
+        44: aload_0
+        45: aload_0
+        46: invokevirtual #265                // Method org/tekfive/relaykt/queue/QueuedMessage.getAttemptCount:()I
+        49: iconst_1
+        50: iadd
+        51: invokevirtual #515                // Method org/tekfive/relaykt/queue/QueuedMessage.setAttemptCount:(I)V
+        54: aload_0
+        55: lload_1
+        56: invokevirtual #519                // Method org/tekfive/relaykt/queue/QueuedMessage.setLastStateChangeAt:(J)V
+        59: aload_0
+        60: aconst_null
+        61: invokevirtual #275                // Method org/tekfive/relaykt/queue/QueuedMessage.setNextAttemptAt:(Ljava/lang/Long;)V
+        64: getstatic     #524                // Field org/tekfive/relaykt/queue/DeliveryAttemptTable.INSTANCE:Lorg/tekfive/relaykt/queue/DeliveryAttemptTable;
+        67: new           #167                // class org/tekfive/relaykt/queue/DeliveryAttempt
+        70: dup
+        71: aload_0
+        72: invokevirtual #348                // Method org/tekfive/relaykt/queue/QueuedMessage.getId:()Ljava/lang/Long;
+        75: invokevirtual #51                 // Method java/lang/Long.longValue:()J
+        78: getstatic     #527                // Field org/tekfive/relaykt/queue/DeliveryAttemptState.SENDING:Lorg/tekfive/relaykt/queue/DeliveryAttemptState;
+        81: aconst_null
+        82: aconst_null
+        83: lconst_0
+        84: aconst_null
+        85: bipush        60
+        87: aconst_null
+        88: invokespecial #530                // Method org/tekfive/relaykt/queue/DeliveryAttempt."<init>":(JLorg/tekfive/relaykt/queue/DeliveryAttemptState;Ljava/lang/String;Ljava/lang/Boolean;JLjava/lang/Long;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+        91: checkcast     #418                // class org/tekfive/keep/data/Data
+        94: invokevirtual #531                // Method org/tekfive/relaykt/queue/DeliveryAttemptTable.create:(Lorg/tekfive/keep/data/Data;)Lorg/tekfive/keep/data/Data;
+        97: checkcast     #167                // class org/tekfive/relaykt/queue/DeliveryAttempt
+       100: areturn
+
+  private static final org.jetbrains.exposed.v1.core.Op finish$lambda$0$0(org.tekfive.relaykt.queue.QueuedMessage);
+    Code:
+         0: getstatic     #66                 // Field org/tekfive/relaykt/queue/QueuedMessageTable.INSTANCE:Lorg/tekfive/relaykt/queue/QueuedMessageTable;
+         3: invokevirtual #438                // Method org/tekfive/relaykt/queue/QueuedMessageTable.getId:()Lorg/jetbrains/exposed/v1/core/Column;
+         6: checkcast     #440                // class org/jetbrains/exposed/v1/core/ExpressionWithColumnType
+         9: aload_0
+        10: invokevirtual #348                // Method org/tekfive/relaykt/queue/QueuedMessage.getId:()Ljava/lang/Long;
+        13: invokestatic  #446                // Method org/jetbrains/exposed/v1/core/OpBuilderKt.eq:(Lorg/jetbrains/exposed/v1/core/ExpressionWithColumnType;Ljava/lang/Object;)Lorg/jetbrains/exposed/v1/core/Op;
+        16: checkcast     #448                // class org/jetbrains/exposed/v1/core/Expression
+        19: getstatic     #66                 // Field org/tekfive/relaykt/queue/QueuedMessageTable.INSTANCE:Lorg/tekfive/relaykt/queue/QueuedMessageTable;
+        22: invokevirtual #450                // Method org/tekfive/relaykt/queue/QueuedMessageTable.getState:()Lorg/jetbrains/exposed/v1/core/Column;
+        25: checkcast     #440                // class org/jetbrains/exposed/v1/core/ExpressionWithColumnType
+        28: getstatic     #463                // Field org/tekfive/relaykt/queue/QueuedMessageState.PROCESSING:Lorg/tekfive/relaykt/queue/QueuedMessageState;
+        31: invokestatic  #446                // Method org/jetbrains/exposed/v1/core/OpBuilderKt.eq:(Lorg/jetbrains/exposed/v1/core/ExpressionWithColumnType;Ljava/lang/Object;)Lorg/jetbrains/exposed/v1/core/Op;
+        34: checkcast     #448                // class org/jetbrains/exposed/v1/core/Expression
+        37: invokestatic  #454                // Method org/jetbrains/exposed/v1/core/OpBuilderKt.and:(Lorg/jetbrains/exposed/v1/core/Expression;Lorg/jetbrains/exposed/v1/core/Expression;)Lorg/jetbrains/exposed/v1/core/Op;
+        40: areturn
+
+  private static final kotlin.Unit finish$lambda$0$1(org.tekfive.relaykt.queue.QueuedMessage, org.tekfive.relaykt.queue.QueuedMessageTable, org.jetbrains.exposed.v1.core.statements.UpdateStatement);
+    Code:
+         0: aload_1
+         1: ldc_w         #458                // String $this$update
+         4: invokestatic  #25                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+         7: aload_2
+         8: ldc_w         #460                // String statement
+        11: invokestatic  #25                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+        14: aload_2
+        15: getstatic     #66                 // Field org/tekfive/relaykt/queue/QueuedMessageTable.INSTANCE:Lorg/tekfive/relaykt/queue/QueuedMessageTable;
+        18: invokevirtual #450                // Method org/tekfive/relaykt/queue/QueuedMessageTable.getState:()Lorg/jetbrains/exposed/v1/core/Column;
+        21: aload_0
+        22: invokevirtual #92                 // Method org/tekfive/relaykt/queue/QueuedMessage.getState:()Lorg/tekfive/relaykt/queue/QueuedMessageState;
+        25: invokevirtual #469                // Method org/jetbrains/exposed/v1/core/statements/UpdateStatement.set:(Lorg/jetbrains/exposed/v1/core/Column;Ljava/lang/Object;)V
+        28: aload_2
+        29: getstatic     #66                 // Field org/tekfive/relaykt/queue/QueuedMessageTable.INSTANCE:Lorg/tekfive/relaykt/queue/QueuedMessageTable;
+        32: invokevirtual #479                // Method org/tekfive/relaykt/queue/QueuedMessageTable.getLastStateChangeAt:()Lorg/jetbrains/exposed/v1/core/Column;
+        35: aload_0
+        36: invokevirtual #537                // Method org/tekfive/relaykt/queue/QueuedMessage.getLastStateChangeAt:()J
+        39: invokestatic  #70                 // Method java/lang/Long.valueOf:(J)Ljava/lang/Long;
+        42: invokevirtual #469                // Method org/jetbrains/exposed/v1/core/statements/UpdateStatement.set:(Lorg/jetbrains/exposed/v1/core/Column;Ljava/lang/Object;)V
+        45: aload_2
+        46: getstatic     #66                 // Field org/tekfive/relaykt/queue/QueuedMessageTable.INSTANCE:Lorg/tekfive/relaykt/queue/QueuedMessageTable;
+        49: invokevirtual #482                // Method org/tekfive/relaykt/queue/QueuedMessageTable.getNextAttemptAt:()Lorg/jetbrains/exposed/v1/core/Column;
+        52: aload_0
+        53: invokevirtual #539                // Method org/tekfive/relaykt/queue/QueuedMessage.getNextAttemptAt:()Ljava/lang/Long;
+        56: invokevirtual #469                // Method org/jetbrains/exposed/v1/core/statements/UpdateStatement.set:(Lorg/jetbrains/exposed/v1/core/Column;Ljava/lang/Object;)V
+        59: aload_2
+        60: getstatic     #66                 // Field org/tekfive/relaykt/queue/QueuedMessageTable.INSTANCE:Lorg/tekfive/relaykt/queue/QueuedMessageTable;
+        63: invokevirtual #542                // Method org/tekfive/relaykt/queue/QueuedMessageTable.getProviderMessageId:()Lorg/jetbrains/exposed/v1/core/Column;
+        66: aload_0
+        67: invokevirtual #544                // Method org/tekfive/relaykt/queue/QueuedMessage.getProviderMessageId:()Ljava/lang/String;
+        70: invokevirtual #469                // Method org/jetbrains/exposed/v1/core/statements/UpdateStatement.set:(Lorg/jetbrains/exposed/v1/core/Column;Ljava/lang/Object;)V
+        73: getstatic     #427                // Field kotlin/Unit.INSTANCE:Lkotlin/Unit;
+        76: areturn
+
+  private static final int finish$lambda$0(org.tekfive.relaykt.queue.QueuedMessage);
+    Code:
+         0: getstatic     #66                 // Field org/tekfive/relaykt/queue/QueuedMessageTable.INSTANCE:Lorg/tekfive/relaykt/queue/QueuedMessageTable;
+         3: checkcast     #486                // class org/jetbrains/exposed/v1/core/Table
+         6: aload_0
+         7: invokedynamic #548,  0            // InvokeDynamic #13:invoke:(Lorg/tekfive/relaykt/queue/QueuedMessage;)Lkotlin/jvm/functions/Function0;
+        12: aconst_null
+        13: aload_0
+        14: invokedynamic #554,  0            // InvokeDynamic #14:invoke:(Lorg/tekfive/relaykt/queue/QueuedMessage;)Lkotlin/jvm/functions/Function2;
+        19: iconst_2
+        20: aconst_null
+        21: invokestatic  #508                // Method org/jetbrains/exposed/v1/jdbc/QueriesKt.update$default:(Lorg/jetbrains/exposed/v1/core/Table;Lkotlin/jvm/functions/Function0;Ljava/lang/Integer;Lkotlin/jvm/functions/Function2;ILjava/lang/Object;)I
+        24: ireturn
+
+  private static final org.tekfive.relaykt.queue.DeliveryAttempt finish$lambda$1(org.tekfive.relaykt.queue.DeliveryAttempt);
+    Code:
+         0: getstatic     #524                // Field org/tekfive/relaykt/queue/DeliveryAttemptTable.INSTANCE:Lorg/tekfive/relaykt/queue/DeliveryAttemptTable;
+         3: aload_0
+         4: checkcast     #418                // class org/tekfive/keep/data/Data
+         7: invokevirtual #557                // Method org/tekfive/relaykt/queue/DeliveryAttemptTable.update:(Lorg/tekfive/keep/data/Data;)Lorg/tekfive/keep/data/Data;
+        10: checkcast     #167                // class org/tekfive/relaykt/queue/DeliveryAttempt
+        13: areturn
+
+  public static final org.tekfive.ack.Ack access$getRetryBaseDelaySecondsAck$cp();
+    Code:
+         0: getstatic     #564                // Field retryBaseDelaySecondsAck:Lorg/tekfive/ack/Ack;
+         3: areturn
+
+  public static final org.tekfive.ack.Ack access$getRetryMaxDelaySecondsAck$cp();
+    Code:
+         0: getstatic     #568                // Field retryMaxDelaySecondsAck:Lorg/tekfive/ack/Ack;
+         3: areturn
+
+  public static final boolean access$getEstimateRuntime$cp();
+    Code:
+         0: getstatic     #572                // Field estimateRuntime:Z
+         3: ireturn
+
+  static {};
+    Code:
+         0: new           #267                // class org/tekfive/relaykt/queue/SendQueuedMessageJob$Companion
+         3: dup
+         4: aconst_null
+         5: invokespecial #576                // Method org/tekfive/relaykt/queue/SendQueuedMessageJob$Companion."<init>":(Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+         8: putstatic     #261                // Field Companion:Lorg/tekfive/relaykt/queue/SendQueuedMessageJob$Companion;
+        11: getstatic     #581                // Field org/tekfive/ack/Ack.Companion:Lorg/tekfive/ack/Ack$Companion;
+        14: ldc_w         #583                // String RETRY_BASE_DELAY_SECONDS
+        17: bipush        120
+        19: invokestatic  #476                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+        22: iconst_0
+        23: invokestatic  #476                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+        26: aconst_null
+        27: ldc_w         #585                // String RELAY_QUEUE
+        30: ldc_w         #587                // String Delay before the first retry of a failed queued message; doubles with each further attempt.
+        33: bipush        8
+        35: aconst_null
+        36: invokestatic  #593                // Method org/tekfive/ack/Ack$Companion.int$default:(Lorg/tekfive/ack/Ack$Companion;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lorg/tekfive/ack/Ack;
+        39: putstatic     #564                // Field retryBaseDelaySecondsAck:Lorg/tekfive/ack/Ack;
+        42: getstatic     #581                // Field org/tekfive/ack/Ack.Companion:Lorg/tekfive/ack/Ack$Companion;
+        45: ldc_w         #595                // String RETRY_MAX_DELAY_SECONDS
+        48: sipush        3600
+        51: invokestatic  #476                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+        54: iconst_0
+        55: invokestatic  #476                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+        58: aconst_null
+        59: ldc_w         #585                // String RELAY_QUEUE
+        62: ldc_w         #597                // String Upper bound on the delay between retries of a failed queued message.
+        65: bipush        8
+        67: aconst_null
+        68: invokestatic  #593                // Method org/tekfive/ack/Ack$Companion.int$default:(Lorg/tekfive/ack/Ack$Companion;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lorg/tekfive/ack/Ack;
+        71: putstatic     #568                // Field retryMaxDelaySecondsAck:Lorg/tekfive/ack/Ack;
+        74: return
+}

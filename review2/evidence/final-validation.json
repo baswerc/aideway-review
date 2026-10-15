@@ -1,0 +1,29 @@
+{
+  "requiredFiles": [
+    "00-baseline.md",
+    "prior-findings-status.md",
+    "findings.md",
+    "go-live-checklist.md",
+    "open-questions.md",
+    "install-kit.md",
+    "recommendation.md"
+  ],
+  "missingLinks": [],
+  "projectStates": [
+    {
+      "project": "aideway",
+      "head": "9e015e0fe15a50a04cf434c5a445798199f52c93",
+      "status": ""
+    },
+    {
+      "project": "harness",
+      "head": "5abce3b05b8c74dec60511b9b01929b3d52f8802",
+      "status": ""
+    },
+    {
+      "project": "docs",
+      "head": "066268e932e8f4491c8d1cfb17fb6b0ce355fc8a",
+      "status": ""
+    }
+  ]
+}

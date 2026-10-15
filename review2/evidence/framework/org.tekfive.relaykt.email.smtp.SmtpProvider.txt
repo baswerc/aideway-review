@@ -1,0 +1,900 @@
+Compiled from "SmtpProvider.kt"
+public final class org.tekfive.relaykt.email.smtp.SmtpProvider implements org.tekfive.relaykt.provider.Provider<org.tekfive.relaykt.email.EmailMessage> {
+  public static final org.tekfive.relaykt.email.smtp.SmtpProvider INSTANCE;
+
+  private static final org.tekfive.ack.Ack<java.lang.Integer> connectionTimeoutDefaultMSecsAck;
+
+  private static final org.tekfive.ack.Ack<java.lang.Integer> timeoutDefaultMSecsAck;
+
+  private static final org.tekfive.ack.Ack<java.lang.Integer> writeTimeoutDefaultMSecsAck;
+
+  private static final java.lang.String id;
+
+  private static final org.tekfive.relaykt.Channel channel;
+
+  private static final java.util.Set<org.tekfive.relaykt.Capability> capabilities;
+
+  public static final java.lang.String NAMESPACE;
+
+  private org.tekfive.relaykt.email.smtp.SmtpProvider();
+    Code:
+         0: aload_0
+         1: invokespecial #11                 // Method java/lang/Object."<init>":()V
+         4: return
+
+  public final org.tekfive.ack.Ack<java.lang.Integer> getConnectionTimeoutDefaultMSecsAck();
+    Code:
+         0: getstatic     #21                 // Field connectionTimeoutDefaultMSecsAck:Lorg/tekfive/ack/Ack;
+         3: areturn
+
+  public final org.tekfive.ack.Ack<java.lang.Integer> getTimeoutDefaultMSecsAck();
+    Code:
+         0: getstatic     #25                 // Field timeoutDefaultMSecsAck:Lorg/tekfive/ack/Ack;
+         3: areturn
+
+  public final org.tekfive.ack.Ack<java.lang.Integer> getWriteTimeoutDefaultMSecsAck();
+    Code:
+         0: getstatic     #29                 // Field writeTimeoutDefaultMSecsAck:Lorg/tekfive/ack/Ack;
+         3: areturn
+
+  public java.lang.String getId();
+    Code:
+         0: getstatic     #35                 // Field id:Ljava/lang/String;
+         3: areturn
+
+  public org.tekfive.relaykt.Channel getChannel();
+    Code:
+         0: getstatic     #41                 // Field channel:Lorg/tekfive/relaykt/Channel;
+         3: areturn
+
+  public java.util.Set<org.tekfive.relaykt.Capability> getCapabilities();
+    Code:
+         0: getstatic     #48                 // Field capabilities:Ljava/util/Set;
+         3: areturn
+
+  public void validateConfiguration(org.tekfive.jfk.JsonObject);
+    Code:
+         0: aload_1
+         1: ldc           #52                 // String configuration
+         3: invokestatic  #58                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+         6: getstatic     #64                 // Field org/tekfive/relaykt/provider/ProviderConfigurations.INSTANCE:Lorg/tekfive/relaykt/provider/ProviderConfigurations;
+         9: getstatic     #70                 // Field org/tekfive/relaykt/email/smtp/SmtpConfiguration.Companion:Lorg/tekfive/relaykt/email/smtp/SmtpConfiguration$Companion;
+        12: checkcast     #72                 // class org/tekfive/jfk/FromJsonObject
+        15: aload_1
+        16: invokevirtual #76                 // Method org/tekfive/relaykt/provider/ProviderConfigurations.parse:(Lorg/tekfive/jfk/FromJsonObject;Lorg/tekfive/jfk/JsonObject;)Ljava/lang/Object;
+        19: pop
+        20: return
+
+  public org.tekfive.relaykt.SendResult send(org.tekfive.relaykt.email.EmailMessage, org.tekfive.jfk.JsonObject);
+    Code:
+         0: aload_1
+         1: ldc           #85                 // String message
+         3: invokestatic  #58                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+         6: aload_2
+         7: ldc           #52                 // String configuration
+         9: invokestatic  #58                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+        12: getstatic     #64                 // Field org/tekfive/relaykt/provider/ProviderConfigurations.INSTANCE:Lorg/tekfive/relaykt/provider/ProviderConfigurations;
+        15: getstatic     #70                 // Field org/tekfive/relaykt/email/smtp/SmtpConfiguration.Companion:Lorg/tekfive/relaykt/email/smtp/SmtpConfiguration$Companion;
+        18: checkcast     #72                 // class org/tekfive/jfk/FromJsonObject
+        21: aload_2
+        22: invokevirtual #76                 // Method org/tekfive/relaykt/provider/ProviderConfigurations.parse:(Lorg/tekfive/jfk/FromJsonObject;Lorg/tekfive/jfk/JsonObject;)Ljava/lang/Object;
+        25: checkcast     #66                 // class org/tekfive/relaykt/email/smtp/SmtpConfiguration
+        28: astore_3
+        29: aload_0
+        30: aload_3
+        31: invokevirtual #89                 // Method buildSessionProperties$com_github_TekFive_relaykt:(Lorg/tekfive/relaykt/email/smtp/SmtpConfiguration;)Ljava/util/Properties;
+        34: aload_0
+        35: aload_3
+        36: invokevirtual #93                 // Method buildAuthenticator$com_github_TekFive_relaykt:(Lorg/tekfive/relaykt/email/smtp/SmtpConfiguration;)Ljakarta/mail/Authenticator;
+        39: invokestatic  #99                 // Method jakarta/mail/Session.getInstance:(Ljava/util/Properties;Ljakarta/mail/Authenticator;)Ljakarta/mail/Session;
+        42: astore        4
+        44: aload_0
+        45: aload_1
+        46: aload         4
+        48: invokestatic  #103                // Method kotlin/jvm/internal/Intrinsics.checkNotNull:(Ljava/lang/Object;)V
+        51: aload         4
+        53: invokevirtual #107                // Method buildMimeMessage$com_github_TekFive_relaykt:(Lorg/tekfive/relaykt/email/EmailMessage;Ljakarta/mail/Session;)Ljakarta/mail/internet/MimeMessage;
+        56: astore        5
+        58: nop
+        59: aload         5
+        61: checkcast     #109                // class jakarta/mail/Message
+        64: invokestatic  #114                // Method jakarta/mail/Transport.send:(Ljakarta/mail/Message;)V
+        67: goto          156
+        70: astore        6
+        72: aload         6
+        74: invokevirtual #118                // Method jakarta/mail/SendFailedException.getInvalidAddresses:()[Ljakarta/mail/Address;
+        77: dup
+        78: ifnull        85
+        81: arraylength
+        82: goto          87
+        85: pop
+        86: iconst_0
+        87: istore        7
+        89: aload         6
+        91: invokevirtual #121                // Method jakarta/mail/SendFailedException.getValidUnsentAddresses:()[Ljakarta/mail/Address;
+        94: dup
+        95: ifnull        102
+        98: arraylength
+        99: goto          104
+       102: pop
+       103: iconst_0
+       104: istore        8
+       106: new           #123                // class org/tekfive/relaykt/RelayException
+       109: dup
+       110: iload         7
+       112: iload         8
+       114: invokedynamic #135,  0            // InvokeDynamic #0:makeConcatWithConstants:(II)Ljava/lang/String;
+       119: iconst_0
+       120: aconst_null
+       121: iconst_4
+       122: aconst_null
+       123: invokespecial #138                // Method org/tekfive/relaykt/RelayException."<init>":(Ljava/lang/String;ZLjava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+       126: athrow
+       127: astore        6
+       129: new           #123                // class org/tekfive/relaykt/RelayException
+       132: dup
+       133: aload         6
+       135: invokevirtual #142                // Method java/lang/Object.getClass:()Ljava/lang/Class;
+       138: invokevirtual #147                // Method java/lang/Class.getSimpleName:()Ljava/lang/String;
+       141: invokedynamic #152,  0            // InvokeDynamic #1:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+       146: iconst_1
+       147: aload         6
+       149: checkcast     #154                // class java/lang/Throwable
+       152: invokespecial #157                // Method org/tekfive/relaykt/RelayException."<init>":(Ljava/lang/String;ZLjava/lang/Throwable;)V
+       155: athrow
+       156: new           #159                // class org/tekfive/relaykt/SendResult
+       159: dup
+       160: aload         5
+       162: invokevirtual #164                // Method jakarta/mail/internet/MimeMessage.getMessageID:()Ljava/lang/String;
+       165: dup
+       166: ifnonnull     172
+       169: pop
+       170: ldc           #166                // String
+       172: aload_0
+       173: invokevirtual #168                // Method getId:()Ljava/lang/String;
+       176: getstatic     #174                // Field org/tekfive/relaykt/DeliveryStatus.SENT:Lorg/tekfive/relaykt/DeliveryStatus;
+       179: aconst_null
+       180: bipush        8
+       182: aconst_null
+       183: invokespecial #177                // Method org/tekfive/relaykt/SendResult."<init>":(Ljava/lang/String;Ljava/lang/String;Lorg/tekfive/relaykt/DeliveryStatus;Ljava/util/Map;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+       186: areturn
+      Exception table:
+         from    to  target type
+            58    67    70   Class jakarta/mail/SendFailedException
+            58    67   127   Class jakarta/mail/MessagingException
+
+  public final jakarta.mail.internet.MimeMessage buildMimeMessage$com_github_TekFive_relaykt(org.tekfive.relaykt.email.EmailMessage, jakarta.mail.Session);
+    Code:
+         0: aload_1
+         1: ldc           #85                 // String message
+         3: invokestatic  #58                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+         6: aload_2
+         7: ldc           #199                // String session
+         9: invokestatic  #58                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+        12: aload_0
+        13: aload_1
+        14: invokevirtual #202                // Method org/tekfive/relaykt/email/EmailMessage.getContentType:()Ljava/lang/String;
+        17: ldc           #204                // String content type
+        19: invokespecial #208                // Method requireNoLineBreaks:(Ljava/lang/String;Ljava/lang/String;)V
+        22: new           #161                // class jakarta/mail/internet/MimeMessage
+        25: dup
+        26: aload_2
+        27: invokespecial #211                // Method jakarta/mail/internet/MimeMessage."<init>":(Ljakarta/mail/Session;)V
+        30: astore_3
+        31: aload_3
+        32: aload_0
+        33: aload_1
+        34: invokevirtual #215                // Method org/tekfive/relaykt/email/EmailMessage.getFrom:()Lorg/tekfive/relaykt/MessageAddress;
+        37: invokespecial #219                // Method toInternetAddress:(Lorg/tekfive/relaykt/MessageAddress;)Ljakarta/mail/internet/InternetAddress;
+        40: checkcast     #221                // class jakarta/mail/Address
+        43: invokevirtual #225                // Method jakarta/mail/internet/MimeMessage.setFrom:(Ljakarta/mail/Address;)V
+        46: aload_3
+        47: getstatic     #231                // Field jakarta/mail/Message$RecipientType.TO:Ljakarta/mail/Message$RecipientType;
+        50: aload_1
+        51: invokevirtual #235                // Method org/tekfive/relaykt/email/EmailMessage.getTo:()Ljava/util/List;
+        54: checkcast     #237                // class java/lang/Iterable
+        57: astore        4
+        59: astore        14
+        61: astore        13
+        63: iconst_0
+        64: istore        5
+        66: aload         4
+        68: astore        6
+        70: new           #239                // class java/util/ArrayList
+        73: dup
+        74: aload         4
+        76: bipush        10
+        78: invokestatic  #245                // Method kotlin/collections/CollectionsKt.collectionSizeOrDefault:(Ljava/lang/Iterable;I)I
+        81: invokespecial #248                // Method java/util/ArrayList."<init>":(I)V
+        84: checkcast     #250                // class java/util/Collection
+        87: astore        7
+        89: iconst_0
+        90: istore        8
+        92: aload         6
+        94: invokeinterface #254,  1          // InterfaceMethod java/lang/Iterable.iterator:()Ljava/util/Iterator;
+        99: astore        9
+       101: aload         9
+       103: invokeinterface #260,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+       108: ifeq          152
+       111: aload         9
+       113: invokeinterface #264,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       118: astore        10
+       120: aload         7
+       122: aload         10
+       124: checkcast     #266                // class org/tekfive/relaykt/MessageAddress
+       127: astore        11
+       129: astore        15
+       131: iconst_0
+       132: istore        12
+       134: aload_0
+       135: aload         11
+       137: invokespecial #219                // Method toInternetAddress:(Lorg/tekfive/relaykt/MessageAddress;)Ljakarta/mail/internet/InternetAddress;
+       140: aload         15
+       142: swap
+       143: invokeinterface #270,  2          // InterfaceMethod java/util/Collection.add:(Ljava/lang/Object;)Z
+       148: pop
+       149: goto          101
+       152: aload         7
+       154: checkcast     #272                // class java/util/List
+       157: nop
+       158: astore        15
+       160: aload         13
+       162: aload         14
+       164: aload         15
+       166: checkcast     #250                // class java/util/Collection
+       169: astore        4
+       171: nop
+       172: iconst_0
+       173: istore        5
+       175: aload         4
+       177: astore        6
+       179: aload         6
+       181: iconst_0
+       182: anewarray     #274                // class jakarta/mail/internet/InternetAddress
+       185: invokeinterface #278,  2          // InterfaceMethod java/util/Collection.toArray:([Ljava/lang/Object;)[Ljava/lang/Object;
+       190: checkcast     #196                // class "[Ljakarta/mail/Address;"
+       193: invokevirtual #282                // Method jakarta/mail/internet/MimeMessage.setRecipients:(Ljakarta/mail/Message$RecipientType;[Ljakarta/mail/Address;)V
+       196: aload_1
+       197: invokevirtual #285                // Method org/tekfive/relaykt/email/EmailMessage.getCc:()Ljava/util/List;
+       200: checkcast     #250                // class java/util/Collection
+       203: invokeinterface #288,  1          // InterfaceMethod java/util/Collection.isEmpty:()Z
+       208: ifne          215
+       211: iconst_1
+       212: goto          216
+       215: iconst_0
+       216: ifeq          369
+       219: aload_3
+       220: getstatic     #291                // Field jakarta/mail/Message$RecipientType.CC:Ljakarta/mail/Message$RecipientType;
+       223: aload_1
+       224: invokevirtual #285                // Method org/tekfive/relaykt/email/EmailMessage.getCc:()Ljava/util/List;
+       227: checkcast     #237                // class java/lang/Iterable
+       230: astore        4
+       232: astore        14
+       234: astore        13
+       236: iconst_0
+       237: istore        5
+       239: aload         4
+       241: astore        6
+       243: new           #239                // class java/util/ArrayList
+       246: dup
+       247: aload         4
+       249: bipush        10
+       251: invokestatic  #245                // Method kotlin/collections/CollectionsKt.collectionSizeOrDefault:(Ljava/lang/Iterable;I)I
+       254: invokespecial #248                // Method java/util/ArrayList."<init>":(I)V
+       257: checkcast     #250                // class java/util/Collection
+       260: astore        7
+       262: iconst_0
+       263: istore        8
+       265: aload         6
+       267: invokeinterface #254,  1          // InterfaceMethod java/lang/Iterable.iterator:()Ljava/util/Iterator;
+       272: astore        9
+       274: aload         9
+       276: invokeinterface #260,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+       281: ifeq          325
+       284: aload         9
+       286: invokeinterface #264,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       291: astore        10
+       293: aload         7
+       295: aload         10
+       297: checkcast     #266                // class org/tekfive/relaykt/MessageAddress
+       300: astore        11
+       302: astore        15
+       304: iconst_0
+       305: istore        12
+       307: aload_0
+       308: aload         11
+       310: invokespecial #219                // Method toInternetAddress:(Lorg/tekfive/relaykt/MessageAddress;)Ljakarta/mail/internet/InternetAddress;
+       313: aload         15
+       315: swap
+       316: invokeinterface #270,  2          // InterfaceMethod java/util/Collection.add:(Ljava/lang/Object;)Z
+       321: pop
+       322: goto          274
+       325: aload         7
+       327: checkcast     #272                // class java/util/List
+       330: nop
+       331: astore        15
+       333: aload         13
+       335: aload         14
+       337: aload         15
+       339: checkcast     #250                // class java/util/Collection
+       342: astore        4
+       344: nop
+       345: iconst_0
+       346: istore        5
+       348: aload         4
+       350: astore        6
+       352: aload         6
+       354: iconst_0
+       355: anewarray     #274                // class jakarta/mail/internet/InternetAddress
+       358: invokeinterface #278,  2          // InterfaceMethod java/util/Collection.toArray:([Ljava/lang/Object;)[Ljava/lang/Object;
+       363: checkcast     #196                // class "[Ljakarta/mail/Address;"
+       366: invokevirtual #282                // Method jakarta/mail/internet/MimeMessage.setRecipients:(Ljakarta/mail/Message$RecipientType;[Ljakarta/mail/Address;)V
+       369: aload_1
+       370: invokevirtual #294                // Method org/tekfive/relaykt/email/EmailMessage.getBcc:()Ljava/util/List;
+       373: checkcast     #250                // class java/util/Collection
+       376: invokeinterface #288,  1          // InterfaceMethod java/util/Collection.isEmpty:()Z
+       381: ifne          388
+       384: iconst_1
+       385: goto          389
+       388: iconst_0
+       389: ifeq          542
+       392: aload_3
+       393: getstatic     #297                // Field jakarta/mail/Message$RecipientType.BCC:Ljakarta/mail/Message$RecipientType;
+       396: aload_1
+       397: invokevirtual #294                // Method org/tekfive/relaykt/email/EmailMessage.getBcc:()Ljava/util/List;
+       400: checkcast     #237                // class java/lang/Iterable
+       403: astore        4
+       405: astore        14
+       407: astore        13
+       409: iconst_0
+       410: istore        5
+       412: aload         4
+       414: astore        6
+       416: new           #239                // class java/util/ArrayList
+       419: dup
+       420: aload         4
+       422: bipush        10
+       424: invokestatic  #245                // Method kotlin/collections/CollectionsKt.collectionSizeOrDefault:(Ljava/lang/Iterable;I)I
+       427: invokespecial #248                // Method java/util/ArrayList."<init>":(I)V
+       430: checkcast     #250                // class java/util/Collection
+       433: astore        7
+       435: iconst_0
+       436: istore        8
+       438: aload         6
+       440: invokeinterface #254,  1          // InterfaceMethod java/lang/Iterable.iterator:()Ljava/util/Iterator;
+       445: astore        9
+       447: aload         9
+       449: invokeinterface #260,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+       454: ifeq          498
+       457: aload         9
+       459: invokeinterface #264,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       464: astore        10
+       466: aload         7
+       468: aload         10
+       470: checkcast     #266                // class org/tekfive/relaykt/MessageAddress
+       473: astore        11
+       475: astore        15
+       477: iconst_0
+       478: istore        12
+       480: aload_0
+       481: aload         11
+       483: invokespecial #219                // Method toInternetAddress:(Lorg/tekfive/relaykt/MessageAddress;)Ljakarta/mail/internet/InternetAddress;
+       486: aload         15
+       488: swap
+       489: invokeinterface #270,  2          // InterfaceMethod java/util/Collection.add:(Ljava/lang/Object;)Z
+       494: pop
+       495: goto          447
+       498: aload         7
+       500: checkcast     #272                // class java/util/List
+       503: nop
+       504: astore        15
+       506: aload         13
+       508: aload         14
+       510: aload         15
+       512: checkcast     #250                // class java/util/Collection
+       515: astore        4
+       517: nop
+       518: iconst_0
+       519: istore        5
+       521: aload         4
+       523: astore        6
+       525: aload         6
+       527: iconst_0
+       528: anewarray     #274                // class jakarta/mail/internet/InternetAddress
+       531: invokeinterface #278,  2          // InterfaceMethod java/util/Collection.toArray:([Ljava/lang/Object;)[Ljava/lang/Object;
+       536: checkcast     #196                // class "[Ljakarta/mail/Address;"
+       539: invokevirtual #282                // Method jakarta/mail/internet/MimeMessage.setRecipients:(Ljakarta/mail/Message$RecipientType;[Ljakarta/mail/Address;)V
+       542: aload_1
+       543: invokevirtual #300                // Method org/tekfive/relaykt/email/EmailMessage.getReplyTo:()Lorg/tekfive/relaykt/MessageAddress;
+       546: dup
+       547: ifnull        585
+       550: astore        6
+       552: iconst_0
+       553: istore        7
+       555: aload_3
+       556: iconst_1
+       557: anewarray     #274                // class jakarta/mail/internet/InternetAddress
+       560: astore        8
+       562: aload         8
+       564: iconst_0
+       565: getstatic     #302                // Field INSTANCE:Lorg/tekfive/relaykt/email/smtp/SmtpProvider;
+       568: aload         6
+       570: invokespecial #219                // Method toInternetAddress:(Lorg/tekfive/relaykt/MessageAddress;)Ljakarta/mail/internet/InternetAddress;
+       573: aastore
+       574: aload         8
+       576: checkcast     #196                // class "[Ljakarta/mail/Address;"
+       579: invokevirtual #306                // Method jakarta/mail/internet/MimeMessage.setReplyTo:([Ljakarta/mail/Address;)V
+       582: goto          587
+       585: pop
+       586: nop
+       587: aload_1
+       588: invokevirtual #309                // Method org/tekfive/relaykt/email/EmailMessage.getSubject:()Ljava/lang/String;
+       591: checkcast     #311                // class java/lang/CharSequence
+       594: astore        4
+       596: aload         4
+       598: ifnull        609
+       601: aload         4
+       603: invokestatic  #317                // Method kotlin/text/StringsKt.isBlank:(Ljava/lang/CharSequence;)Z
+       606: ifeq          613
+       609: iconst_1
+       610: goto          614
+       613: iconst_0
+       614: ifne          635
+       617: aload_3
+       618: aload_0
+       619: aload_1
+       620: invokevirtual #309                // Method org/tekfive/relaykt/email/EmailMessage.getSubject:()Ljava/lang/String;
+       623: invokespecial #320                // Method stripLineBreaks:(Ljava/lang/String;)Ljava/lang/String;
+       626: getstatic     #326                // Field kotlin/text/Charsets.UTF_8:Ljava/nio/charset/Charset;
+       629: invokevirtual #331                // Method java/nio/charset/Charset.name:()Ljava/lang/String;
+       632: invokevirtual #334                // Method jakarta/mail/internet/MimeMessage.setSubject:(Ljava/lang/String;Ljava/lang/String;)V
+       635: aload_1
+       636: invokevirtual #337                // Method org/tekfive/relaykt/email/EmailMessage.getAttachments:()Ljava/util/List;
+       639: invokeinterface #338,  1          // InterfaceMethod java/util/List.isEmpty:()Z
+       644: ifeq          667
+       647: aload_3
+       648: aload_1
+       649: invokevirtual #341                // Method org/tekfive/relaykt/email/EmailMessage.getBody:()Ljava/lang/String;
+       652: aload_1
+       653: invokevirtual #202                // Method org/tekfive/relaykt/email/EmailMessage.getContentType:()Ljava/lang/String;
+       656: invokedynamic #344,  0            // InvokeDynamic #2:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+       661: invokevirtual #347                // Method jakarta/mail/internet/MimeMessage.setContent:(Ljava/lang/Object;Ljava/lang/String;)V
+       664: goto          775
+       667: new           #349                // class jakarta/mail/internet/MimeMultipart
+       670: dup
+       671: ldc_w         #351                // String mixed
+       674: invokespecial #354                // Method jakarta/mail/internet/MimeMultipart."<init>":(Ljava/lang/String;)V
+       677: astore        4
+       679: new           #356                // class jakarta/mail/internet/MimeBodyPart
+       682: dup
+       683: invokespecial #357                // Method jakarta/mail/internet/MimeBodyPart."<init>":()V
+       686: astore        5
+       688: aload         5
+       690: aload_1
+       691: invokevirtual #341                // Method org/tekfive/relaykt/email/EmailMessage.getBody:()Ljava/lang/String;
+       694: aload_1
+       695: invokevirtual #202                // Method org/tekfive/relaykt/email/EmailMessage.getContentType:()Ljava/lang/String;
+       698: invokedynamic #344,  0            // InvokeDynamic #2:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+       703: invokevirtual #358                // Method jakarta/mail/internet/MimeBodyPart.setContent:(Ljava/lang/Object;Ljava/lang/String;)V
+       706: aload         4
+       708: aload         5
+       710: checkcast     #360                // class jakarta/mail/BodyPart
+       713: invokevirtual #364                // Method jakarta/mail/internet/MimeMultipart.addBodyPart:(Ljakarta/mail/BodyPart;)V
+       716: aload_1
+       717: invokevirtual #337                // Method org/tekfive/relaykt/email/EmailMessage.getAttachments:()Ljava/util/List;
+       720: invokeinterface #365,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+       725: astore        6
+       727: aload         6
+       729: invokeinterface #260,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+       734: ifeq          766
+       737: aload         6
+       739: invokeinterface #264,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       744: checkcast     #367                // class org/tekfive/relaykt/Attachment
+       747: astore        7
+       749: aload         4
+       751: aload_0
+       752: aload         7
+       754: invokespecial #371                // Method buildAttachmentPart:(Lorg/tekfive/relaykt/Attachment;)Ljakarta/mail/internet/MimeBodyPart;
+       757: checkcast     #360                // class jakarta/mail/BodyPart
+       760: invokevirtual #364                // Method jakarta/mail/internet/MimeMultipart.addBodyPart:(Ljakarta/mail/BodyPart;)V
+       763: goto          727
+       766: aload_3
+       767: aload         4
+       769: checkcast     #373                // class jakarta/mail/Multipart
+       772: invokevirtual #376                // Method jakarta/mail/internet/MimeMessage.setContent:(Ljakarta/mail/Multipart;)V
+       775: aload_3
+       776: invokevirtual #379                // Method jakarta/mail/internet/MimeMessage.saveChanges:()V
+       779: aload_3
+       780: areturn
+
+  private final jakarta.mail.internet.MimeBodyPart buildAttachmentPart(org.tekfive.relaykt.Attachment);
+    Code:
+         0: aload_0
+         1: aload_1
+         2: invokevirtual #405                // Method org/tekfive/relaykt/Attachment.getContentType:()Ljava/lang/String;
+         5: ldc_w         #407                // String attachment content type
+         8: invokespecial #208                // Method requireNoLineBreaks:(Ljava/lang/String;Ljava/lang/String;)V
+        11: aload_0
+        12: aload_1
+        13: invokevirtual #410                // Method org/tekfive/relaykt/Attachment.getFileName:()Ljava/lang/String;
+        16: ldc_w         #412                // String attachment file name
+        19: invokespecial #208                // Method requireNoLineBreaks:(Ljava/lang/String;Ljava/lang/String;)V
+        22: new           #356                // class jakarta/mail/internet/MimeBodyPart
+        25: dup
+        26: invokespecial #357                // Method jakarta/mail/internet/MimeBodyPart."<init>":()V
+        29: astore_2
+        30: aload_2
+        31: new           #414                // class jakarta/activation/DataHandler
+        34: dup
+        35: new           #416                // class jakarta/mail/util/ByteArrayDataSource
+        38: dup
+        39: aload_1
+        40: invokevirtual #420                // Method org/tekfive/relaykt/Attachment.getContent:()[B
+        43: aload_1
+        44: invokevirtual #405                // Method org/tekfive/relaykt/Attachment.getContentType:()Ljava/lang/String;
+        47: invokespecial #423                // Method jakarta/mail/util/ByteArrayDataSource."<init>":([BLjava/lang/String;)V
+        50: checkcast     #425                // class jakarta/activation/DataSource
+        53: invokespecial #428                // Method jakarta/activation/DataHandler."<init>":(Ljakarta/activation/DataSource;)V
+        56: invokevirtual #432                // Method jakarta/mail/internet/MimeBodyPart.setDataHandler:(Ljakarta/activation/DataHandler;)V
+        59: aload_2
+        60: aload_1
+        61: invokevirtual #410                // Method org/tekfive/relaykt/Attachment.getFileName:()Ljava/lang/String;
+        64: invokevirtual #435                // Method jakarta/mail/internet/MimeBodyPart.setFileName:(Ljava/lang/String;)V
+        67: aload_2
+        68: ldc_w         #436                // String attachment
+        71: invokevirtual #439                // Method jakarta/mail/internet/MimeBodyPart.setDisposition:(Ljava/lang/String;)V
+        74: aload_2
+        75: areturn
+
+  public final java.util.Properties buildSessionProperties$com_github_TekFive_relaykt(org.tekfive.relaykt.email.smtp.SmtpConfiguration);
+    Code:
+         0: aload_1
+         1: ldc           #52                 // String configuration
+         3: invokestatic  #58                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+         6: aload_1
+         7: invokevirtual #444                // Method org/tekfive/relaykt/email/smtp/SmtpConfiguration.getStartTls:()Ljava/lang/Boolean;
+        10: dup
+        11: ifnull        20
+        14: invokevirtual #449                // Method java/lang/Boolean.booleanValue:()Z
+        17: goto          22
+        20: pop
+        21: iconst_1
+        22: istore_2
+        23: new           #451                // class java/util/Properties
+        26: dup
+        27: invokespecial #452                // Method java/util/Properties."<init>":()V
+        30: astore_3
+        31: aload_3
+        32: astore        4
+        34: iconst_0
+        35: istore        5
+        37: aload         4
+        39: ldc_w         #454                // String mail.smtp.host
+        42: aload_1
+        43: invokevirtual #457                // Method org/tekfive/relaykt/email/smtp/SmtpConfiguration.getHost:()Ljava/lang/String;
+        46: invokevirtual #461                // Method java/util/Properties.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+        49: pop
+        50: aload         4
+        52: ldc_w         #463                // String mail.smtp.port
+        55: aload_1
+        56: invokevirtual #467                // Method org/tekfive/relaykt/email/smtp/SmtpConfiguration.getPort:()Ljava/lang/Integer;
+        59: dup
+        60: ifnull        69
+        63: invokevirtual #473                // Method java/lang/Integer.intValue:()I
+        66: goto          73
+        69: pop
+        70: sipush        587
+        73: invokestatic  #477                // Method java/lang/String.valueOf:(I)Ljava/lang/String;
+        76: invokevirtual #461                // Method java/util/Properties.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+        79: pop
+        80: aload         4
+        82: ldc_w         #479                // String mail.smtp.auth
+        85: aload_1
+        86: invokevirtual #482                // Method org/tekfive/relaykt/email/smtp/SmtpConfiguration.getShouldAuthenticate:()Z
+        89: invokestatic  #485                // Method java/lang/String.valueOf:(Z)Ljava/lang/String;
+        92: invokevirtual #461                // Method java/util/Properties.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+        95: pop
+        96: aload         4
+        98: ldc_w         #487                // String mail.smtp.starttls.enable
+       101: iload_2
+       102: invokestatic  #485                // Method java/lang/String.valueOf:(Z)Ljava/lang/String;
+       105: invokevirtual #461                // Method java/util/Properties.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+       108: pop
+       109: aload         4
+       111: ldc_w         #489                // String mail.smtp.starttls.required
+       114: iload_2
+       115: invokestatic  #485                // Method java/lang/String.valueOf:(Z)Ljava/lang/String;
+       118: invokevirtual #461                // Method java/util/Properties.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+       121: pop
+       122: aload         4
+       124: ldc_w         #491                // String mail.smtp.ssl.enable
+       127: aload_1
+       128: invokevirtual #494                // Method org/tekfive/relaykt/email/smtp/SmtpConfiguration.getSslEnabled:()Ljava/lang/Boolean;
+       131: dup
+       132: ifnull        141
+       135: invokevirtual #449                // Method java/lang/Boolean.booleanValue:()Z
+       138: goto          143
+       141: pop
+       142: iconst_0
+       143: invokestatic  #485                // Method java/lang/String.valueOf:(Z)Ljava/lang/String;
+       146: invokevirtual #461                // Method java/util/Properties.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+       149: pop
+       150: aload         4
+       152: ldc_w         #496                // String mail.smtp.ssl.checkserveridentity
+       155: ldc_w         #498                // String false
+       158: invokevirtual #461                // Method java/util/Properties.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+       161: pop
+       162: aload         4
+       164: ldc_w         #500                // String mail.smtp.ssl.socketFactory
+       167: new           #502                // class org/tekfive/relaykt/tls/SmtpSocketFactory
+       170: dup
+       171: aload_1
+       172: invokevirtual #506                // Method org/tekfive/relaykt/email/smtp/SmtpConfiguration.getTls:()Lorg/tekfive/relaykt/tls/TlsConfiguration;
+       175: invokespecial #509                // Method org/tekfive/relaykt/tls/SmtpSocketFactory."<init>":(Lorg/tekfive/relaykt/tls/TlsConfiguration;)V
+       178: invokevirtual #461                // Method java/util/Properties.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+       181: pop
+       182: aload         4
+       184: ldc_w         #511                // String mail.smtp.socketFactory.fallback
+       187: ldc_w         #498                // String false
+       190: invokevirtual #461                // Method java/util/Properties.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+       193: pop
+       194: aload         4
+       196: ldc_w         #513                // String mail.smtp.connectiontimeout
+       199: aload_1
+       200: invokevirtual #516                // Method org/tekfive/relaykt/email/smtp/SmtpConfiguration.getConnectionTimeoutMSecs:()Ljava/lang/Integer;
+       203: dup
+       204: ifnull        213
+       207: invokevirtual #473                // Method java/lang/Integer.intValue:()I
+       210: goto          230
+       213: pop
+       214: getstatic     #302                // Field INSTANCE:Lorg/tekfive/relaykt/email/smtp/SmtpProvider;
+       217: pop
+       218: getstatic     #21                 // Field connectionTimeoutDefaultMSecsAck:Lorg/tekfive/ack/Ack;
+       221: invokevirtual #521                // Method org/tekfive/ack/Ack.invoke:()Ljava/lang/Object;
+       224: checkcast     #523                // class java/lang/Number
+       227: invokevirtual #524                // Method java/lang/Number.intValue:()I
+       230: invokestatic  #477                // Method java/lang/String.valueOf:(I)Ljava/lang/String;
+       233: invokevirtual #461                // Method java/util/Properties.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+       236: pop
+       237: aload         4
+       239: ldc_w         #526                // String mail.smtp.timeout
+       242: aload_1
+       243: invokevirtual #529                // Method org/tekfive/relaykt/email/smtp/SmtpConfiguration.getTimeoutMSecs:()Ljava/lang/Integer;
+       246: dup
+       247: ifnull        256
+       250: invokevirtual #473                // Method java/lang/Integer.intValue:()I
+       253: goto          273
+       256: pop
+       257: getstatic     #302                // Field INSTANCE:Lorg/tekfive/relaykt/email/smtp/SmtpProvider;
+       260: pop
+       261: getstatic     #25                 // Field timeoutDefaultMSecsAck:Lorg/tekfive/ack/Ack;
+       264: invokevirtual #521                // Method org/tekfive/ack/Ack.invoke:()Ljava/lang/Object;
+       267: checkcast     #523                // class java/lang/Number
+       270: invokevirtual #524                // Method java/lang/Number.intValue:()I
+       273: invokestatic  #477                // Method java/lang/String.valueOf:(I)Ljava/lang/String;
+       276: invokevirtual #461                // Method java/util/Properties.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+       279: pop
+       280: aload         4
+       282: ldc_w         #531                // String mail.smtp.writetimeout
+       285: aload_1
+       286: invokevirtual #534                // Method org/tekfive/relaykt/email/smtp/SmtpConfiguration.getWriteTimeoutMSecs:()Ljava/lang/Integer;
+       289: dup
+       290: ifnull        299
+       293: invokevirtual #473                // Method java/lang/Integer.intValue:()I
+       296: goto          316
+       299: pop
+       300: getstatic     #302                // Field INSTANCE:Lorg/tekfive/relaykt/email/smtp/SmtpProvider;
+       303: pop
+       304: getstatic     #29                 // Field writeTimeoutDefaultMSecsAck:Lorg/tekfive/ack/Ack;
+       307: invokevirtual #521                // Method org/tekfive/ack/Ack.invoke:()Ljava/lang/Object;
+       310: checkcast     #523                // class java/lang/Number
+       313: invokevirtual #524                // Method java/lang/Number.intValue:()I
+       316: invokestatic  #477                // Method java/lang/String.valueOf:(I)Ljava/lang/String;
+       319: invokevirtual #461                // Method java/util/Properties.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+       322: pop
+       323: nop
+       324: aload_3
+       325: areturn
+
+  public final jakarta.mail.Authenticator buildAuthenticator$com_github_TekFive_relaykt(org.tekfive.relaykt.email.smtp.SmtpConfiguration);
+    Code:
+         0: aload_1
+         1: ldc           #52                 // String configuration
+         3: invokestatic  #58                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+         6: aload_1
+         7: invokevirtual #482                // Method org/tekfive/relaykt/email/smtp/SmtpConfiguration.getShouldAuthenticate:()Z
+        10: ifne          15
+        13: aconst_null
+        14: areturn
+        15: new           #542                // class org/tekfive/relaykt/email/smtp/SmtpProvider$buildAuthenticator$1
+        18: dup
+        19: aload_1
+        20: invokespecial #545                // Method org/tekfive/relaykt/email/smtp/SmtpProvider$buildAuthenticator$1."<init>":(Lorg/tekfive/relaykt/email/smtp/SmtpConfiguration;)V
+        23: checkcast     #547                // class jakarta/mail/Authenticator
+        26: areturn
+
+  private final jakarta.mail.internet.InternetAddress toInternetAddress(org.tekfive.relaykt.MessageAddress);
+    Code:
+         0: aload_0
+         1: aload_1
+         2: invokevirtual #552                // Method org/tekfive/relaykt/MessageAddress.getAddress:()Ljava/lang/String;
+         5: ldc_w         #554                // String address
+         8: invokespecial #208                // Method requireNoLineBreaks:(Ljava/lang/String;Ljava/lang/String;)V
+        11: nop
+        12: aload_1
+        13: invokevirtual #557                // Method org/tekfive/relaykt/MessageAddress.getDisplayName:()Ljava/lang/String;
+        16: checkcast     #311                // class java/lang/CharSequence
+        19: astore_3
+        20: aload_3
+        21: ifnull        31
+        24: aload_3
+        25: invokestatic  #317                // Method kotlin/text/StringsKt.isBlank:(Ljava/lang/CharSequence;)Z
+        28: ifeq          35
+        31: iconst_1
+        32: goto          36
+        35: iconst_0
+        36: ifeq          53
+        39: new           #274                // class jakarta/mail/internet/InternetAddress
+        42: dup
+        43: aload_1
+        44: invokevirtual #552                // Method org/tekfive/relaykt/MessageAddress.getAddress:()Ljava/lang/String;
+        47: invokespecial #558                // Method jakarta/mail/internet/InternetAddress."<init>":(Ljava/lang/String;)V
+        50: goto          78
+        53: new           #274                // class jakarta/mail/internet/InternetAddress
+        56: dup
+        57: aload_1
+        58: invokevirtual #552                // Method org/tekfive/relaykt/MessageAddress.getAddress:()Ljava/lang/String;
+        61: aload_0
+        62: aload_1
+        63: invokevirtual #557                // Method org/tekfive/relaykt/MessageAddress.getDisplayName:()Ljava/lang/String;
+        66: invokespecial #320                // Method stripLineBreaks:(Ljava/lang/String;)Ljava/lang/String;
+        69: getstatic     #326                // Field kotlin/text/Charsets.UTF_8:Ljava/nio/charset/Charset;
+        72: invokevirtual #331                // Method java/nio/charset/Charset.name:()Ljava/lang/String;
+        75: invokespecial #561                // Method jakarta/mail/internet/InternetAddress."<init>":(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+        78: astore_2
+        79: aload_2
+        80: invokevirtual #564                // Method jakarta/mail/internet/InternetAddress.validate:()V
+        83: aload_2
+        84: areturn
+        85: astore_3
+        86: new           #566                // class java/lang/IllegalArgumentException
+        89: dup
+        90: ldc_w         #568                // String Invalid email address
+        93: invokespecial #569                // Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+        96: athrow
+      Exception table:
+         from    to  target type
+            11    85    85   Class jakarta/mail/internet/AddressException
+
+  private final void requireNoLineBreaks(java.lang.String, java.lang.String);
+    Code:
+         0: aload_1
+         1: checkcast     #311                // class java/lang/CharSequence
+         4: bipush        13
+         6: iconst_0
+         7: iconst_2
+         8: aconst_null
+         9: invokestatic  #576                // Method kotlin/text/StringsKt.contains$default:(Ljava/lang/CharSequence;CZILjava/lang/Object;)Z
+        12: ifne          30
+        15: aload_1
+        16: checkcast     #311                // class java/lang/CharSequence
+        19: bipush        10
+        21: iconst_0
+        22: iconst_2
+        23: aconst_null
+        24: invokestatic  #576                // Method kotlin/text/StringsKt.contains$default:(Ljava/lang/CharSequence;CZILjava/lang/Object;)Z
+        27: ifeq          44
+        30: new           #566                // class java/lang/IllegalArgumentException
+        33: dup
+        34: aload_2
+        35: invokedynamic #579,  0            // InvokeDynamic #3:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+        40: invokespecial #569                // Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+        43: athrow
+        44: return
+
+  private final java.lang.String stripLineBreaks(java.lang.String);
+    Code:
+         0: aload_1
+         1: ldc_w         #583                // String \r
+         4: ldc           #166                // String
+         6: iconst_0
+         7: iconst_4
+         8: aconst_null
+         9: invokestatic  #587                // Method kotlin/text/StringsKt.replace$default:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZILjava/lang/Object;)Ljava/lang/String;
+        12: ldc_w         #589                // String \n
+        15: ldc           #166                // String
+        17: iconst_0
+        18: iconst_4
+        19: aconst_null
+        20: invokestatic  #587                // Method kotlin/text/StringsKt.replace$default:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZILjava/lang/Object;)Ljava/lang/String;
+        23: areturn
+
+  public org.tekfive.relaykt.DeliveryStatus status(java.lang.String, org.tekfive.jfk.JsonObject);
+    Code:
+         0: aload_0
+         1: aload_1
+         2: aload_2
+         3: invokespecial #593                // InterfaceMethod org/tekfive/relaykt/provider/Provider.status:(Ljava/lang/String;Lorg/tekfive/jfk/JsonObject;)Lorg/tekfive/relaykt/DeliveryStatus;
+         6: areturn
+
+  public boolean supports(org.tekfive.relaykt.Capability);
+    Code:
+         0: aload_0
+         1: aload_1
+         2: invokespecial #598                // InterfaceMethod org/tekfive/relaykt/provider/Provider.supports:(Lorg/tekfive/relaykt/Capability;)Z
+         5: ireturn
+
+  public org.tekfive.relaykt.SendResult send(org.tekfive.relaykt.Message, org.tekfive.jfk.JsonObject);
+    Code:
+         0: aload_0
+         1: aload_1
+         2: checkcast     #192                // class org/tekfive/relaykt/email/EmailMessage
+         5: aload_2
+         6: invokevirtual #603                // Method send:(Lorg/tekfive/relaykt/email/EmailMessage;Lorg/tekfive/jfk/JsonObject;)Lorg/tekfive/relaykt/SendResult;
+         9: areturn
+
+  static {};
+    Code:
+         0: new           #2                  // class org/tekfive/relaykt/email/smtp/SmtpProvider
+         3: dup
+         4: invokespecial #606                // Method "<init>":()V
+         7: putstatic     #302                // Field INSTANCE:Lorg/tekfive/relaykt/email/smtp/SmtpProvider;
+        10: getstatic     #609                // Field org/tekfive/ack/Ack.Companion:Lorg/tekfive/ack/Ack$Companion;
+        13: ldc_w         #611                // String CONNECTION_TIMEOUT_DEFAULT_MSECS
+        16: sipush        10000
+        19: invokestatic  #614                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+        22: iconst_1
+        23: invokestatic  #614                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+        26: aconst_null
+        27: ldc_w         #616                // String SMTP
+        30: ldc_w         #618                // String Default SMTP connection timeout in milliseconds.
+        33: bipush        8
+        35: aconst_null
+        36: invokestatic  #624                // Method org/tekfive/ack/Ack$Companion.int$default:(Lorg/tekfive/ack/Ack$Companion;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lorg/tekfive/ack/Ack;
+        39: putstatic     #21                 // Field connectionTimeoutDefaultMSecsAck:Lorg/tekfive/ack/Ack;
+        42: getstatic     #609                // Field org/tekfive/ack/Ack.Companion:Lorg/tekfive/ack/Ack$Companion;
+        45: ldc_w         #626                // String TIMEOUT_DEFAULT_MSECS
+        48: sipush        10000
+        51: invokestatic  #614                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+        54: iconst_1
+        55: invokestatic  #614                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+        58: aconst_null
+        59: ldc_w         #616                // String SMTP
+        62: ldc_w         #628                // String Default SMTP socket read timeout in milliseconds.
+        65: bipush        8
+        67: aconst_null
+        68: invokestatic  #624                // Method org/tekfive/ack/Ack$Companion.int$default:(Lorg/tekfive/ack/Ack$Companion;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lorg/tekfive/ack/Ack;
+        71: putstatic     #25                 // Field timeoutDefaultMSecsAck:Lorg/tekfive/ack/Ack;
+        74: getstatic     #609                // Field org/tekfive/ack/Ack.Companion:Lorg/tekfive/ack/Ack$Companion;
+        77: ldc_w         #630                // String WRITE_TIMEOUT_DEFAULT_MSECS
+        80: sipush        10000
+        83: invokestatic  #614                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+        86: iconst_1
+        87: invokestatic  #614                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+        90: aconst_null
+        91: ldc_w         #616                // String SMTP
+        94: ldc_w         #632                // String Default SMTP socket write timeout in milliseconds.
+        97: bipush        8
+        99: aconst_null
+       100: invokestatic  #624                // Method org/tekfive/ack/Ack$Companion.int$default:(Lorg/tekfive/ack/Ack$Companion;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lorg/tekfive/ack/Ack;
+       103: putstatic     #29                 // Field writeTimeoutDefaultMSecsAck:Lorg/tekfive/ack/Ack;
+       106: ldc_w         #634                // String smtp
+       109: putstatic     #35                 // Field id:Ljava/lang/String;
+       112: getstatic     #639                // Field org/tekfive/relaykt/Channel.EMAIL:Lorg/tekfive/relaykt/Channel;
+       115: putstatic     #41                 // Field channel:Lorg/tekfive/relaykt/Channel;
+       118: iconst_2
+       119: anewarray     #641                // class org/tekfive/relaykt/Capability
+       122: astore_0
+       123: aload_0
+       124: iconst_0
+       125: getstatic     #644                // Field org/tekfive/relaykt/Capability.ATTACHMENTS:Lorg/tekfive/relaykt/Capability;
+       128: aastore
+       129: aload_0
+       130: iconst_1
+       131: getstatic     #647                // Field org/tekfive/relaykt/Capability.MULTIPLE_RECIPIENTS:Lorg/tekfive/relaykt/Capability;
+       134: aastore
+       135: aload_0
+       136: invokestatic  #653                // Method kotlin/collections/SetsKt.setOf:([Ljava/lang/Object;)Ljava/util/Set;
+       139: putstatic     #48                 // Field capabilities:Ljava/util/Set;
+       142: return
+}

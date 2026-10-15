@@ -1,0 +1,5 @@
+imageOnlyPdf: inputBytes=3767, tesseractConfigured=false, outputCharacters=0
+zeroBytePdf: outputCharacters=0
+targetConstructors=[public org.tekfive.polyglot.ModelTarget(java.lang.String,java.lang.String,kotlin.jvm.internal.DefaultConstructorMarker)]
+emptyObjectResponse: finish=STOP, result=Success
+emptyObjectResponse: finish=MAX_TOKENS, result=Success

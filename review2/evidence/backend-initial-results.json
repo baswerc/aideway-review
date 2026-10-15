@@ -1,0 +1,2613 @@
+[
+  {
+    "suite": "org.aideway.harness.keytool.PassphraseInputTest",
+    "tests": "5",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.secret.http.types.ApiKeyCredentialTypeTest",
+    "tests": "5",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.message.classification.ClassifiedMessageTest",
+    "tests": "1",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.event.AuditCleanupTest",
+    "tests": "6",
+    "failures": "2",
+    "skipped": "0",
+    "exceptions": [
+      {
+        "name": "undeletable oldest batch cannot starve later evidence()",
+        "outcome": "failure",
+        "message": "org.opentest4j.AssertionFailedError: Expected an exception to be thrown, but was completed successfully."
+      },
+      {
+        "name": "blocked cleanup has its own batch and reports recovery after deletion()",
+        "outcome": "failure",
+        "message": "org.opentest4j.AssertionFailedError: Expected value to be true."
+      }
+    ]
+  },
+  {
+    "suite": "org.aideway.event.EventAuditHashVersionTest",
+    "tests": "1",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.data.classification.PredefinedInformationTypeTest",
+    "tests": "15",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.integration.WorkflowClassificationRevisionTest",
+    "tests": "5",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.review.HumanReviewPredicateTest",
+    "tests": "3",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.dataset.db.DatasetSchemaServiceDbTest",
+    "tests": "6",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.nodes.types.data.api.HttpApiNodeTypeTest",
+    "tests": "3",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.dataset.api.DatasetRowLimitsDbTest",
+    "tests": "4",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.data.classification.ClassificationAlertsTest",
+    "tests": "2",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.db.ClassificationTierCalculationJobTest",
+    "tests": "1",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.data.classification.anonymization.AnonymizationMetadataTest",
+    "tests": "2",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.integration.AdministrativeMutationAuditCoverageTest",
+    "tests": "3",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.gateway.a2a.SimpleA2aServerTest",
+    "tests": "2",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.io.RoutesTest",
+    "tests": "3",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.execution.engine.ExecutionResultTest",
+    "tests": "3",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.service.ServiceConnectionLimiterTest",
+    "tests": "6",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.api.WorkflowPagedQueryDbTest",
+    "tests": "9",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.service.api.ServiceConnectionDbTest",
+    "tests": "4",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.dataset.retention.PurgeRecordJobTest",
+    "tests": "11",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.nodes.types.control.WaitFlowNodeTypeTest",
+    "tests": "4",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.event.EventAuditTableTest",
+    "tests": "14",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.integration.DbMessageConsumerProgressTest",
+    "tests": "6",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.dataset.db.DatasetDatasetRecordFileDbTest",
+    "tests": "5",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.event.AuditSpoolWatchdogJobTest",
+    "tests": "9",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.dataset.api.DatasetAuthorizationTest",
+    "tests": "2",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.message.types.file.FileMessagePayloadTopicTest",
+    "tests": "2",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.alert.AlertGatewayTest",
+    "tests": "6",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.intelligence.prompt.PromptDatasetCasesTest",
+    "tests": "4",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.data.JsonDataSchemaTest",
+    "tests": "5",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.message.MessageFieldJsonTest",
+    "tests": "2",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.system.diagnostics.CgroupDiagnosticsTest",
+    "tests": "3",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.system.logfile.LogFileEnvelopeTest",
+    "tests": "2",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.NodeTest",
+    "tests": "1",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.service.api.ServicePagedQueryDbTest",
+    "tests": "2",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.alert.AlertingJobTest",
+    "tests": "2",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.data.classification.anonymization.DataAnonymizerTest",
+    "tests": "15",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.integration.WorkflowPortableApiControllerTest",
+    "tests": "6",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.service.configuration.ServiceSettingTypeTest",
+    "tests": "3",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.subscription.WorkflowExecutionNotifierTest",
+    "tests": "6",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.execution.engine.WorkflowExecutionJobTest",
+    "tests": "36",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.nodes.types.transform.analyze.AnalyzeNodeTypePinValidationTest",
+    "tests": "4",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.dataset.api.FieldAuditedRulesDbTest",
+    "tests": "3",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.message.classification.ClassificationFailureTest",
+    "tests": "5",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.nodes.types.triggers.file.WatchedDirectorySweepDbTest",
+    "tests": "2",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.message.classification.DataKindTest",
+    "tests": "1",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.intelligence.prompt.api.PromptDatasetTestApiControllerTest",
+    "tests": "8",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.nodes.types.triggers.webhook.api.WebhooksControllerTest",
+    "tests": "9",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.data.audit.DataAuditNormalizationDbTest",
+    "tests": "3",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.nodes.types.transform.map.ExpressionResolverConversionTest",
+    "tests": "39",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.expression.ExpressionFieldResolverTest",
+    "tests": "18",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.data.classification.analysis.PipelineServiceTest",
+    "tests": "10",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.execution.engine.FinishWorkflowTest",
+    "tests": "2",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.harness.AdminCliPasswordTest",
+    "tests": "1",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.configuration.ConfigurationResolverTest",
+    "tests": "14",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.integration.ServiceSettingsPersistenceTest",
+    "tests": "1",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.message.types.TypedContentTest",
+    "tests": "2",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.user.MfaChallengeTableTest",
+    "tests": "3",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.event.EventTypeTest",
+    "tests": "1",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.data.classification.analysis.input.ChunkerTest",
+    "tests": "4",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.service.ServiceHealthSettingsTest",
+    "tests": "16",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.system.diagnostics.DiagnosticsMonitorTest",
+    "tests": "7",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.io.session.SecurityEventPathTest",
+    "tests": "1",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.message.classification.MessageSchemaClassifierTest",
+    "tests": "4",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.integration.NodeRunnerTest",
+    "tests": "10",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.data.classification.analysis.recognizer.RegexLimitsTest",
+    "tests": "4",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.user.api.UserPagedQueryDbTest",
+    "tests": "2",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.message.stream.PublishMessageStreamTest",
+    "tests": "3",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.integration.SessionAdminApiControllerTest",
+    "tests": "6",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.integration.WorkflowReferenceImportTest",
+    "tests": "6",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.harness.keytool.UnsealCommandTest",
+    "tests": "5",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.harness.keytool.SealCommandTest",
+    "tests": "6",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.service.ehr.fhir.FhirServiceTypeTestActionTest",
+    "tests": "8",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.execution.api.WorkflowExecutionRestartApiTest",
+    "tests": "1",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.harness.update.UpdateLauncherTest",
+    "tests": "1",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.integration.EventAuditMutationCoverageTest",
+    "tests": "8",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.dataset.db.DatasetSchemaServiceTest",
+    "tests": "9",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.nodes.types.transform.map.MappedFieldValueTest",
+    "tests": "1",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.definition.UpdateImportServiceTest",
+    "tests": "5",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.data.classification.analysis.recognizer.PresidioPatternParityTest",
+    "tests": "653",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.integration.V1InitClassificationTierSeedTest",
+    "tests": "5",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.dataset.export.DatasetExportEnvelopeTest",
+    "tests": "4",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.service.types.ai.AiEndpointValidationTest",
+    "tests": "14",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.WorkflowRevisionClassificationTierTest",
+    "tests": "5",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.intelligence.prompt.PromptEvaluatorTest",
+    "tests": "13",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.service.types.ai.AiPinnedCertificateTest",
+    "tests": "4",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.integration.WorkflowExecutionCrudTest",
+    "tests": "9",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.dataset.SchemaDatasetFieldInitializerTest",
+    "tests": "12",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.secret.http.types.BasicAuthCredentialTypeTest",
+    "tests": "6",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.harness.keytool.RotateCommandTest",
+    "tests": "7",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.definition.UpdateBindingsTest",
+    "tests": "4",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.nodes.types.control.condition.ConditionGroupEvaluatorTest",
+    "tests": "14",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.data.classification.analysis.ner.NerConcurrencyTest",
+    "tests": "5",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.data.audit.DataAuditWriterDbTest",
+    "tests": "17",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.dataset.db.DatasetDatasetRecordServiceDbTest",
+    "tests": "10",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.integration.DbMessagePayloadBrokerTest",
+    "tests": "25",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.nodes.types.notify.notification.NotificationNodeTypeTest",
+    "tests": "2",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.message.stream.MessageBrokerProviderTest",
+    "tests": "1",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.ChainValidationTest",
+    "tests": "7",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.data.classification.analysis.scoring.ResultResolverTest",
+    "tests": "6",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.dashboard.DashboardTableTest",
+    "tests": "2",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.nodes.types.triggers.file.FileTriggerValidationJobDbTest",
+    "tests": "6",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.service.types.ai.AiServiceRequestBuilderTest",
+    "tests": "7",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.integration.ServiceValidatorTest",
+    "tests": "13",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.event.AuditOperationRecorderTest",
+    "tests": "21",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.event.AfterDbCommitTest",
+    "tests": "1",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.dataset.audit.DatasetDatasetRecordAuditorDbTest",
+    "tests": "2",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.integration.WorkflowRevisionGraphPersistenceTest",
+    "tests": "4",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.dataset.export.DatasetExportRequestTest",
+    "tests": "4",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.db.TestDatabaseResetTest",
+    "tests": "2",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.system.diagnostics.DiagnosticsSettingsTest",
+    "tests": "1",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.auth.SessionServiceTest",
+    "tests": "13",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.system.api.LogFilesApiControllerTest",
+    "tests": "5",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.io.PreActionGuardTest",
+    "tests": "6",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.event.EventAuditAnchorTest",
+    "tests": "1",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.service.types.ai.AiServiceClientTest",
+    "tests": "4",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.data.classification.DataSensitivityLevelTableTest",
+    "tests": "1",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.service.types.notification.email.LimitedEmailProviderTest",
+    "tests": "1",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.auth.PasswordServiceTest",
+    "tests": "7",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.intelligence.prompt.PromptDatasetAccessTest",
+    "tests": "1",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.harness.AdminCliTest",
+    "tests": "6",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.db.migrations.SchemaMigrationServiceTest",
+    "tests": "6",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.api.WorkflowPublishFailuresTest",
+    "tests": "1",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.dataset.query.DatasetAccessSqlTest",
+    "tests": "1",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.harness.keytool.ValidateCommandTest",
+    "tests": "5",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.data.classification.analysis.PipelineRunnerTest",
+    "tests": "6",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.message.retention.PurgeMessageJobTest",
+    "tests": "4",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.type.NodeTypeRegistryTest",
+    "tests": "5",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.dataset.api.DatasetPagedQueryDbTest",
+    "tests": "3",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.service.PinnedCertificatesTest",
+    "tests": "1",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.nodes.types.transform.map.AdapterNodeTypeSchemaTest",
+    "tests": "3",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.nodes.types.data.fhir.FhirSearchQueryTest",
+    "tests": "6",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.nodes.types.transform.map.MessageFieldMappingTest",
+    "tests": "3",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.nodes.types.triggers.file.WatchedDirectoryTestDbTest",
+    "tests": "7",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.configuration.LoggingConfigurationTest",
+    "tests": "1",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.event.AuditSpoolEnvelopeTest",
+    "tests": "7",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.system.RuntimeEditableSettingsTest",
+    "tests": "5",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.dataset.api.FieldEncryptionDbTest",
+    "tests": "18",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.db.SchemaTest",
+    "tests": "2",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.service.types.api.http.openapi.OpenApiParserTest",
+    "tests": "7",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.service.ServiceTlsIntegrationTest",
+    "tests": "6",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.integration.WorkflowRevisionDiffApiControllerTest",
+    "tests": "4",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.dataset.api.DatasetPortableApiControllerTest",
+    "tests": "1",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.service.types.notification.email.EmailQueueDispatchTest",
+    "tests": "1",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.data.classification.query.ServiceTierPredicateTest",
+    "tests": "15",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.nodes.types.data.dataset.DatasetFilterPlannerTest",
+    "tests": "17",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.NodeDeclarationFlagJsonTest",
+    "tests": "1",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.execution.engine.WorkflowConcurrencyTest",
+    "tests": "2",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.execution.engine.ManualTriggerRestartCopyTest",
+    "tests": "1",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.integration.workflow.execution.engine.WorkflowExecutionConcurrencyTest",
+    "tests": "9",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.nodes.types.triggers.webhook.WebhookRejectionCleanupJobTest",
+    "tests": "2",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.execution.api.WorkflowExecutionLogAccessTest",
+    "tests": "4",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.event.api.EventAuditGroupQueryTest",
+    "tests": "10",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.dataset.db.BlindIndexNormalizationDbTest",
+    "tests": "6",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.io.session.MfaServiceTest",
+    "tests": "13",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.system.diagnostics.DiagnosticCommandTest",
+    "tests": "2",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.system.logexport.LogExportTest",
+    "tests": "3",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.integration.WorkflowTriggerLaunchHttpIntegrationTest",
+    "tests": "1",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.service.ehr.fhir.HttpFhirServiceClientTest",
+    "tests": "31",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.intelligence.prompt.api.PromptCompletenessTest",
+    "tests": "14",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.event.AuditSpoolTest",
+    "tests": "21",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.execution.engine.WorkflowExecutionAlertsTest",
+    "tests": "2",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.event.AuditSpoolProcessorTest",
+    "tests": "19",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.io.SealedFilePublisherTest",
+    "tests": "5",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.data.classification.UnknownClassificationTierTest",
+    "tests": "2",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.notification.NotificationDispatcherTest",
+    "tests": "8",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.nodes.types.triggers.file.FileTriggerExecutionKeyTest",
+    "tests": "1",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.GraphTraversalTest",
+    "tests": "4",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.integration.WorkflowPinnedRewritingTest",
+    "tests": "2",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.event.AuditEventRecorderTest",
+    "tests": "5",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.WorkflowRevisionTest",
+    "tests": "1",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.data.classification.analysis.PinnedConfigurationTest",
+    "tests": "3",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.dataset.db.DatasetQueryServiceDbTest",
+    "tests": "17",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.api.WorkflowRevisionPublishPersistenceTest",
+    "tests": "2",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.configuration.DatabaseConfigurationTest",
+    "tests": "4",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.data.classification.query.UserTierPredicateTest",
+    "tests": "10",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.system.logfile.LogFileWindowTest",
+    "tests": "5",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.dataset.api.FieldDisplayDbTest",
+    "tests": "5",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.nodes.types.transform.analyze.ReidentifyDataNodeTypeTest",
+    "tests": "8",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.dataset.api.FieldDeclarationChangesDbTest",
+    "tests": "9",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.gateway.mcp.SimpleMcpServerTest",
+    "tests": "3",
+    "failures": "0",
+    "skipped": "3",
+    "exceptions": [
+      {
+        "name": "official Java MCP client initializes against gateway()",
+        "outcome": "skipped",
+        "message": null
+      },
+      {
+        "name": "official Java MCP client lists tools()",
+        "outcome": "skipped",
+        "message": null
+      },
+      {
+        "name": "official Java MCP client calls echo tool()",
+        "outcome": "skipped",
+        "message": null
+      }
+    ]
+  },
+  {
+    "suite": "org.aideway.integration.NotificationsHttpIntegrationTest",
+    "tests": "3",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.dataset.db.DatasetDatasetRecordUpdateDbTest",
+    "tests": "6",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.service.types.ai.AiServiceHealthTest",
+    "tests": "2",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.WorkflowRetryPolicyTest",
+    "tests": "6",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.data.structured.JsonStructuredDataTest",
+    "tests": "9",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.WorkflowRevisionClassificationTierCalculatorTest",
+    "tests": "1",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.message.types.file.FileMessageTest",
+    "tests": "1",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.harness.keytool.InitCommandTest",
+    "tests": "4",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.data.audit.DataAuditKeysDbTest",
+    "tests": "2",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.harness.keytool.TpmRoundTripTest",
+    "tests": "2",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.harness.keytool.RecoveryRoundTripTest",
+    "tests": "1",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.nodes.types.data.dataset.InsertDatasetNodeTypeDbTest",
+    "tests": "2",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.service.ehr.fhir.registry.FhirRegistryVocabularyTest",
+    "tests": "7",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.event.AuditDeliveryFailureTest",
+    "tests": "10",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.ApplicationShutdownTest",
+    "tests": "1",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.data.classification.DataClassificationCacheTest",
+    "tests": "9",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.event.AuditCommitDeliveryTest",
+    "tests": "11",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.integration.DbMessageAccountingConcurrencyTest",
+    "tests": "3",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.tag.EntityTagTableTest",
+    "tests": "6",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.io.api.queries.PagedQueryBodyTest",
+    "tests": "2",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.message.audit.CanonicalJsonTest",
+    "tests": "6",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.NodeAuditedPropertiesJsonTest",
+    "tests": "3",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.service.types.api.http.openapi.HttpApiMessagesTest",
+    "tests": "4",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.diff.WorkflowRevisionDiffServiceTest",
+    "tests": "4",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.auth.JwtServiceTest",
+    "tests": "10",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.nodes.types.notify.email.EmailMessagePayloadTopicTest",
+    "tests": "4",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.execution.NodeExecutionTest",
+    "tests": "3",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.nodes.types.data.fhir.FhirRecordExistsNodeTypeTest",
+    "tests": "12",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.data.audit.EmailAuditQueueDbTest",
+    "tests": "1",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.data.classification.analysis.input.InputAdapterTest",
+    "tests": "7",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.secret.http.types.HmacSignatureCredentialTypeTest",
+    "tests": "5",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.nodes.types.triggers.schedule.ScheduledTriggerTest",
+    "tests": "6",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.harness.keytool.BouncyCastleAvailabilityTest",
+    "tests": "3",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.nodes.types.transform.map.ExpressionResolverGetMissingRequiredFieldPathsTest",
+    "tests": "6",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.integration.V1InitCatalogSeedTest",
+    "tests": "4",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.integration.NotificationApiReadActionsTest",
+    "tests": "5",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.harness.keytool.UnwrapRecoveryCommandTest",
+    "tests": "5",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.service.ehr.fhir.registry.FhirSchemaRegistryTest",
+    "tests": "5",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.data.classification.InformationTypeTableTest",
+    "tests": "1",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.data.classification.analysis.recognizer.PatternMatcherTest",
+    "tests": "7",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.integration.PipelineManagementHttpTest",
+    "tests": "3",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.data.classification.anonymization.AnonymizedTextCoordinatesTest",
+    "tests": "11",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.system.api.JobLogsPagedQueryDbTest",
+    "tests": "1",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.dataset.DatasetRevisionTest",
+    "tests": "6",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.harness.keytool.WrapRecoveryCommandTest",
+    "tests": "6",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.nodes.types.data.dataset.DatasetRecordExistsNodeTypeDbTest",
+    "tests": "5",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.nodes.types.transform.markdown.FileMarkdownConverterTest",
+    "tests": "4",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.tag.TagTableTest",
+    "tests": "1",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.nodes.types.triggers.file.FileTriggerNodeTypeTest",
+    "tests": "10",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.nodes.types.data.dataset.DatasetNodeTypeSchemaDbTest",
+    "tests": "5",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.harness.keytool.InfoCommandTest",
+    "tests": "6",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.execution.WorkflowExecutionReferenceDbTest",
+    "tests": "2",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.data.authorization.DataAuthenticatorTest",
+    "tests": "2",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.integration.AuthHttpIntegrationTest",
+    "tests": "14",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.event.EventAuditIntegrityJobTest",
+    "tests": "2",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.data.classification.analysis.ContextInheritanceTest",
+    "tests": "3",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.integration.LoginSessionRoutesIntegrationTest",
+    "tests": "5",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.configuration.ProductionLoggingTest",
+    "tests": "1",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.secret.http.HmacVerifierTest",
+    "tests": "6",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.data.classification.analysis.recognizer.RecognizerEngineTest",
+    "tests": "4",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.dataset.export.DatasetImportRequestTest",
+    "tests": "5",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.alert.api.AlertApiControllerTest",
+    "tests": "6",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.integration.SensitiveReadAuditCoverageTest",
+    "tests": "1",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.notification.NotificationUrgencyTest",
+    "tests": "3",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.service.ServiceTlsPolicyTest",
+    "tests": "2",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.service.types.notification.email.EmailServiceTypeTest",
+    "tests": "3",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.system.logexport.LogArchiveTest",
+    "tests": "5",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.system.SystemManagerTest",
+    "tests": "3",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.message.stream.NextMessageTest",
+    "tests": "6",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.execution.WorkflowExecutionTest",
+    "tests": "4",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.dataset.api.FieldDeclaredInformationTypesDbTest",
+    "tests": "1",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.dataset.api.DatasetLabelsDbTest",
+    "tests": "11",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.io.api.queries.PagedQueryCountTest",
+    "tests": "2",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.notification.api.NotificationPagedQueryDbTest",
+    "tests": "4",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.integration.DiagnosticsAlertsTest",
+    "tests": "1",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.nodes.types.triggers.TriggerAdminLaunchTest",
+    "tests": "11",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.event.AuditRouteCoveragePolicyTest",
+    "tests": "3",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.execution.engine.HumanReviewWorkflowExecutionTest",
+    "tests": "1",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.nodes.types.transform.map.ExpressionResolverStructureArrayTest",
+    "tests": "7",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.system.ExternalUrlTest",
+    "tests": "3",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.service.ServiceConnectionTest",
+    "tests": "4",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.message.classification.IncompleteClassificationTest",
+    "tests": "3",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.harness.logarchive.LogArchiveCliTest",
+    "tests": "2",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.data.classification.anonymization.PipelineRewriterTest",
+    "tests": "9",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.harness.datasetexport.DecryptCommandTest",
+    "tests": "1",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.configuration.ResolvedConfigurationTest",
+    "tests": "5",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.service.types.notification.email.EmailClientTest",
+    "tests": "3",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.dataset.db.ScalarEncryptionDbTest",
+    "tests": "6",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.nodes.RevisionTest",
+    "tests": "2",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.execution.engine.WorkflowJobRuntimeTest",
+    "tests": "7",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.system.diagnostics.NvidiaDiagnosticsTest",
+    "tests": "3",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.api.WorkflowConcurrencyApiTest",
+    "tests": "3",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.nodes.types.transform.reduce.ReduceMessageNodeTypeTest",
+    "tests": "13",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.api.ChainEmbedReimportMergeTest",
+    "tests": "9",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.integration.PipelinePersistenceTest",
+    "tests": "5",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.integration.DbMessageStreamClosureTest",
+    "tests": "4",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.execution.engine.NodeTaskExecutorTest",
+    "tests": "3",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.io.gateway.GatewayRoutesTest",
+    "tests": "1",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.system.logfile.LogFileNameTest",
+    "tests": "3",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.dataset.db.DatasetDatasetRecordCryptoShredDbTest",
+    "tests": "4",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.notification.api.NotificationClassificationTest",
+    "tests": "7",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.service.types.api.http.HttpApiRequestTest",
+    "tests": "4",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.harness.keytool.MainTest",
+    "tests": "14",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.integration.SecretResponseProjectionTest",
+    "tests": "3",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.nodes.types.transform.analyze.AnonymizeDataNodeTypeTest",
+    "tests": "4",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.data.classification.analysis.ner.NerWorkerProtocolTest",
+    "tests": "23",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.system.logfile.LogFileStoreTest",
+    "tests": "4",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.integration.HumanReviewTaskCrudTest",
+    "tests": "13",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.execution.engine.WorkflowLifecycleTest",
+    "tests": "15",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.integration.ClassificationTierDefaultsTest",
+    "tests": "7",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.execution.engine.WorkflowLauncherSecurityTest",
+    "tests": "4",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.nodes.types.data.fhir.FhirFilterPlannerTest",
+    "tests": "8",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.execution.engine.WorkflowExitRecoveryTest",
+    "tests": "13",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.nodes.types.transform.map.AdapterNodeTypeCrosswalkValidationTest",
+    "tests": "4",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.type.NodeTypesTest",
+    "tests": "3",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.message.MessagePayloadTopicSchemaTest",
+    "tests": "3",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.execution.api.EventApiControllerTest",
+    "tests": "1",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.nodes.types.transform.map.ExpressionResolverWholeNumberTest",
+    "tests": "27",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.service.types.api.http.HttpApiServiceHealthTest",
+    "tests": "1",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.intelligence.prompt.api.PromptPortableApiControllerTest",
+    "tests": "4",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.dataset.export.DatasetImportServiceDbTest",
+    "tests": "14",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.data.classification.anonymization.SyntheticValueGeneratorTest",
+    "tests": "8",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.message.stream.MessageTopicAddressTest",
+    "tests": "1",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.nodes.types.data.dataset.DatasetQueryNodeTypeDbTest",
+    "tests": "14",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.tag.api.TagApiControllerTest",
+    "tests": "2",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.type.NodeCategoryTest",
+    "tests": "1",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.dataset.api.FieldDeleteDbTest",
+    "tests": "1",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.data.audit.DataAuditQueriesDbTest",
+    "tests": "10",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.harness.keytool.ResealCommandTest",
+    "tests": "7",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.system.diagnostics.LinuxDiagnosticsTest",
+    "tests": "4",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.integration.NotificationApiScopingTest",
+    "tests": "5",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.nodes.types.transform.analyze.file.AnalyzeFileNodeTypeTest",
+    "tests": "18",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.service.ServiceHealthProbeTest",
+    "tests": "8",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.nodes.types.triggers.file.ProtectedFileSystemRootsTest",
+    "tests": "2",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.system.diagnostics.DiagnosticsJobTest",
+    "tests": "3",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.gateway.api.SimpleOpenAiApiServerTest",
+    "tests": "2",
+    "failures": "0",
+    "skipped": "2",
+    "exceptions": [
+      {
+        "name": "official OpenAI Java client lists gateway model()",
+        "outcome": "skipped",
+        "message": null
+      },
+      {
+        "name": "official OpenAI Java client creates hello-world chat completion()",
+        "outcome": "skipped",
+        "message": null
+      }
+    ]
+  },
+  {
+    "suite": "org.aideway.intelligence.prompt.api.PromptRevisionLifecycleTest",
+    "tests": "7",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.nodes.types.triggers.schedule.ScheduleTriggerJobDbTest",
+    "tests": "7",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.integration.MfaChallengeAdminApiControllerTest",
+    "tests": "5",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.data.classification.DataClassifierTest",
+    "tests": "3",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.dataset.api.DatasetTierPublicationDbTest",
+    "tests": "1",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.auth.login.PasswordLoginControllerTest",
+    "tests": "30",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.nodes.types.transform.map.ExpressionResolverFrameworkTest",
+    "tests": "2",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.util.JsonSchemaExampleTest",
+    "tests": "2",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.dataset.api.DatasetDatasetRecordApiDbTest",
+    "tests": "13",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.integration.AlertsHttpIntegrationTest",
+    "tests": "2",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.nodes.types.data.fhir.ReadFhirNodeTypeTest",
+    "tests": "31",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.dataset.query.DatasetRecordQueryGroupResolveTest",
+    "tests": "5",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.data.classification.analysis.ner.PythonWorkerNerProviderTest",
+    "tests": "9",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.system.api.SystemApiControllerTest",
+    "tests": "7",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.execution.engine.WorkflowRestartCopyTest",
+    "tests": "9",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.integration.DbMessageExecutionTotalsTest",
+    "tests": "7",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.data.classification.analysis.ner.PythonWorkerContractTest",
+    "tests": "1",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.nodes.types.triggers.file.FileTriggerJobDbTest",
+    "tests": "34",
+    "failures": "0",
+    "skipped": "2",
+    "exceptions": [
+      {
+        "name": "an unreadable subdirectory reports a count without its path()",
+        "outcome": "skipped",
+        "message": "org.opentest4j.TestAbortedException: Assumption failed: Running as a user that can read any directory."
+      },
+      {
+        "name": "an unreadable file reports a count without its path()",
+        "outcome": "skipped",
+        "message": "org.opentest4j.TestAbortedException: Assumption failed: Running as a user that can read any file."
+      }
+    ]
+  },
+  {
+    "suite": "org.aideway.data.classification.analysis.PipelineValidationTest",
+    "tests": "3",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.io.session.AccountLockoutTest",
+    "tests": "1",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.db.CalculationJobTest",
+    "tests": "3",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.subscription.WorkflowSubscriptionTest",
+    "tests": "1",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.dataset.api.FieldNormalizationDbTest",
+    "tests": "4",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.intelligence.prompt.api.PromptTestApiControllerTest",
+    "tests": "8",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.nodes.types.transform.anonymize.AnonymizeDataNodeTypeTest",
+    "tests": "1",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.nodes.types.transform.map.ExpressionResolverMapOutMessagePayloadTopicTest",
+    "tests": "23",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.message.audit.MessageEventAuditAccessHarnessTest",
+    "tests": "5",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.intelligence.prompt.PromptDatasetTestRunJobTest",
+    "tests": "7",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.intelligence.prompt.api.PromptPagedQueryDbTest",
+    "tests": "3",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.integration.SidebarPinsHttpIntegrationTest",
+    "tests": "10",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.execution.api.WorkflowExecutionPagedQueryDbTest",
+    "tests": "3",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.system.api.EmailQueueAbortStateTest",
+    "tests": "3",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.configuration.SecurityConfigurationChecksTest",
+    "tests": "4",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.system.diagnostics.DiagnosticsSamplerTest",
+    "tests": "3",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.data.classification.InformationTypeContextTest",
+    "tests": "1",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.data.classification.analysis.scoring.ScoringTest",
+    "tests": "5",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.data.classification.analysis.ConfigurationTest",
+    "tests": "3",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.execution.WorkflowExecutionClassificationTierTest",
+    "tests": "5",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.nodes.types.triggers.webhook.api.WebhookEndpointPagedQueryDbTest",
+    "tests": "2",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.alert.api.AlertPagedQueryTest",
+    "tests": "5",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.WorkflowPublishRegistryTest",
+    "tests": "1",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.nodes.types.triggers.webhook.WebhookTriggerNodeTypeTest",
+    "tests": "2",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.WorkflowRevisionUpdateNodeDynamicPropertiesTest",
+    "tests": "6",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.data.structured.StructuredDataSchemaTest",
+    "tests": "6",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.nodes.types.transform.map.ExpressionResolverCrosswalkTest",
+    "tests": "9",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.alert.AlertPurgeJobTest",
+    "tests": "3",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  },
+  {
+    "suite": "org.aideway.workflow.message.audit.PropertyNormalizationTest",
+    "tests": "12",
+    "failures": "0",
+    "skipped": "0",
+    "exceptions": []
+  }
+]

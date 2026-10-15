@@ -1,0 +1,262 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.5.0/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+> Task :backend:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :backend:generateApiModels UP-TO-DATE
+> Task :backend:syncApiModels UP-TO-DATE
+> Task :backend:compileKotlin UP-TO-DATE
+> Task :backend:compileJava NO-SOURCE
+> Task :backend:processResources UP-TO-DATE
+> Task :backend:classes UP-TO-DATE
+
+> Task :backend:classificationCorpus
+15 cases, 0 failed. Report: build/reports/classification/corpus.json
+
+> Task :backend:jar UP-TO-DATE
+> Task :backend:compileTestKotlin UP-TO-DATE
+> Task :backend:compileTestJava NO-SOURCE
+> Task :backend:processTestResources UP-TO-DATE
+> Task :backend:testClasses UP-TO-DATE
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::arrayBaseOffset has been called by com.google.protobuf.UnsafeUtil$MemoryAccessor (file:/root/.gradle/caches/modules-2/files-2.1/com.google.protobuf/protobuf-java/4.33.1/acc8e9e6cbad3370ea791231685c4de18771e0a3/protobuf-java-4.33.1.jar)
+WARNING: Please consider reporting this to the maintainers of class com.google.protobuf.UnsafeUtil$MemoryAccessor
+WARNING: sun.misc.Unsafe::arrayBaseOffset will be removed in a future release
+
+> Task :backend:nerIntegrationTest
+
+PipelineNerIntegrationTest > Marin Keller is detected as a person name() SKIPPED
+
+DataAnonymizationIntegrationTest > redacts detected identifiers in structured json() SKIPPED
+
+DataAnonymizationIntegrationTest > synthesizes realistic replacements in text() SKIPPED
+
+DataAnonymizationIntegrationTest > redacts detected identifiers in text() SKIPPED
+
+DataClassificationIntegrationTest > custom global information type matches by whole-value pattern() SKIPPED
+
+DataClassificationIntegrationTest > medical record number source classifies mrn fields by name() SKIPPED
+
+DataClassificationIntegrationTest > unstructured referral note detects identity and contact data() SKIPPED
+
+DataClassificationIntegrationTest > field patterns classify a field by its name() SKIPPED
+
+DataClassificationIntegrationTest > structured patient record classifies fields with description context() SKIPPED
+
+DataClassificationIntegrationTest > base64 encoded text is classified in its decoded form() SKIPPED
+
+DataClassificationIntegrationTest > classify email field() SKIPPED
+
+DataClassificationIntegrationTest > custom global information type matches inside unstructured text by pattern() SKIPPED
+
+DataClassificationIntegrationTest > internal domain email addresses are detected in unstructured text() SKIPPED
+
+DataClassificationIntegrationTest > medical record number source detects prefixed identifiers in text() SKIPPED
+
+> Task :backend:verifyGeneratedApiCommitted
+> Task :frontend:nodeSetup UP-TO-DATE
+> Task :frontend:npmSetup UP-TO-DATE
+> Task :frontend:npmInstall UP-TO-DATE
+
+> Task :frontend:npmTestMockups
+
+> aideway-frontend@0.1.0 test:mockups
+> node --test blueprint/mockups/*/mockups.test.cjs
+
+TAP version 13
+# Subtest: tabs: shows capture context and all evidence categories
+ok 1 - tabs: shows capture context and all evidence categories
+  ---
+  duration_ms: 93.893138
+  ...
+# Subtest: tabs: warnings remain outside evidence panels
+ok 2 - tabs: warnings remain outside evidence panels
+  ---
+  duration_ms: 73.135981
+  ...
+# Subtest: tabs: reason gate hides evidence and handles input as text
+ok 3 - tabs: reason gate hides evidence and handles input as text
+  ---
+  duration_ms: 27.567657
+  ...
+# Subtest: split: shows capture context and all evidence categories
+ok 4 - split: shows capture context and all evidence categories
+  ---
+  duration_ms: 24.124437
+  ...
+# Subtest: split: warnings remain outside evidence panels
+ok 5 - split: warnings remain outside evidence panels
+  ---
+  duration_ms: 64.144513
+  ...
+# Subtest: split: reason gate hides evidence and handles input as text
+ok 6 - split: reason gate hides evidence and handles input as text
+  ---
+  duration_ms: 24.780188
+  ...
+# Subtest: report: shows capture context and all evidence categories
+ok 7 - report: shows capture context and all evidence categories
+  ---
+  duration_ms: 18.534479
+  ...
+# Subtest: report: warnings remain outside evidence panels
+ok 8 - report: warnings remain outside evidence panels
+  ---
+  duration_ms: 40.161154
+  ...
+# Subtest: report: reason gate hides evidence and handles input as text
+ok 9 - report: reason gate hides evidence and handles input as text
+  ---
+  duration_ms: 24.828597
+  ...
+# Subtest: tabs: mouse and keyboard change only the selected evidence panel
+ok 10 - tabs: mouse and keyboard change only the selected evidence panel
+  ---
+  duration_ms: 29.561168
+  ...
+# Subtest: split: events and evidence use native expandable sections
+ok 11 - split: events and evidence use native expandable sections
+  ---
+  duration_ms: 15.09735
+  ...
+# Subtest: report: section links point to visible sections
+ok 12 - report: section links point to visible sections
+  ---
+  duration_ms: 14.597057
+  ...
+# Subtest: linked records open a mock preview, not an application request
+ok 13 - linked records open a mock preview, not an application request
+  ---
+  duration_ms: 15.304106
+  ...
+# Subtest: all local pages, styles, and scripts exist
+ok 14 - all local pages, styles, and scripts exist
+  ---
+  duration_ms: 24.884326
+  ...
+# Subtest: board: renders labelled controls without broken links
+ok 15 - board: renders labelled controls without broken links
+  ---
+  duration_ms: 125.869292
+  ...
+# Subtest: matrix: renders labelled controls without broken links
+ok 16 - matrix: renders labelled controls without broken links
+  ---
+  duration_ms: 54.844519
+  ...
+# Subtest: preview: renders labelled controls without broken links
+ok 17 - preview: renders labelled controls without broken links
+  ---
+  duration_ms: 33.750517
+  ...
+# Subtest: board: crossing views adds a placement without removing the source
+ok 18 - board: crossing views adds a placement without removing the source
+  ---
+  duration_ms: 140.478318
+  ...
+# Subtest: board: reorder affects only the target view and cancel does not change order
+ok 19 - board: reorder affects only the target view and cancel does not change order
+  ---
+  duration_ms: 64.38099
+  ...
+# Subtest: board: hiding the last placement requires confirmation and keeps the library
+ok 20 - board: hiding the last placement requires confirmation and keeps the library
+  ---
+  duration_ms: 111.202486
+  ...
+# Subtest: board: title and section removal is explicit and undoable
+ok 21 - board: title and section removal is explicit and undoable
+  ---
+  duration_ms: 78.984637
+  ...
+# Subtest: matrix: visibility and exact order have independent controls
+ok 22 - matrix: visibility and exact order have independent controls
+  ---
+  duration_ms: 97.609124
+  ...
+# Subtest: matrix: filtering and reset leave no stale selection
+ok 23 - matrix: filtering and reset leave no stale selection
+  ---
+  duration_ms: 75.430708
+  ...
+# Subtest: preview: selecting fields updates the inspector and both previews
+ok 24 - preview: selecting fields updates the inspector and both previews
+  ---
+  duration_ms: 64.669716
+  ...
+# Subtest: preview: section headings are escaped and remain anchored on reorder
+ok 25 - preview: section headings are escaped and remain anchored on reorder
+  ---
+  duration_ms: 63.788189
+  ...
+# Subtest: board: search keeps focus and theme controls switch both ways
+ok 26 - board: search keeps focus and theme controls switch both ways
+  ---
+  duration_ms: 71.665253
+  ...
+# Subtest: inbox: links, controls, filters, and empty states
+ok 27 - inbox: links, controls, filters, and empty states
+  ---
+  duration_ms: 108.017873
+  ...
+# Subtest: inbox: required reason, confirmation, history, and retained selection
+ok 28 - inbox: required reason, confirmation, history, and retained selection
+  ---
+  duration_ms: 47.413938
+  ...
+# Subtest: inbox: optional reason and missing instructions
+ok 29 - inbox: optional reason and missing instructions
+  ---
+  duration_ms: 32.8738
+  ...
+# Subtest: queue: links, controls, filters, and empty states
+ok 30 - queue: links, controls, filters, and empty states
+  ---
+  duration_ms: 22.666849
+  ...
+# Subtest: queue: required reason, confirmation, history, and retained selection
+ok 31 - queue: required reason, confirmation, history, and retained selection
+  ---
+  duration_ms: 41.418345
+  ...
+# Subtest: queue: optional reason and missing instructions
+ok 32 - queue: optional reason and missing instructions
+  ---
+  duration_ms: 26.962116
+  ...
+# Subtest: focus: links, controls, filters, and empty states
+ok 33 - focus: links, controls, filters, and empty states
+  ---
+  duration_ms: 25.194392
+  ...
+# Subtest: focus: required reason, confirmation, history, and retained selection
+ok 34 - focus: required reason, confirmation, history, and retained selection
+  ---
+  duration_ms: 30.151449
+  ...
+# Subtest: focus: optional reason and missing instructions
+ok 35 - focus: optional reason and missing instructions
+  ---
+  duration_ms: 19.617653
+  ...
+# Subtest: focus: navigation and sort order
+ok 36 - focus: navigation and sort order
+  ---
+  duration_ms: 19.013693
+  ...
+# Subtest: queue: inspector closes without changing the queue
+ok 37 - queue: inspector closes without changing the queue
+  ---
+  duration_ms: 14.35384
+  ...
+1..37
+# tests 37
+# suites 0
+# pass 37
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1398.673643
+
+BUILD SUCCESSFUL in 11s
+14 actionable tasks: 4 executed, 10 up-to-date
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.5.0/userguide/configuration_cache_enabling.html

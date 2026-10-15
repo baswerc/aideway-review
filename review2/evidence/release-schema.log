@@ -1,0 +1,1 @@
+Release blocked: V1_Init.kt imports live application models. Freeze its schema and seed SQL before the first release.

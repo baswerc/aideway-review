@@ -1,0 +1,903 @@
+Compiled from "JsonValue.kt"
+public interface org.tekfive.jfk.JsonValue {
+  public static final org.tekfive.jfk.JsonValue$Companion Companion;
+
+  public abstract java.util.List<java.lang.String> get_accessPath();
+
+  public abstract void set_accessPath(java.util.List<java.lang.String>);
+
+  public default org.tekfive.jfk.JsonValue get(java.lang.String);
+    Code:
+         0: aload_1
+         1: ldc           #25                 // String key
+         3: invokestatic  #31                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+         6: getstatic     #35                 // Field org/tekfive/jfk/JsonNull.INSTANCE:Lorg/tekfive/jfk/JsonNull;
+         9: aload_0
+        10: invokeinterface #37,  1           // InterfaceMethod get_accessPath:()Ljava/util/List;
+        15: checkcast     #39                 // class java/util/Collection
+        18: aload_1
+        19: invokestatic  #45                 // Method kotlin/collections/CollectionsKt.plus:(Ljava/util/Collection;Ljava/lang/Object;)Ljava/util/List;
+        22: invokevirtual #47                 // Method org/tekfive/jfk/JsonNull.set_accessPath:(Ljava/util/List;)V
+        25: getstatic     #35                 // Field org/tekfive/jfk/JsonNull.INSTANCE:Lorg/tekfive/jfk/JsonNull;
+        28: checkcast     #2                  // class org/tekfive/jfk/JsonValue
+        31: areturn
+
+  public default org.tekfive.jfk.JsonValue get(kotlin.reflect.KProperty<?>);
+    Code:
+         0: aload_1
+         1: ldc           #54                 // String prop
+         3: invokestatic  #31                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+         6: aload_0
+         7: aload_1
+         8: invokeinterface #60,  1           // InterfaceMethod kotlin/reflect/KProperty.getName:()Ljava/lang/String;
+        13: invokeinterface #62,  2           // InterfaceMethod get:(Ljava/lang/String;)Lorg/tekfive/jfk/JsonValue;
+        18: areturn
+
+  public default org.tekfive.jfk.JsonValue get(int);
+    Code:
+         0: getstatic     #35                 // Field org/tekfive/jfk/JsonNull.INSTANCE:Lorg/tekfive/jfk/JsonNull;
+         3: aload_0
+         4: invokeinterface #37,  1           // InterfaceMethod get_accessPath:()Ljava/util/List;
+         9: checkcast     #39                 // class java/util/Collection
+        12: iload_1
+        13: invokestatic  #70                 // Method java/lang/String.valueOf:(I)Ljava/lang/String;
+        16: invokestatic  #45                 // Method kotlin/collections/CollectionsKt.plus:(Ljava/util/Collection;Ljava/lang/Object;)Ljava/util/List;
+        19: invokevirtual #47                 // Method org/tekfive/jfk/JsonNull.set_accessPath:(Ljava/util/List;)V
+        22: getstatic     #35                 // Field org/tekfive/jfk/JsonNull.INSTANCE:Lorg/tekfive/jfk/JsonNull;
+        25: checkcast     #2                  // class org/tekfive/jfk/JsonValue
+        28: areturn
+
+  public default org.tekfive.jfk.JsonValue at(java.lang.String);
+    Code:
+         0: aload_1
+         1: ldc           #75                 // String path
+         3: invokestatic  #31                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+         6: aload_0
+         7: astore_2
+         8: aload_1
+         9: checkcast     #77                 // class java/lang/CharSequence
+        12: iconst_1
+        13: newarray       char
+        15: astore        4
+        17: aload         4
+        19: iconst_0
+        20: bipush        46
+        22: castore
+        23: aload         4
+        25: iconst_0
+        26: iconst_0
+        27: bipush        6
+        29: aconst_null
+        30: invokestatic  #83                 // Method kotlin/text/StringsKt.split$default:(Ljava/lang/CharSequence;[CZIILjava/lang/Object;)Ljava/util/List;
+        33: invokeinterface #89,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+        38: astore_3
+        39: aload_3
+        40: invokeinterface #95,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+        45: ifeq          71
+        48: aload_3
+        49: invokeinterface #99,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        54: checkcast     #66                 // class java/lang/String
+        57: astore        4
+        59: aload_2
+        60: aload         4
+        62: invokeinterface #62,  2           // InterfaceMethod get:(Ljava/lang/String;)Lorg/tekfive/jfk/JsonValue;
+        67: astore_2
+        68: goto          39
+        71: aload_2
+        72: areturn
+
+  public default org.tekfive.jfk.JsonValue at(org.tekfive.jfk.JsonPath);
+    Code:
+         0: aload_1
+         1: ldc           #75                 // String path
+         3: invokestatic  #31                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+         6: aload_0
+         7: astore_2
+         8: aload_1
+         9: invokevirtual #107                // Method org/tekfive/jfk/JsonPath.getSegments:()Ljava/util/List;
+        12: invokeinterface #89,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+        17: astore_3
+        18: aload_3
+        19: invokeinterface #95,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+        24: ifeq          104
+        27: aload_3
+        28: invokeinterface #99,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        33: checkcast     #109                // class org/tekfive/jfk/JsonPathSegment
+        36: astore        4
+        38: aload         4
+        40: astore        5
+        42: aload         5
+        44: instanceof    #111                // class org/tekfive/jfk/JsonPathSegment$Key
+        47: ifeq          67
+        50: aload_2
+        51: aload         4
+        53: checkcast     #111                // class org/tekfive/jfk/JsonPathSegment$Key
+        56: invokevirtual #112                // Method org/tekfive/jfk/JsonPathSegment$Key.getName:()Ljava/lang/String;
+        59: invokeinterface #62,  2           // InterfaceMethod get:(Ljava/lang/String;)Lorg/tekfive/jfk/JsonValue;
+        64: goto          100
+        67: aload         5
+        69: instanceof    #114                // class org/tekfive/jfk/JsonPathSegment$Index
+        72: ifeq          92
+        75: aload_2
+        76: aload         4
+        78: checkcast     #114                // class org/tekfive/jfk/JsonPathSegment$Index
+        81: invokevirtual #118                // Method org/tekfive/jfk/JsonPathSegment$Index.getIndex:()I
+        84: invokeinterface #120,  2          // InterfaceMethod get:(I)Lorg/tekfive/jfk/JsonValue;
+        89: goto          100
+        92: new           #122                // class kotlin/NoWhenBranchMatchedException
+        95: dup
+        96: invokespecial #126                // Method kotlin/NoWhenBranchMatchedException."<init>":()V
+        99: athrow
+       100: astore_2
+       101: goto          18
+       104: aload_2
+       105: areturn
+
+  public default org.tekfive.jfk.JsonObject getObj();
+    Code:
+         0: aconst_null
+         1: areturn
+
+  public default org.tekfive.jfk.JsonArray getArray();
+    Code:
+         0: aconst_null
+         1: areturn
+
+  public default java.lang.String getString();
+    Code:
+         0: aconst_null
+         1: areturn
+
+  public default java.lang.Integer getInt();
+    Code:
+         0: aconst_null
+         1: areturn
+
+  public default java.lang.Long getLong();
+    Code:
+         0: aconst_null
+         1: areturn
+
+  public default java.lang.Double getDouble();
+    Code:
+         0: aconst_null
+         1: areturn
+
+  public default java.lang.Boolean getBoolean();
+    Code:
+         0: aconst_null
+         1: areturn
+
+  public default boolean isNull();
+    Code:
+         0: iconst_0
+         1: ireturn
+
+  public default int getSize();
+    Code:
+         0: iconst_0
+         1: ireturn
+
+  public default java.lang.String getLaxString();
+    Code:
+         0: aload_0
+         1: invokeinterface #147,  1          // InterfaceMethod getString:()Ljava/lang/String;
+         6: areturn
+
+  public default java.lang.Integer getLaxInt();
+    Code:
+         0: aload_0
+         1: invokeinterface #150,  1          // InterfaceMethod getInt:()Ljava/lang/Integer;
+         6: dup
+         7: ifnonnull     45
+        10: pop
+        11: aload_0
+        12: instanceof    #14                 // class org/tekfive/jfk/JsonString
+        15: ifeq          25
+        18: aload_0
+        19: checkcast     #14                 // class org/tekfive/jfk/JsonString
+        22: goto          26
+        25: aconst_null
+        26: dup
+        27: ifnull        43
+        30: invokevirtual #153                // Method org/tekfive/jfk/JsonString.getValue:()Ljava/lang/String;
+        33: dup
+        34: ifnull        43
+        37: invokestatic  #157                // Method kotlin/text/StringsKt.toIntOrNull:(Ljava/lang/String;)Ljava/lang/Integer;
+        40: goto          45
+        43: pop
+        44: aconst_null
+        45: areturn
+
+  public default java.lang.Long getLaxLong();
+    Code:
+         0: aload_0
+         1: invokeinterface #164,  1          // InterfaceMethod getLong:()Ljava/lang/Long;
+         6: astore_1
+         7: aload_1
+         8: ifnonnull     53
+        11: aload_0
+        12: invokeinterface #166,  1          // InterfaceMethod getLaxString:()Ljava/lang/String;
+        17: astore_2
+        18: aload_2
+        19: ifnull        53
+        22: aload_2
+        23: invokestatic  #170                // Method kotlin/text/StringsKt.toLongOrNull:(Ljava/lang/String;)Ljava/lang/Long;
+        26: astore_1
+        27: aload_1
+        28: ifnonnull     53
+        31: nop
+        32: getstatic     #176                // Field kotlin/time/Instant.Companion:Lkotlin/time/Instant$Companion;
+        35: aload_2
+        36: checkcast     #77                 // class java/lang/CharSequence
+        39: invokevirtual #182                // Method kotlin/time/Instant$Companion.parse:(Ljava/lang/CharSequence;)Lkotlin/time/Instant;
+        42: invokevirtual #186                // Method kotlin/time/Instant.toEpochMilliseconds:()J
+        45: invokestatic  #191                // Method java/lang/Long.valueOf:(J)Ljava/lang/Long;
+        48: astore_1
+        49: goto          53
+        52: astore_3
+        53: aload_1
+        54: areturn
+      Exception table:
+         from    to  target type
+            31    49    52   Class java/lang/Exception
+
+  public default java.lang.Double getLaxDouble();
+    Code:
+         0: aload_0
+         1: invokeinterface #197,  1          // InterfaceMethod getDouble:()Ljava/lang/Double;
+         6: dup
+         7: ifnonnull     99
+        10: pop
+        11: aload_0
+        12: instanceof    #14                 // class org/tekfive/jfk/JsonString
+        15: ifeq          25
+        18: aload_0
+        19: checkcast     #14                 // class org/tekfive/jfk/JsonString
+        22: goto          26
+        25: aconst_null
+        26: astore_1
+        27: aload_1
+        28: ifnull        98
+        31: aload_1
+        32: invokevirtual #153                // Method org/tekfive/jfk/JsonString.getValue:()Ljava/lang/String;
+        35: astore_2
+        36: aload_2
+        37: ifnull        98
+        40: aload_2
+        41: invokestatic  #201                // Method kotlin/text/StringsKt.toDoubleOrNull:(Ljava/lang/String;)Ljava/lang/Double;
+        44: astore_3
+        45: aload_3
+        46: ifnull        98
+        49: aload_3
+        50: astore        4
+        52: aload         4
+        54: checkcast     #203                // class java/lang/Number
+        57: invokevirtual #207                // Method java/lang/Number.doubleValue:()D
+        60: dstore        5
+        62: iconst_0
+        63: istore        7
+        65: dload         5
+        67: invokestatic  #213                // Method java/lang/Double.isNaN:(D)Z
+        70: ifne          85
+        73: dload         5
+        75: invokestatic  #216                // Method java/lang/Double.isInfinite:(D)Z
+        78: ifne          85
+        81: iconst_1
+        82: goto          86
+        85: iconst_0
+        86: ifeq          94
+        89: aload         4
+        91: goto          99
+        94: aconst_null
+        95: goto          99
+        98: aconst_null
+        99: areturn
+
+  public default java.lang.Boolean getLaxBoolean();
+    Code:
+         0: aload_0
+         1: invokeinterface #222,  1          // InterfaceMethod getBoolean:()Ljava/lang/Boolean;
+         6: dup
+         7: ifnonnull     45
+        10: pop
+        11: aload_0
+        12: instanceof    #14                 // class org/tekfive/jfk/JsonString
+        15: ifeq          25
+        18: aload_0
+        19: checkcast     #14                 // class org/tekfive/jfk/JsonString
+        22: goto          26
+        25: aconst_null
+        26: dup
+        27: ifnull        43
+        30: invokevirtual #153                // Method org/tekfive/jfk/JsonString.getValue:()Ljava/lang/String;
+        33: dup
+        34: ifnull        43
+        37: invokestatic  #226                // Method kotlin/text/StringsKt.toBooleanStrictOrNull:(Ljava/lang/String;)Ljava/lang/Boolean;
+        40: goto          45
+        43: pop
+        44: aconst_null
+        45: areturn
+
+  public default org.tekfive.jfk.JsonObject getReqObj();
+    Code:
+         0: aload_0
+         1: invokeinterface #231,  1          // InterfaceMethod getObj:()Lorg/tekfive/jfk/JsonObject;
+         6: dup
+         7: ifnonnull     26
+        10: pop
+        11: aload_0
+        12: ldc           #233                // String Object
+        14: invokestatic  #239                // Method org/tekfive/jfk/JsonValueKt.access$throwReq:(Lorg/tekfive/jfk/JsonValue;Ljava/lang/String;)Ljava/lang/Void;
+        17: pop
+        18: new           #241                // class kotlin/KotlinNothingValueException
+        21: dup
+        22: invokespecial #242                // Method kotlin/KotlinNothingValueException."<init>":()V
+        25: athrow
+        26: areturn
+
+  public default org.tekfive.jfk.JsonArray getReqArray();
+    Code:
+         0: aload_0
+         1: invokeinterface #247,  1          // InterfaceMethod getArray:()Lorg/tekfive/jfk/JsonArray;
+         6: dup
+         7: ifnonnull     26
+        10: pop
+        11: aload_0
+        12: ldc           #249                // String Array
+        14: invokestatic  #239                // Method org/tekfive/jfk/JsonValueKt.access$throwReq:(Lorg/tekfive/jfk/JsonValue;Ljava/lang/String;)Ljava/lang/Void;
+        17: pop
+        18: new           #241                // class kotlin/KotlinNothingValueException
+        21: dup
+        22: invokespecial #242                // Method kotlin/KotlinNothingValueException."<init>":()V
+        25: athrow
+        26: areturn
+
+  public default java.lang.String getReqString();
+    Code:
+         0: aload_0
+         1: invokeinterface #166,  1          // InterfaceMethod getLaxString:()Ljava/lang/String;
+         6: dup
+         7: ifnonnull     26
+        10: pop
+        11: aload_0
+        12: ldc           #254                // String String
+        14: invokestatic  #239                // Method org/tekfive/jfk/JsonValueKt.access$throwReq:(Lorg/tekfive/jfk/JsonValue;Ljava/lang/String;)Ljava/lang/Void;
+        17: pop
+        18: new           #241                // class kotlin/KotlinNothingValueException
+        21: dup
+        22: invokespecial #242                // Method kotlin/KotlinNothingValueException."<init>":()V
+        25: athrow
+        26: areturn
+
+  public default int getReqInt();
+    Code:
+         0: aload_0
+         1: invokeinterface #257,  1          // InterfaceMethod getLaxInt:()Ljava/lang/Integer;
+         6: dup
+         7: ifnull        16
+        10: invokevirtual #260                // Method java/lang/Integer.intValue:()I
+        13: goto          33
+        16: pop
+        17: aload_0
+        18: ldc_w         #262                // String Int
+        21: invokestatic  #239                // Method org/tekfive/jfk/JsonValueKt.access$throwReq:(Lorg/tekfive/jfk/JsonValue;Ljava/lang/String;)Ljava/lang/Void;
+        24: pop
+        25: new           #241                // class kotlin/KotlinNothingValueException
+        28: dup
+        29: invokespecial #242                // Method kotlin/KotlinNothingValueException."<init>":()V
+        32: athrow
+        33: ireturn
+
+  public default long getReqLong();
+    Code:
+         0: aload_0
+         1: invokeinterface #265,  1          // InterfaceMethod getLaxLong:()Ljava/lang/Long;
+         6: dup
+         7: ifnull        16
+        10: invokevirtual #268                // Method java/lang/Long.longValue:()J
+        13: goto          33
+        16: pop
+        17: aload_0
+        18: ldc_w         #270                // String Long
+        21: invokestatic  #239                // Method org/tekfive/jfk/JsonValueKt.access$throwReq:(Lorg/tekfive/jfk/JsonValue;Ljava/lang/String;)Ljava/lang/Void;
+        24: pop
+        25: new           #241                // class kotlin/KotlinNothingValueException
+        28: dup
+        29: invokespecial #242                // Method kotlin/KotlinNothingValueException."<init>":()V
+        32: athrow
+        33: lreturn
+
+  public default double getReqDouble();
+    Code:
+         0: aload_0
+         1: invokeinterface #273,  1          // InterfaceMethod getLaxDouble:()Ljava/lang/Double;
+         6: dup
+         7: ifnull        16
+        10: invokevirtual #274                // Method java/lang/Double.doubleValue:()D
+        13: goto          33
+        16: pop
+        17: aload_0
+        18: ldc_w         #276                // String Double
+        21: invokestatic  #239                // Method org/tekfive/jfk/JsonValueKt.access$throwReq:(Lorg/tekfive/jfk/JsonValue;Ljava/lang/String;)Ljava/lang/Void;
+        24: pop
+        25: new           #241                // class kotlin/KotlinNothingValueException
+        28: dup
+        29: invokespecial #242                // Method kotlin/KotlinNothingValueException."<init>":()V
+        32: athrow
+        33: dreturn
+
+  public default boolean getReqBoolean();
+    Code:
+         0: aload_0
+         1: invokeinterface #279,  1          // InterfaceMethod getLaxBoolean:()Ljava/lang/Boolean;
+         6: dup
+         7: ifnull        16
+        10: invokevirtual #282                // Method java/lang/Boolean.booleanValue:()Z
+        13: goto          33
+        16: pop
+        17: aload_0
+        18: ldc_w         #284                // String Boolean
+        21: invokestatic  #239                // Method org/tekfive/jfk/JsonValueKt.access$throwReq:(Lorg/tekfive/jfk/JsonValue;Ljava/lang/String;)Ljava/lang/Void;
+        24: pop
+        25: new           #241                // class kotlin/KotlinNothingValueException
+        28: dup
+        29: invokespecial #242                // Method kotlin/KotlinNothingValueException."<init>":()V
+        32: athrow
+        33: ireturn
+
+  public default org.tekfive.jfk.JsonObject reqObj(kotlin.jvm.functions.Function0);
+    Code:
+         0: aload_1
+         1: ldc_w         #288                // String notFound
+         4: invokestatic  #31                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+         7: aload_0
+         8: invokeinterface #231,  1          // InterfaceMethod getObj:()Lorg/tekfive/jfk/JsonObject;
+        13: dup
+        14: ifnonnull     33
+        17: pop
+        18: aload_1
+        19: invokeinterface #293,  1          // InterfaceMethod kotlin/jvm/functions/Function0.invoke:()Ljava/lang/Object;
+        24: pop
+        25: new           #241                // class kotlin/KotlinNothingValueException
+        28: dup
+        29: invokespecial #242                // Method kotlin/KotlinNothingValueException."<init>":()V
+        32: athrow
+        33: areturn
+
+  public default org.tekfive.jfk.JsonArray reqArray(kotlin.jvm.functions.Function0);
+    Code:
+         0: aload_1
+         1: ldc_w         #288                // String notFound
+         4: invokestatic  #31                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+         7: aload_0
+         8: invokeinterface #247,  1          // InterfaceMethod getArray:()Lorg/tekfive/jfk/JsonArray;
+        13: dup
+        14: ifnonnull     33
+        17: pop
+        18: aload_1
+        19: invokeinterface #293,  1          // InterfaceMethod kotlin/jvm/functions/Function0.invoke:()Ljava/lang/Object;
+        24: pop
+        25: new           #241                // class kotlin/KotlinNothingValueException
+        28: dup
+        29: invokespecial #242                // Method kotlin/KotlinNothingValueException."<init>":()V
+        32: athrow
+        33: areturn
+
+  public default java.lang.String reqString(kotlin.jvm.functions.Function0);
+    Code:
+         0: aload_1
+         1: ldc_w         #288                // String notFound
+         4: invokestatic  #31                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+         7: aload_0
+         8: invokeinterface #166,  1          // InterfaceMethod getLaxString:()Ljava/lang/String;
+        13: dup
+        14: ifnonnull     33
+        17: pop
+        18: aload_1
+        19: invokeinterface #293,  1          // InterfaceMethod kotlin/jvm/functions/Function0.invoke:()Ljava/lang/Object;
+        24: pop
+        25: new           #241                // class kotlin/KotlinNothingValueException
+        28: dup
+        29: invokespecial #242                // Method kotlin/KotlinNothingValueException."<init>":()V
+        32: athrow
+        33: areturn
+
+  public default int reqInt(kotlin.jvm.functions.Function0);
+    Code:
+         0: aload_1
+         1: ldc_w         #288                // String notFound
+         4: invokestatic  #31                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+         7: aload_0
+         8: invokeinterface #257,  1          // InterfaceMethod getLaxInt:()Ljava/lang/Integer;
+        13: dup
+        14: ifnull        23
+        17: invokevirtual #260                // Method java/lang/Integer.intValue:()I
+        20: goto          39
+        23: pop
+        24: aload_1
+        25: invokeinterface #293,  1          // InterfaceMethod kotlin/jvm/functions/Function0.invoke:()Ljava/lang/Object;
+        30: pop
+        31: new           #241                // class kotlin/KotlinNothingValueException
+        34: dup
+        35: invokespecial #242                // Method kotlin/KotlinNothingValueException."<init>":()V
+        38: athrow
+        39: ireturn
+
+  public default long reqLong(kotlin.jvm.functions.Function0);
+    Code:
+         0: aload_1
+         1: ldc_w         #288                // String notFound
+         4: invokestatic  #31                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+         7: aload_0
+         8: invokeinterface #265,  1          // InterfaceMethod getLaxLong:()Ljava/lang/Long;
+        13: dup
+        14: ifnull        23
+        17: invokevirtual #268                // Method java/lang/Long.longValue:()J
+        20: goto          39
+        23: pop
+        24: aload_1
+        25: invokeinterface #293,  1          // InterfaceMethod kotlin/jvm/functions/Function0.invoke:()Ljava/lang/Object;
+        30: pop
+        31: new           #241                // class kotlin/KotlinNothingValueException
+        34: dup
+        35: invokespecial #242                // Method kotlin/KotlinNothingValueException."<init>":()V
+        38: athrow
+        39: lreturn
+
+  public default double reqDouble(kotlin.jvm.functions.Function0);
+    Code:
+         0: aload_1
+         1: ldc_w         #288                // String notFound
+         4: invokestatic  #31                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+         7: aload_0
+         8: invokeinterface #273,  1          // InterfaceMethod getLaxDouble:()Ljava/lang/Double;
+        13: dup
+        14: ifnull        23
+        17: invokevirtual #274                // Method java/lang/Double.doubleValue:()D
+        20: goto          39
+        23: pop
+        24: aload_1
+        25: invokeinterface #293,  1          // InterfaceMethod kotlin/jvm/functions/Function0.invoke:()Ljava/lang/Object;
+        30: pop
+        31: new           #241                // class kotlin/KotlinNothingValueException
+        34: dup
+        35: invokespecial #242                // Method kotlin/KotlinNothingValueException."<init>":()V
+        38: athrow
+        39: dreturn
+
+  public default boolean reqBoolean(kotlin.jvm.functions.Function0);
+    Code:
+         0: aload_1
+         1: ldc_w         #288                // String notFound
+         4: invokestatic  #31                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+         7: aload_0
+         8: invokeinterface #279,  1          // InterfaceMethod getLaxBoolean:()Ljava/lang/Boolean;
+        13: dup
+        14: ifnull        23
+        17: invokevirtual #282                // Method java/lang/Boolean.booleanValue:()Z
+        20: goto          39
+        23: pop
+        24: aload_1
+        25: invokeinterface #293,  1          // InterfaceMethod kotlin/jvm/functions/Function0.invoke:()Ljava/lang/Object;
+        30: pop
+        31: new           #241                // class kotlin/KotlinNothingValueException
+        34: dup
+        35: invokespecial #242                // Method kotlin/KotlinNothingValueException."<init>":()V
+        38: athrow
+        39: ireturn
+
+  public default java.lang.Object toValue();
+    Code:
+         0: aload_0
+         1: astore_1
+         2: aload_1
+         3: instanceof    #244                // class org/tekfive/jfk/JsonObject
+         6: ifeq          19
+         9: aload_0
+        10: checkcast     #244                // class org/tekfive/jfk/JsonObject
+        13: invokevirtual #311                // Method org/tekfive/jfk/JsonObject.toMap:()Ljava/util/Map;
+        16: goto          109
+        19: aload_1
+        20: instanceof    #251                // class org/tekfive/jfk/JsonArray
+        23: ifeq          36
+        26: aload_0
+        27: checkcast     #251                // class org/tekfive/jfk/JsonArray
+        30: invokevirtual #314                // Method org/tekfive/jfk/JsonArray.toList:()Ljava/util/List;
+        33: goto          109
+        36: aload_1
+        37: instanceof    #14                 // class org/tekfive/jfk/JsonString
+        40: ifeq          53
+        43: aload_0
+        44: checkcast     #14                 // class org/tekfive/jfk/JsonString
+        47: invokevirtual #153                // Method org/tekfive/jfk/JsonString.getValue:()Ljava/lang/String;
+        50: goto          109
+        53: aload_1
+        54: instanceof    #12                 // class org/tekfive/jfk/JsonNumber
+        57: ifeq          70
+        60: aload_0
+        61: checkcast     #12                 // class org/tekfive/jfk/JsonNumber
+        64: invokevirtual #317                // Method org/tekfive/jfk/JsonNumber.getValue:()Ljava/lang/Number;
+        67: goto          109
+        70: aload_1
+        71: instanceof    #6                  // class org/tekfive/jfk/JsonBool
+        74: ifeq          90
+        77: aload_0
+        78: checkcast     #6                  // class org/tekfive/jfk/JsonBool
+        81: invokevirtual #319                // Method org/tekfive/jfk/JsonBool.getValue:()Z
+        84: invokestatic  #322                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+        87: goto          109
+        90: aload_1
+        91: instanceof    #10                 // class org/tekfive/jfk/JsonNull
+        94: ifeq          101
+        97: aconst_null
+        98: goto          109
+       101: new           #122                // class kotlin/NoWhenBranchMatchedException
+       104: dup
+       105: invokespecial #126                // Method kotlin/NoWhenBranchMatchedException."<init>":()V
+       108: athrow
+       109: areturn
+
+  public default java.lang.String toJsonString(java.lang.Integer);
+    Code:
+         0: getstatic     #329                // Field org/tekfive/jfk/JsonWriter.INSTANCE:Lorg/tekfive/jfk/JsonWriter;
+         3: aload_0
+         4: aload_1
+         5: dup
+         6: ifnull        15
+         9: invokevirtual #260                // Method java/lang/Integer.intValue:()I
+        12: goto          17
+        15: pop
+        16: iconst_0
+        17: invokevirtual #333                // Method org/tekfive/jfk/JsonWriter.write:(Lorg/tekfive/jfk/JsonValue;I)Ljava/lang/String;
+        20: areturn
+
+  public static java.lang.String toJsonString$default(org.tekfive.jfk.JsonValue, java.lang.Integer, int, java.lang.Object);
+    Code:
+         0: aload_3
+         1: ifnull        15
+         4: new           #339                // class java/lang/UnsupportedOperationException
+         7: dup
+         8: ldc_w         #341                // String Super calls with default arguments not supported in this target, function: toJsonString
+        11: invokespecial #344                // Method java/lang/UnsupportedOperationException."<init>":(Ljava/lang/String;)V
+        14: athrow
+        15: iload_2
+        16: iconst_1
+        17: iand
+        18: ifeq          23
+        21: aconst_null
+        22: astore_1
+        23: aload_0
+        24: aload_1
+        25: invokeinterface #346,  2          // InterfaceMethod toJsonString:(Ljava/lang/Integer;)Ljava/lang/String;
+        30: areturn
+
+  public static org.tekfive.jfk.JsonValue access$get$jd(org.tekfive.jfk.JsonValue, java.lang.String);
+    Code:
+         0: aload_0
+         1: aload_1
+         2: invokespecial #62                 // InterfaceMethod get:(Ljava/lang/String;)Lorg/tekfive/jfk/JsonValue;
+         5: areturn
+
+  public static org.tekfive.jfk.JsonValue access$get$jd(org.tekfive.jfk.JsonValue, kotlin.reflect.KProperty);
+    Code:
+         0: aload_0
+         1: aload_1
+         2: invokespecial #352                // InterfaceMethod get:(Lkotlin/reflect/KProperty;)Lorg/tekfive/jfk/JsonValue;
+         5: areturn
+
+  public static org.tekfive.jfk.JsonValue access$get$jd(org.tekfive.jfk.JsonValue, int);
+    Code:
+         0: aload_0
+         1: iload_1
+         2: invokespecial #120                // InterfaceMethod get:(I)Lorg/tekfive/jfk/JsonValue;
+         5: areturn
+
+  public static org.tekfive.jfk.JsonValue access$at$jd(org.tekfive.jfk.JsonValue, java.lang.String);
+    Code:
+         0: aload_0
+         1: aload_1
+         2: invokespecial #356                // InterfaceMethod at:(Ljava/lang/String;)Lorg/tekfive/jfk/JsonValue;
+         5: areturn
+
+  public static org.tekfive.jfk.JsonValue access$at$jd(org.tekfive.jfk.JsonValue, org.tekfive.jfk.JsonPath);
+    Code:
+         0: aload_0
+         1: aload_1
+         2: invokespecial #359                // InterfaceMethod at:(Lorg/tekfive/jfk/JsonPath;)Lorg/tekfive/jfk/JsonValue;
+         5: areturn
+
+  public static org.tekfive.jfk.JsonObject access$getObj$jd(org.tekfive.jfk.JsonValue);
+    Code:
+         0: aload_0
+         1: invokespecial #231                // InterfaceMethod getObj:()Lorg/tekfive/jfk/JsonObject;
+         4: areturn
+
+  public static org.tekfive.jfk.JsonArray access$getArray$jd(org.tekfive.jfk.JsonValue);
+    Code:
+         0: aload_0
+         1: invokespecial #247                // InterfaceMethod getArray:()Lorg/tekfive/jfk/JsonArray;
+         4: areturn
+
+  public static java.lang.String access$getString$jd(org.tekfive.jfk.JsonValue);
+    Code:
+         0: aload_0
+         1: invokespecial #147                // InterfaceMethod getString:()Ljava/lang/String;
+         4: areturn
+
+  public static java.lang.Integer access$getInt$jd(org.tekfive.jfk.JsonValue);
+    Code:
+         0: aload_0
+         1: invokespecial #150                // InterfaceMethod getInt:()Ljava/lang/Integer;
+         4: areturn
+
+  public static java.lang.Long access$getLong$jd(org.tekfive.jfk.JsonValue);
+    Code:
+         0: aload_0
+         1: invokespecial #164                // InterfaceMethod getLong:()Ljava/lang/Long;
+         4: areturn
+
+  public static java.lang.Double access$getDouble$jd(org.tekfive.jfk.JsonValue);
+    Code:
+         0: aload_0
+         1: invokespecial #197                // InterfaceMethod getDouble:()Ljava/lang/Double;
+         4: areturn
+
+  public static java.lang.Boolean access$getBoolean$jd(org.tekfive.jfk.JsonValue);
+    Code:
+         0: aload_0
+         1: invokespecial #222                // InterfaceMethod getBoolean:()Ljava/lang/Boolean;
+         4: areturn
+
+  public static boolean access$isNull$jd(org.tekfive.jfk.JsonValue);
+    Code:
+         0: aload_0
+         1: invokespecial #377                // InterfaceMethod isNull:()Z
+         4: ireturn
+
+  public static int access$getSize$jd(org.tekfive.jfk.JsonValue);
+    Code:
+         0: aload_0
+         1: invokespecial #381                // InterfaceMethod getSize:()I
+         4: ireturn
+
+  public static java.lang.String access$getLaxString$jd(org.tekfive.jfk.JsonValue);
+    Code:
+         0: aload_0
+         1: invokespecial #166                // InterfaceMethod getLaxString:()Ljava/lang/String;
+         4: areturn
+
+  public static java.lang.Integer access$getLaxInt$jd(org.tekfive.jfk.JsonValue);
+    Code:
+         0: aload_0
+         1: invokespecial #257                // InterfaceMethod getLaxInt:()Ljava/lang/Integer;
+         4: areturn
+
+  public static java.lang.Long access$getLaxLong$jd(org.tekfive.jfk.JsonValue);
+    Code:
+         0: aload_0
+         1: invokespecial #265                // InterfaceMethod getLaxLong:()Ljava/lang/Long;
+         4: areturn
+
+  public static java.lang.Double access$getLaxDouble$jd(org.tekfive.jfk.JsonValue);
+    Code:
+         0: aload_0
+         1: invokespecial #273                // InterfaceMethod getLaxDouble:()Ljava/lang/Double;
+         4: areturn
+
+  public static java.lang.Boolean access$getLaxBoolean$jd(org.tekfive.jfk.JsonValue);
+    Code:
+         0: aload_0
+         1: invokespecial #279                // InterfaceMethod getLaxBoolean:()Ljava/lang/Boolean;
+         4: areturn
+
+  public static org.tekfive.jfk.JsonObject access$getReqObj$jd(org.tekfive.jfk.JsonValue);
+    Code:
+         0: aload_0
+         1: invokespecial #389                // InterfaceMethod getReqObj:()Lorg/tekfive/jfk/JsonObject;
+         4: areturn
+
+  public static org.tekfive.jfk.JsonArray access$getReqArray$jd(org.tekfive.jfk.JsonValue);
+    Code:
+         0: aload_0
+         1: invokespecial #392                // InterfaceMethod getReqArray:()Lorg/tekfive/jfk/JsonArray;
+         4: areturn
+
+  public static java.lang.String access$getReqString$jd(org.tekfive.jfk.JsonValue);
+    Code:
+         0: aload_0
+         1: invokespecial #395                // InterfaceMethod getReqString:()Ljava/lang/String;
+         4: areturn
+
+  public static int access$getReqInt$jd(org.tekfive.jfk.JsonValue);
+    Code:
+         0: aload_0
+         1: invokespecial #398                // InterfaceMethod getReqInt:()I
+         4: ireturn
+
+  public static long access$getReqLong$jd(org.tekfive.jfk.JsonValue);
+    Code:
+         0: aload_0
+         1: invokespecial #402                // InterfaceMethod getReqLong:()J
+         4: lreturn
+
+  public static double access$getReqDouble$jd(org.tekfive.jfk.JsonValue);
+    Code:
+         0: aload_0
+         1: invokespecial #406                // InterfaceMethod getReqDouble:()D
+         4: dreturn
+
+  public static boolean access$getReqBoolean$jd(org.tekfive.jfk.JsonValue);
+    Code:
+         0: aload_0
+         1: invokespecial #409                // InterfaceMethod getReqBoolean:()Z
+         4: ireturn
+
+  public static org.tekfive.jfk.JsonObject access$reqObj$jd(org.tekfive.jfk.JsonValue, kotlin.jvm.functions.Function0);
+    Code:
+         0: aload_0
+         1: aload_1
+         2: invokespecial #413                // InterfaceMethod reqObj:(Lkotlin/jvm/functions/Function0;)Lorg/tekfive/jfk/JsonObject;
+         5: areturn
+
+  public static org.tekfive.jfk.JsonArray access$reqArray$jd(org.tekfive.jfk.JsonValue, kotlin.jvm.functions.Function0);
+    Code:
+         0: aload_0
+         1: aload_1
+         2: invokespecial #417                // InterfaceMethod reqArray:(Lkotlin/jvm/functions/Function0;)Lorg/tekfive/jfk/JsonArray;
+         5: areturn
+
+  public static java.lang.String access$reqString$jd(org.tekfive.jfk.JsonValue, kotlin.jvm.functions.Function0);
+    Code:
+         0: aload_0
+         1: aload_1
+         2: invokespecial #421                // InterfaceMethod reqString:(Lkotlin/jvm/functions/Function0;)Ljava/lang/String;
+         5: areturn
+
+  public static int access$reqInt$jd(org.tekfive.jfk.JsonValue, kotlin.jvm.functions.Function0);
+    Code:
+         0: aload_0
+         1: aload_1
+         2: invokespecial #425                // InterfaceMethod reqInt:(Lkotlin/jvm/functions/Function0;)I
+         5: ireturn
+
+  public static long access$reqLong$jd(org.tekfive.jfk.JsonValue, kotlin.jvm.functions.Function0);
+    Code:
+         0: aload_0
+         1: aload_1
+         2: invokespecial #429                // InterfaceMethod reqLong:(Lkotlin/jvm/functions/Function0;)J
+         5: lreturn
+
+  public static double access$reqDouble$jd(org.tekfive.jfk.JsonValue, kotlin.jvm.functions.Function0);
+    Code:
+         0: aload_0
+         1: aload_1
+         2: invokespecial #433                // InterfaceMethod reqDouble:(Lkotlin/jvm/functions/Function0;)D
+         5: dreturn
+
+  public static boolean access$reqBoolean$jd(org.tekfive.jfk.JsonValue, kotlin.jvm.functions.Function0);
+    Code:
+         0: aload_0
+         1: aload_1
+         2: invokespecial #437                // InterfaceMethod reqBoolean:(Lkotlin/jvm/functions/Function0;)Z
+         5: ireturn
+
+  public static java.lang.Object access$toValue$jd(org.tekfive.jfk.JsonValue);
+    Code:
+         0: aload_0
+         1: invokespecial #441                // InterfaceMethod toValue:()Ljava/lang/Object;
+         4: areturn
+
+  public static java.lang.String access$toJsonString$jd(org.tekfive.jfk.JsonValue, java.lang.Integer);
+    Code:
+         0: aload_0
+         1: aload_1
+         2: invokespecial #346                // InterfaceMethod toJsonString:(Ljava/lang/Integer;)Ljava/lang/String;
+         5: areturn
+
+  static {};
+    Code:
+         0: getstatic     #450                // Field org/tekfive/jfk/JsonValue$Companion.$$INSTANCE:Lorg/tekfive/jfk/JsonValue$Companion;
+         3: putstatic     #452                // Field Companion:Lorg/tekfive/jfk/JsonValue$Companion;
+         6: return
+}

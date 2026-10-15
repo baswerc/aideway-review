@@ -1,0 +1,5 @@
+1..4
+ok 1 nginx default.conf template renders and passes nginx -t # skip nginx binary not available
+ok 2 template references variables we expect
+ok 3 server entrypoint reads the mounted password without logging it
+ok 4 server entrypoint rejects missing and empty password files

@@ -1,0 +1,625 @@
+..........
+----------------------------------------------------------------------
+Ran 10 tests in 0.208s
+
+OK
+3
+pending|0|1|snapshot
+.....Could not stop services after failure; check the OS application log
+.os inventory: using USB at /tmp/tmpqldal_av/usb/aideway-os-inventory-20261015T102847Z.json
+os prepare: using USB at /tmp/tmpqldal_av/usb/aideway-os-update-20261015T102847Z.tar
+..........................
+----------------------------------------------------------------------
+Ran 32 tests in 0.108s
+
+OK
+.......................
+----------------------------------------------------------------------
+Ran 23 tests in 0.007s
+
+OK
+.....
+----------------------------------------------------------------------
+Ran 5 tests in 1.229s
+
+OK
+......................
+----------------------------------------------------------------------
+Ran 22 tests in 0.445s
+
+OK
+...........................
+----------------------------------------------------------------------
+Ran 27 tests in 2.356s
+
+OK
+...................
+----------------------------------------------------------------------
+Ran 19 tests in 0.177s
+
+OK
+............
+----------------------------------------------------------------------
+Ran 12 tests in 0.062s
+
+OK
+1..579
+ok 1 TLS audits detect expired server certificates and exposed keystores
+ok 2 TLS audits inspect postgres expiry and private key permissions
+ok 3 standalone TLS expiry check uses the root TLS directory
+ok 4 standalone permissions check finds an exposed key in the root TLS directory
+ok 5 60-tls-cert-expiry emits SKIP when no cert is installed
+ok 6 60-tls-cert-expiry emits PASS for a fresh long-lived cert
+ok 7 60-tls-cert-expiry emits WARN for a cert expiring soon
+ok 8 60-tls-cert-expiry emits FAIL for an expired cert
+ok 9 70-file-perms emits PASS when all sensitive files are mode 0640
+ok 10 70-file-perms emits FAIL when key.pem is world-readable
+ok 11 70-file-perms emits SKIP when neither file exists
+ok 12 99-default-secrets emits FAIL when POSTGRES_PASSWORD=change-me
+ok 13 99-default-secrets emits PASS when no defaults remain
+ok 14 99-default-secrets emits SKIP when env file is absent
+ok 15 95-backup-freshness emits INFO when no backups directory exists
+ok 16 95-backup-freshness emits PASS for a recent backup
+ok 17 95-backup-freshness emits WARN for a stale backup
+ok 18 65-keyset emits SKIP when AIDEWAY_KEYSET_DIR doesn't exist
+ok 19 65-keyset emits PASS when sealed and recovery exist with mode 0640
+ok 20 65-keyset emits FAIL when keyset.recovery is missing
+ok 21 67-keyset-sealed emits PASS for valid magic
+ok 22 67-keyset-sealed emits FAIL when magic is corrupted
+ok 23 68-keyset-recovery emits WARN when file is older than 365 days
+ok 24 12-swap leaves no diagnostic file after a successful probe
+ok 25 12-swap retains probe errors without writing a temporary file
+ok 26 12-swap emits PASS when swapon shows no swap
+ok 27 12-swap emits WARN for unencrypted swap
+ok 28 12-swap emits SKIP when swapon is absent
+ok 29 15-disk-encryption emits SKIP when data path absent
+ok 30 15-disk-encryption emits PASS when device is dm-crypt
+ok 31 15-disk-encryption emits FAIL when device is not encrypted
+ok 32 66-tpm emits SKIP when /dev/tpmrm0 absent
+ok 33 66-tpm emits PASS when tpm2_getrandom succeeds
+ok 34 66-tpm emits FAIL when tpm2_getrandom fails
+ok 35 40-docker-daemon emits PASS for journald log driver
+ok 36 40-docker-daemon emits WARN for json-file log driver
+ok 37 40-docker-daemon emits FAIL when docker info errors
+ok 38 40-docker-daemon emits SKIP when docker is absent
+ok 39 container audits inspect the server service
+ok 40 50-container-flags emits PASS happy path (all containers correctly configured)
+ok 41 50-container-flags emits FAIL when readonly_root is false
+ok 42 50-container-flags emits FAIL when SecurityOpt missing no-new-privileges
+ok 43 50-container-flags emits WARN when server container missing TPM device
+ok 44 50-container-flags emits SKIP when docker is absent
+ok 45 82-resource-limits emits PASS when all services have non-zero memory limits
+ok 46 82-resource-limits emits FAIL when a service has zero memory limit
+ok 47 83-memory-budget emits PASS when sum of limits is within 95% of host RAM
+ok 48 83-memory-budget emits WARN when sum exceeds 95% but is within 100% of host RAM
+ok 49 83-memory-budget emits FAIL when sum exceeds host RAM
+ok 50 83-memory-budget emits SKIP when docker is absent
+ok 51 85-nvidia-stack emits SKIP when nvidia-smi absent
+ok 52 85-nvidia-stack emits PASS for driver >= 550
+ok 53 85-nvidia-stack emits WARN for driver 540–549
+ok 54 85-nvidia-stack emits FAIL for driver < 540
+ok 55 85-nvidia-stack emits WARN when nvidia-container-toolkit absent
+ok 56 85-nvidia-stack emits FAIL when nvidia-smi query returns empty
+ok 57 86-vllm-tuning emits SKIP when env file absent
+ok 58 86-vllm-tuning emits PASS for sane values
+ok 59 86-vllm-tuning emits WARN when gpu_mem_util outside range
+ok 60 86-vllm-tuning emits INFO when gpu_mem_util unset
+ok 61 86-vllm-tuning emits WARN when trust_remote_code is true
+ok 62 86-vllm-tuning emits INFO when max_model_len is low
+ok 63 10-os-patches emits SKIP when apt-get absent
+ok 64 10-os-patches emits PASS when unattended-upgrades is enabled
+ok 65 10-os-patches emits WARN when unattended-upgrades is missing
+ok 66 10-os-patches emits WARN when kernel upgrade is pending
+ok 67 20-sshd-config emits ERROR when sshd_config absent
+ok 68 20-sshd-config emits PASS for hardened config
+ok 69 20-sshd-config emits FAIL when root login is allowed
+ok 70 20-sshd-config emits FAIL when password auth is enabled
+ok 71 20-sshd-config ignores drop-ins not referenced by Include
+ok 72 30-firewall reports unreadable status as an audit error
+ok 73 30-firewall reports a failed numbered query without policy findings
+ok 74 30-firewall reports inactive UFW separately from policy failures
+ok 75 30-firewall rejects empty successful status output
+ok 76 30-firewall reads status in a stable locale and reports the Spark rules
+ok 77 30-firewall requires an inbound TCP destination rule for HTTPS
+ok 78 30-firewall emits SKIP when no firewall tool present
+ok 79 30-firewall emits PASS for default-deny ufw with 443 open
+ok 80 30-firewall emits FAIL when default-deny is missing
+ok 81 30-firewall emits WARN for unexpected open ports
+ok 82 30-firewall emits INFO when only iptables is present
+ok 83 80-time-sync emits SKIP when timedatectl absent
+ok 84 80-time-sync emits PASS when synchronized and NTP active
+ok 85 80-time-sync emits FAIL when not synchronized
+ok 86 80-time-sync emits WARN when NTP service is inactive but clock is synced
+ok 87 90-journald emits SKIP when drop-in is absent
+ok 88 90-journald emits PASS for a compliant drop-in
+ok 89 90-journald emits FAIL when storage is not persistent
+ok 90 90-journald emits WARN when SystemMaxUse is way off policy
+ok 91 91-docs checks the installed manual under the runtime root
+ok 92 91-docs emits WARN when built HTML is absent
+ok 93 91-docs emits PASS when HTML is fresh
+ok 94 91-docs accepts a manual installed within the same second as its sources
+ok 95 91-docs emits WARN when source is newer than HTML
+ok 96 15-disk-encryption checks the filesystem containing a runtime subdirectory
+ok 97 TLS audit checks vllm expiry and private key permissions independently
+ok 98 aideway audit prints a categorized human report
+ok 99 aideway audit --json emits one JSON line per finding
+ok 100 aideway audit exits non-zero when any fail finding is emitted
+ok 101 aideway audit --only <prefix> filters checks
+ok 102 aideway audit --warn-as-fail makes warns exit non-zero
+ok 103 aideway audit --help prints usage
+ok 104 audit data directory does not select executable checks
+ok 105 SSH inspection failure makes the audit fail
+ok 106 backup create produces an aideway-backup-*.tar.zst file
+ok 107 backup create archive contains database, secrets, and audit state
+ok 108 backup create rejects an incomplete server identity
+ok 109 backup create uses the private postgres network
+ok 110 backup create uses the configured local postgres image without pulling
+ok 111 missing postgres image fails before pausing the server
+ok 112 backup create verifies the postgres certificate
+ok 113 backup create pauses and resumes the server
+ok 114 backup create manifest records the release version and host hostname
+ok 115 backup create manifest lists every file with its sha256
+ok 116 backup create prints a PHI warning banner on success
+ok 117 backup create fails with a clear message when keyset.recovery is missing
+ok 118 backup create fails with a clear message when pg_dump fails
+ok 119 backup create --help prints usage
+ok 120 backup restore replaces keyset.recovery with the archived copy
+ok 121 backup restore replaces tls cert + key
+ok 122 backup restore replaces audit spool and chain anchor
+ok 123 backup restore --skip-tls leaves cert + key alone
+ok 124 backup restore snapshots prior files into pre-restore/<UTC>/
+ok 125 backup restore invokes pg_restore via docker run
+ok 126 backup restore uses the configured local image for readiness and restore
+ok 127 missing postgres image prevents restore from starting services or changing data
+ok 128 backup restore verifies the current postgres certificate
+ok 129 backup restore uses the private postgres network
+ok 130 backup restore brings postgres up before talking to it
+ok 131 backup restore pg_restore bootstraps via the postgres maintenance db
+ok 132 backup restore stops postgres again on the normal path
+ok 133 backup restore prints next-step guidance about reseal
+ok 134 backup restore --allow-foreign-state-key bypasses HMAC mismatch
+ok 135 backup restore without --allow-foreign-state-key refuses on HMAC mismatch
+ok 136 backup restore --help prints usage
+ok 137 backup restore refuses when aideway services are running
+ok 138 backup restore --force bypasses the running-check
+ok 139 backup restore --force leaves postgres running (does not stop a live stack)
+ok 140 backup restore rejects a relative audit directory
+ok 141 backup verify accepts an untouched backup file
+ok 142 backup verify detects a tampered manifest
+ok 143 backup verify detects a tampered postgres dump
+ok 144 backup verify detects a wrong-host state key (foreign HMAC)
+ok 145 backup verify --help prints usage
+ok 146 backup verify fails on a missing file
+ok 147 setup todo prints first install checklist without requiring env file
+ok 148 setup todo --help prints usage
+ok 149 setup todo reports completed host config tls integration and keyset
+ok 150 setup todo keeps host config todo when vllm api key is missing
+ok 151 bootstrap top-level verb is not supported
+ok 152 bundle_verify accepts a signature produced by the matching key # skip minisign not installed
+ok 153 bundle_verify rejects a signature for tampered payload # skip minisign not installed
+ok 154 bundle_verify rejects a signature from a different key # skip minisign not installed
+ok 155 bundle_verify reports a clear error if the signature file is missing # skip minisign not installed
+ok 156 bundle_verify reports a clear error if the public key is missing # skip minisign not installed
+ok 157 log() writes to stderr with [info] prefix
+ok 158 warn() writes to stderr with [warn] prefix
+ok 159 die() writes to stderr and exits non-zero
+ok 160 die() honors a custom exit code as second argument
+ok 161 log() is silenced when AIDEWAY_QUIET=1
+ok 162 parse_common_flags consumes --dry-run and sets AIDEWAY_DRY_RUN
+ok 163 parse_common_flags consumes --yes and sets AIDEWAY_YES
+ok 164 parse_common_flags consumes --quiet and --verbose
+ok 165 parse_common_flags preserves non-flag arguments in REMAINING_ARGS
+ok 166 parse_common_flags accepts -h as --help alias
+ok 167 usage() prints the supplied text and exits non-zero by default
+ok 168 usage(text, 0) exits zero
+ok 169 load_env reads .env from the configured path
+ok 170 load_env fails when AIDEWAY_ENV_FILE does not exist
+ok 171 load_env fails clearly when AIDEWAY_ENV_FILE is not readable # skip test user can still read chmod 000 files
+ok 172 require_env returns 0 when all listed vars are set
+ok 173 require_env fails when a listed var is empty
+ok 174 compose_project_name returns 'aideway'
+ok 175 compose_run invokes docker compose with the project name
+ok 176 compose_run passes the configured env file when readable
+ok 177 compose_run respects --dry-run by not executing docker
+ok 178 compose_run fails clearly when the env file exists but is unreadable # skip test user can still read chmod 000 files
+ok 179 aideway up calls 'docker compose up -d'
+ok 180 aideway down calls 'docker compose down'
+ok 181 aideway restart with no service calls 'docker compose restart'
+ok 182 aideway restart <service> calls 'docker compose restart <service>'
+ok 183 aideway restart server maps to the server compose service
+ok 184 aideway ps is a passthrough
+ok 185 aideway status calls 'docker compose ps --format json'
+ok 186 aideway status prints a header row
+ok 187 aideway status labels the server service as server
+ok 188 docker compose config parses with .env.example values
+ok 189 compose.yaml declares the four expected services
+ok 190 compose.yaml gives server cleanup five minutes after SIGTERM
+ok 191 systemd allows compose to finish server and dependency shutdown
+ok 192 compose.yaml defines an internal private network
+ok 193 compose.yaml keeps postgres and vllm only on the private network
+ok 194 compose.yaml mounts the active host model directory into vllm
+ok 195 compose.yaml persists audit state and checks readiness
+ok 196 compose.yaml sets no-new-privileges on every service
+ok 197 compose.yaml drops all caps on every service
+ok 198 compose.yaml publishes HTTP and HTTPS only on nginx
+ok 199 config PROPERTY VALUE updates an existing known property
+ok 200 config PROPERTY VALUE appends a known property when it is missing
+ok 201 config PROPERTY VALUE rejects unknown properties
+ok 202 config supports enabling disabling and clearing MFA
+ok 203 config manages the counter secret without displaying or clearing it
+ok 204 bash completion suggests known config property names
+ok 205 config metadata covers every example property
+ok 206 config shows audit paths under var for a fresh installation
+ok 207 dataset decrypt help describes offline extraction
+ok 208 bash completion includes dataset decrypt flags
+ok 209 dataset decrypt runs the server tool in a locked-down container
+ok 210 dataset decrypt refuses an existing output
+ok 211 dataset decrypt rejects a missing option value
+ok 212 dataset decrypt supports a local tool override
+ok 213 device stats help lists sampling and JSON options
+ok 214 device stats works before setup and respects configured storage paths
+ok 215 device stats bash completion includes subcommand and options
+ok 216 device versions help lists package and JSON options
+ok 217 device versions lists packages before setup without creating runtime files
+ok 218 device versions bash completion includes subcommand and options
+ok 219 aideway --version prints VERSION file contents
+ok 220 aideway version (verb form) prints version too
+ok 221 aideway --help prints top-level usage and exits 0
+ok 222 aideway help (verb form) is identical to --help
+ok 223 aideway with no args prints usage and exits 1
+ok 224 aideway with unknown verb exits non-zero
+ok 225 aideway docs --help prints usage
+ok 226 bundled manual matches its sources
+ok 227 installing the bundled manual does not invoke pandoc
+ok 228 missing bundled manual preserves the installed copy
+ok 229 aideway docs build invokes pandoc and writes the output file
+ok 230 aideway docs build --out writes to the requested output file
+ok 231 aideway docs build --output=PATH writes to the requested output file
+ok 232 aideway docs build passes --standalone and --toc to pandoc
+ok 233 aideway docs path prints the configured output path
+ok 234 aideway docs path --out prints the overridden output path
+ok 235 aideway docs fails on unknown subverb
+ok 236 aideway docs build --out requires a path
+ok 237 aideway docs build fails clearly when pandoc is missing
+ok 238 doctor with all required env keys exits 0
+ok 239 doctor fails when AIDEWAY_ENV_FILE does not exist
+ok 240 doctor fails when a required key is missing
+ok 241 doctor rejects a missing counter secret before starting services
+ok 242 doctor fails when sealed mode keyset has not been initialized
+ok 243 doctor does not require sealed keyset in PLAINTEXT mode
+ok 244 doctor fails when AIDEWAY_TSS_GID does not match TPM device group
+ok 245 doctor fails when sealed mode TPM device is missing
+ok 246 doctor --help prints usage and exits 0
+ok 247 .env.example declares every key required by doctor
+ok 248 doctor checks the host keyset behind the fixed container path
+ok 249 top-level help exposes export and import, not ship or update apply
+ok 250 export requires an explicit image or model selection
+ok 251 export reports image save checksum and compression phases
+ok 252 export reports a failed save and does not publish a bundle
+ok 253 export exposes written image bytes before docker save completes
+ok 254 export reports compression errors without claiming success
+ok 255 export init-key creates bundle signing and public keys
+ok 256 export init-key refuses to overwrite existing bundle keys
+ok 257 export missing signing key points to init-key command
+ok 258 bash completion includes export output directory option
+ok 259 export builds a signed bundle from env-selected images and current model
+ok 260 export increments bundle filename when timestamped output already exists
+ok 261 export uses bundled minisign when minisign is not on PATH
+ok 262 import loads bundled images updates only included tags and activates model
+ok 263 import prints rollback guidance after a successful import
+ok 264 import captures a timestamped text snapshot of the running system before changes
+ok 265 import rollback restores prior tags and model symlink
+ok 266 import history lists installed bundles
+ok 267 images verify uses the configuration trust key
+ok 268 images verify refuses a missing configuration trust key
+ok 269 top-level help includes images verb
+ok 270 images --help prints usage
+ok 271 bash completion includes images commands and options
+ok 272 images setup-host is not supported
+ok 273 images list-github lists tags for each aideway image
+ok 274 images set-tags updates env image tags and clears inherited overrides
+ok 275 images set-tags updates only named per-image tags
+ok 276 images set-tags fails when env file is missing
+ok 277 images verify checks a pulled image reference with cosign
+ok 278 images verify fails when image reference is not pulled
+ok 279 images pull-github pulls and cosign verifies every image
+ok 280 images pull-github with only one per-image tag pulls only that image
+ok 281 images pull-github preflights requested tags before pulling
+ok 282 images pull-github checks cosign before pulling images
+ok 283 images pull-github uses bundled cosign when PATH cosign is missing
+ok 284 images pull-github fails when cosign verification fails
+ok 285 images export-local writes image tarballs cosign layouts and manifest
+ok 286 images export-local with app-specific tag exports only that image
+ok 287 images list-local prints versions from local manifests
+ok 288 images install-local verifies local cosign layouts and loads images
+ok 289 install-to-host.sh --dry-run prints the actions without executing them
+ok 290 install-to-host.sh keeps generated units in configuration with a systemd link
+ok 291 install-to-host.sh is idempotent
+ok 292 install-to-host.sh updates stale AIDEWAY_TSS_GID from TPM device group
+ok 293 install-to-host.sh rejects a relative audit directory
+ok 294 install-to-host.sh replaces an old regular unit with a link
+ok 295 aideway keys --help prints usage
+ok 296 aideway keys with no subverb prints usage and exits non-zero
+ok 297 aideway keys init invokes keytool init then seal then wrap-recovery
+ok 298 aideway keys init keeps blank env paths resolved for the app image
+ok 299 aideway keys init refuses to overwrite an existing sealed file
+ok 300 aideway keys init preserves Docker failure without a cleanup error
+ok 301 aideway keys init removes partial files after each failed keytool step
+ok 302 aideway keys show prints metadata without key material
+ok 303 aideway keys show uses the app image keytool by default
+ok 304 aideway keys show uses env key directory image tag and TPM group
+ok 305 aideway keys rotate keyset invokes keytool rotate
+ok 306 aideway keys rotate recovery invokes keytool rotate-recovery
+ok 307 aideway keys reseal --from-recovery invokes keytool reseal with --from-recovery
+ok 308 recovery reseal creates a sealed file when only recovery exists
+ok 309 failed reseal preserves existing keys and removes partial output
+ok 310 aideway keys reseal (without --from-recovery) invokes keytool reseal without that flag
+ok 311 export and decrypt help expose limits and password input
+ok 312 export streams journals and password separately from process arguments
+ok 313 export forwards independent limits and permits zero
+ok 314 export container does not claim the running server address
+ok 315 invalid counts fail without producing output
+ok 316 export refuses files and dangling symlinks
+ok 317 journal failure removes partial archive
+ok 318 export refuses a directory created while collection is running
+ok 319 encryption failure removes partial archive
+ok 320 decrypt extracts with operator access using local tool
+ok 321 offline decryption container has no network or keys
+ok 322 archive bash completion includes both commands and all limits
+ok 323 aideway logs nginx invokes journalctl with SYSLOG_IDENTIFIER=aideway/nginx
+ok 324 aideway logs server maps to the server compose service
+ok 325 aideway logs --all queries every service with --merge
+ok 326 aideway logs nginx -f passes --follow
+ok 327 aideway logs nginx -n 50 passes --lines=50
+ok 328 aideway logs --since '2h ago' passes through
+ok 329 aideway logs nginx --help prints usage
+ok 330 top-level help includes models verb
+ok 331 models --help prints usage
+ok 332 bash completion includes models export-local options
+ok 333 models pull-huggingface downloads through hf and activates model
+ok 334 models pull-huggingface can explicitly download through helper image
+ok 335 models install-local copies a model directory and activates it
+ok 336 models export-local copies an installed model directory
+ok 337 models export-local refuses to replace destination unless forced
+ok 338 models export-local refuses to export onto the installed source
+ok 339 models verify fails for missing or incomplete model directory
+ok 340 models pull keeps host hf cache and temporary files under the runtime
+ok 341 models pull preserves explicit hf cache overrides
+ok 342 network help works without loading appliance configuration
+ok 343 network rejects invalid timeouts without probing
+ok 344 network command is discoverable and completes options
+ok 345 nginx default.conf template renders and passes nginx -t # skip Aideway nginx template not found at /opt/projects/aideway-review/frontend/images/aideway-nginx/config/tls.conf.template
+ok 346 template references variables we expect # skip Aideway nginx template not found at /opt/projects/aideway-review/frontend/images/aideway-nginx/config/tls.conf.template
+ok 347 os help describes inventory preparation inspection and application
+ok 348 os completion includes commands and inventory files
+ok 349 OS maintenance blocks startup restart and one-off application containers
+ok 350 an OS step pauses an ordered import and resumes before subsequent images
+ok 351 aideway package --help prints usage
+ok 352 aideway package run writes runtime-only harness archive
+ok 353 password prints a base64 secret by default
+ok 354 password --hex prints two hex chars per byte
+ok 355 password rejects invalid byte count
+ok 356 password --help prints usage
+ok 357 operator group can read service files but cannot modify them
+ok 358 new files inherit operator ownership across different primary groups
+ok 359 permission repair does not follow symlinks into unrelated data
+ok 360 proxy trust accepts only the ingress container address
+ok 361 proxy trust rejects absent or network-wide trust
+ok 362 compose binds backend trust to nginx's static IP
+ok 363 psql disables Compose TTY allocation for piped SQL
+ok 364 psql disables Compose TTY allocation for a captured command
+ok 365 image trust key follows configuration reloads and preserves overrides
+ok 366 default installation root contains sibling harness and state directories
+ok 367 postgres certificate mounts honor a custom TLS root
+ok 368 state cannot overlap harness code inside the installation root
+ok 369 up refuses an empty database when the nested runtime database remains
+ok 370 env runtime root drives CLI storage paths and preserves explicit overrides
+ok 371 reloading a changed root recomputes derived paths
+ok 372 up refuses an empty database when the legacy volume exists
+ok 373 a copied PostgreSQL directory satisfies the legacy guard
+ok 374 runtime root cannot be inside harness code even through a symlink
+ok 375 runtime state directories cannot overlap
+ok 376 real Compose resolves root and overrides while preserving container targets
+ok 377 configuration and host staging follow the runtime root
+ok 378 loading a derived env file retains its location across root changes
+ok 379 host temporary staging rejects overlap with configuration
+ok 380 TLS can use a separate directory but cannot overlap service state
+ok 381 configuration override controls env discovery and host trust key selection
+ok 382 server entrypoint reads the mounted password without logging it # skip application checkout unavailable
+ok 383 server entrypoint rejects missing and empty password files # skip application checkout unavailable
+ok 384 reloaded service completions replace backend with server
+ok 385 all image tag completions use server
+ok 386 configuration completion uses IMAGE_TAG_SERVER
+ok 387 service and image help use server arguments
+ok 388 aideway setup --help prints usage
+ok 389 top-level help includes device verb
+ok 390 aideway setup host prepares directories env secrets and host integration
+ok 391 aideway setup host preserves existing postgres password
+ok 392 setup host defaults the hostname to the default-route IPv4 address
+ok 393 setup host adds a separate counter secret and preserves it on rerun
+ok 394 setup host fills an existing blank hostname
+ok 395 setup host preserves a configured DNS hostname
+ok 396 setup host chooses an active interface without a default route
+ok 397 setup host leaves the hostname blank when only a Docker address exists
+ok 398 setup host warns when IP discovery fails
+ok 399 aideway setup host installs bundled cosign when PATH cosign is missing
+ok 400 aideway setup host installs bundled hf when PATH hf is missing
+ok 401 aideway setup host installs bundled minisign when PATH minisign is missing
+ok 402 aideway setup host rejects missing option values cleanly
+ok 403 aideway setup host rejects a relative audit directory
+ok 404 aideway device prints relevant device inventory
+ok 405 aideway device --help prints usage
+ok 406 aideway setup list is not supported
+ok 407 bash completion includes device and setup host setup todo
+ok 408 aideway setup build clones only Aideway source and builds images
+ok 409 aideway setup build requires JDK 25
+ok 410 aideway setup build checks out the requested source ref
+ok 411 aideway setup build accepts source and image overrides
+ok 412 aideway setup build updates an existing clean source checkout
+ok 413 setup build passes separate tags and the upstream vllm image to builders
+ok 414 setup build keeps per-image overrides when the shared tag comes later
+ok 415 setup build rejects missing per-image tag values before touching the checkout
+ok 416 setup build completes per-image flags and accepts their values
+ok 417 setup build help prints tag options and model commands literally
+ok 418 aideway setup build can skip only the vllm image
+ok 419 aideway setup build can skip image builds
+ok 420 aideway setup build refuses occupied non-git destination
+ok 421 aideway setup build refuses a dirty source checkout
+ok 422 setup runtime flag locates configuration TLS and staging under the new root
+ok 423 setup preserves exported runtime and configuration roots when seeding the env file
+ok 424 setup refuses to replace configuration left under runtime
+ok 425 setup host initializes the full layout beside a cloned harness
+ok 426 setup host preserves default files and existing drop permissions on rerun
+ok 427 setup host grants operator group access without a sudo caller
+ok 428 sudo setup repairs inference caches for root without capabilities
+ok 429 sudo setup repairs temporary directory ownership before host integration
+ok 430 sudo setup rejects a temporary directory symlink without changing its target
+ok 431 setup host derives permissions from operator membership instead of sudo identity
+ok 432 setup host preserves owners and excludes symlink targets from permission repair
+ok 433 setup host honors drop and default file overrides
+ok 434 setup host mounts the drop directory by default and honors overrides
+ok 435 host setup creates persistent vllm TLS and preserves nginx material
+ok 436 setup build keeps build caches and temporary files in the runtime
+ok 437 setup host replaces matching bundled tool copies with links
+ok 438 setup host preserves unrelated installed tools
+ok 439 setup host refreshes an installed bundled tool link after an update
+ok 440 bats runner is wired up
+ok 441 HARNESS_ROOT is set
+ok 442 state_ensure_key creates a 32-byte file when missing
+ok 443 state_ensure_key sets mode 0640
+ok 444 state_ensure_key is idempotent (same key after second call)
+ok 445 state_hmac signs input with the state key
+ok 446 state_hmac produces different signatures for different inputs
+ok 447 state_hmac_verify accepts a valid signature
+ok 448 state_hmac_verify rejects a tampered signature
+ok 449 systemd unit file exists
+ok 450 systemd unit references the harness binary
+ok 451 systemd unit declares Type=oneshot and RemainAfterExit=yes
+ok 452 systemd unit declares Restart=no
+ok 453 systemd unit declares After=docker.service
+ok 454 systemd unit declares ExecStartPre runs aideway doctor
+ok 455 systemd unit uses /opt/aideway/harness as the canonical harness root
+ok 456 systemd-analyze verify passes on the unit file (when available)
+ok 457 tls generate-csr writes a CSR + auto-generated sibling key when --key is omitted
+ok 458 tls generate-csr uses an existing --key if provided
+ok 459 tls generate-csr includes the hostname as both CN and SAN
+ok 460 tls generate-csr supports multiple --san entries
+ok 461 tls generate-csr requires --hostname
+ok 462 tls generate-csr encodes IPv4 names as IP SANs
+ok 463 tls generate-csr --help prints usage
+ok 464 tls generate-key writes an RSA private key
+ok 465 tls generate-key --type ec writes an EC private key
+ok 466 tls generate-key sets mode 0640 on the output key
+ok 467 tls generate-key refuses to overwrite an existing file
+ok 468 tls generate-key --help prints usage
+ok 469 tls generate-selfsigned installs a cert
+ok 470 tls generate-selfsigned explains browser trust
+ok 471 tls generate-selfsigned supports IPv4 hostname verification
+ok 472 tls show includes IP SANs
+ok 473 tls generate-selfsigned --days controls expiry
+ok 474 tls generate-selfsigned --help prints usage
+ok 475 tls generate-selfsigned --key with existing key does not delete it
+ok 476 tls install copies cert+key into the nginx TLS directory
+ok 477 tls install sets key mode to 0600
+ok 478 tls install sets cert mode to 0640
+ok 479 tls install writes a .meta file with subject, fingerprint, and not_after
+ok 480 tls install rejects a mismatched cert+key
+ok 481 tls install refuses an expired cert without --force
+ok 482 tls install --force installs an expired cert
+ok 483 tls install attempts nginx reload via docker compose exec
+ok 484 tls install --help prints usage
+ok 485 tls renew archives the previous cert into history/
+ok 486 tls renew installs the new cert at the active path
+ok 487 tls renew preserves perms (key and cert 0640)
+ok 488 tls renew --help prints usage
+ok 489 tls rollback restores the previous cert from history/
+ok 490 tls rollback fails when history is empty
+ok 491 tls rollback --help prints usage
+ok 492 TLS setup creates a server keystore matching its trusted certificate
+ok 493 TLS setup rejects symlinked or empty server keystore passwords
+ok 494 TLS setup generates and preserves the private postgres identity
+ok 495 TLS setup rejects incomplete and mismatched postgres identities
+ok 496 TLS setup rejects postgres hostname mismatch and symlinks
+ok 497 TLS setup rejects an expired postgres certificate without rotating it
+ok 498 TLS setup refuses an incomplete vllm identity without replacing the key
+ok 499 TLS setup refuses a certificate for another server
+ok 500 TLS setup refuses symlinked service directories and private keys
+ok 501 TLS setup repairs private key ownership for containers without capabilities
+ok 502 vllm HTTPS healthcheck verifies certificate hostname and response status
+ok 503 server HTTPS healthcheck verifies certificate hostname and response status
+ok 504 tls show prints subject, fingerprint, sans, not_after
+ok 505 tls show fails when no cert is installed
+ok 506 tls show --help prints usage
+ok 507 tls show warns when the live cert fingerprint differs from .meta
+ok 508 tls test runs s_client against the configured hostname and prints negotiated protocol+cipher
+ok 509 tls test calls docker run with the openssl image
+ok 510 tls test --host overrides the AIDEWAY_HOSTNAME default
+ok 511 tls test --help prints usage
+ok 512 tls_validate_cert_key accepts a matching cert+key pair
+ok 513 tls_validate_cert_key rejects a mismatched pair
+ok 514 tls_validate_cert_key rejects an unreadable cert
+ok 515 tls_validate_cert_key rejects a corrupt cert file
+ok 516 tls_cert_not_after prints ISO-8601 date for a fresh cert
+ok 517 tls_cert_is_expired returns 0 for an expired cert
+ok 518 tls_cert_is_expired returns non-zero for a fresh cert
+ok 519 ordered export includes definitions and signed migration steps
+ok 520 ordered export compresses its temporary archive with real zstd
+ok 521 import executes plan order and supplies replay identity without logging documents
+ok 522 failed definition leaves writers stopped and resumes without replaying completed steps
+ok 523 database plans require an operator and block image-only rollback
+ok 524 export rejects unknown or duplicate steps before saving images
+ok 525 definition-only plans accept explicit bindings and detect changed resume context
+ok 526 changed definition payload is rejected before any runtime operation
+ok 527 image-only ordered plans can roll back and honor a non-default image order
+ok 528 import lock rejects a concurrent installer before runtime changes
+ok 529 default adapter runs the selected server with stdin and no dependency startup
+ok 530 failed service health checks keep the plan pending and stop application writers
+ok 531 export offers the USB root when no output directory is given
+ok 532 file writers offer USB and cancellation prevents work
+ok 533 log export uses USB without consuming the piped password
+ok 534 decrypt defaults name a USB output directory and explicit paths stay local
+ok 535 TLS and docs write to confirmed USB destinations
+ok 536 writers without output refuse missing USB before any work
+ok 537 model export copies into the confirmed USB root
+ok 538 output command completion includes explicit USB acceptance
+ok 539 export cancellation and the default answer leave no bundle
+ok 540 export requires explicit USB confirmation without a terminal
+ok 541 export yes accepts USB for an ordered plan
+ok 542 export without an output directory refuses absent or ambiguous USB
+ok 543 usb list and mount report an existing USB filesystem
+ok 544 usb browse lists mounted media contents and accepts device or UUID
+ok 545 usb browse distinguishes empty media from no USB
+ok 546 USB path resolution prefers local files and resolves new outputs on USB
+ok 547 export and import resolve relative USB bundle paths
+ok 548 os CLI resolves a relative bundle before signature validation
+ok 549 bash completion includes user create flags
+ok 550 user create falls back to legacy admin launcher in older server images
+ok 551 user create prefers current admin launcher when available
+ok 552 user create reports missing admin launcher clearly
+ok 553 entrypoint defaults to mounted model path when VLLM_MODEL is unset
+ok 554 entrypoint emits baseline flags
+ok 555 entrypoint still allows lab model override
+ok 556 entrypoint fails clearly when mounted model directory is empty
+ok 557 entrypoint enables prefix caching by default
+ok 558 entrypoint omits prefix caching when VLLM_ENABLE_PREFIX_CACHING=false
+ok 559 entrypoint adds --gpu-memory-utilization
+ok 560 entrypoint adds --max-model-len
+ok 561 entrypoint adds --max-num-seqs
+ok 562 entrypoint adds --max-num-batched-tokens
+ok 563 entrypoint adds --dtype
+ok 564 entrypoint adds --swap-space when VLLM_SWAP_SPACE non-empty
+ok 565 entrypoint omits --swap-space when VLLM_SWAP_SPACE empty
+ok 566 entrypoint adds --tensor-parallel-size
+ok 567 entrypoint adds --trust-remote-code when VLLM_TRUST_REMOTE_CODE=true
+ok 568 entrypoint omits --trust-remote-code when VLLM_TRUST_REMOTE_CODE=false
+ok 569 entrypoint adds --enable-log-requests when VLLM_LOG_REQUESTS=true
+ok 570 entrypoint preserves authentication without exposing the key in arguments
+ok 571 entrypoint omits --api-key when VLLM_API_KEY empty
+ok 572 entrypoint adds --reasoning-parser when set and non-'none'
+ok 573 entrypoint adds tool-call-parser flags when set
+ok 574 entrypoint forwards VLLM_EXTRA_ARGS verbatim
+ok 575 entrypoint enables HTTPS with the mounted certificate and key
+ok 576 entrypoint refuses to start without TLS material
+ok 577 volume add existing entry says configured and reminds to recreate container
+ok 578 empty override is valid before adding mounts
+ok 579 volume add and remove preserve a valid empty override

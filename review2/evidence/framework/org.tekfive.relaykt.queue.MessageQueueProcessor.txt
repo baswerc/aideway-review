@@ -1,0 +1,697 @@
+Compiled from "MessageQueueProcessor.kt"
+public final class org.tekfive.relaykt.queue.MessageQueueProcessor {
+  public static final org.tekfive.relaykt.queue.MessageQueueProcessor INSTANCE;
+
+  private static final org.slf4j.Logger log;
+
+  private static final org.tekfive.ack.Ack<java.lang.Integer> maxPendingMinutesAck;
+
+  private static final org.tekfive.ack.Ack<java.lang.Integer> batchSizeAck;
+
+  public static final java.lang.String NAMESPACE;
+
+  private org.tekfive.relaykt.queue.MessageQueueProcessor();
+    Code:
+         0: aload_0
+         1: invokespecial #8                  // Method java/lang/Object."<init>":()V
+         4: return
+
+  public final org.tekfive.ack.Ack<java.lang.Integer> getMaxPendingMinutesAck();
+    Code:
+         0: getstatic     #18                 // Field maxPendingMinutesAck:Lorg/tekfive/ack/Ack;
+         3: areturn
+
+  public final org.tekfive.ack.Ack<java.lang.Integer> getBatchSizeAck();
+    Code:
+         0: getstatic     #22                 // Field batchSizeAck:Lorg/tekfive/ack/Ack;
+         3: areturn
+
+  public final int processOnce(long, kotlin.jvm.functions.Function0<kotlin.Unit>);
+    Code:
+         0: aload_3
+         1: ldc           #27                 // String checkIn
+         3: invokestatic  #33                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+         6: aload_0
+         7: lload_1
+         8: aload_3
+         9: invokevirtual #36                 // Method dispatchReadyMessages$com_github_TekFive_relaykt:(JLkotlin/jvm/functions/Function0;)I
+        12: aload_0
+        13: lload_1
+        14: aload_3
+        15: invokevirtual #39                 // Method recoverStalledMessages$com_github_TekFive_relaykt:(JLkotlin/jvm/functions/Function0;)I
+        18: iadd
+        19: ireturn
+
+  public static int processOnce$default(org.tekfive.relaykt.queue.MessageQueueProcessor, long, kotlin.jvm.functions.Function0, int, java.lang.Object);
+    Code:
+         0: iload         4
+         2: iconst_1
+         3: iand
+         4: ifeq          11
+         7: invokestatic  #50                 // Method java/lang/System.currentTimeMillis:()J
+        10: lstore_1
+        11: iload         4
+        13: iconst_2
+        14: iand
+        15: ifeq          24
+        18: invokedynamic #69,  0             // InvokeDynamic #0:invoke:()Lkotlin/jvm/functions/Function0;
+        23: astore_3
+        24: aload_0
+        25: lload_1
+        26: aload_3
+        27: invokevirtual #71                 // Method processOnce:(JLkotlin/jvm/functions/Function0;)I
+        30: ireturn
+
+  public final int dispatchReadyMessages$com_github_TekFive_relaykt(long, kotlin.jvm.functions.Function0<kotlin.Unit>);
+    Code:
+         0: aload_3
+         1: ldc           #27                 // String checkIn
+         3: invokestatic  #33                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+         6: new           #73                 // class kotlin/jvm/internal/Ref$IntRef
+         9: dup
+        10: invokespecial #74                 // Method kotlin/jvm/internal/Ref$IntRef."<init>":()V
+        13: astore        4
+        15: iconst_0
+        16: iconst_0
+        17: aload_3
+        18: aload         4
+        20: lload_1
+        21: invokedynamic #82,  0             // InvokeDynamic #1:invoke:(Lkotlin/jvm/functions/Function0;Lkotlin/jvm/internal/Ref$IntRef;J)Lkotlin/jvm/functions/Function0;
+        26: iconst_3
+        27: aconst_null
+        28: invokestatic  #88                 // Method org/tekfive/keep/db/DbConnectionKt.db$default:(ZZLkotlin/jvm/functions/Function0;ILjava/lang/Object;)Ljava/lang/Object;
+        31: pop
+        32: aload         4
+        34: getfield      #92                 // Field kotlin/jvm/internal/Ref$IntRef.element:I
+        37: ireturn
+
+  public static int dispatchReadyMessages$com_github_TekFive_relaykt$default(org.tekfive.relaykt.queue.MessageQueueProcessor, long, kotlin.jvm.functions.Function0, int, java.lang.Object);
+    Code:
+         0: iload         4
+         2: iconst_2
+         3: iand
+         4: ifeq          13
+         7: invokedynamic #100,  0            // InvokeDynamic #2:invoke:()Lkotlin/jvm/functions/Function0;
+        12: astore_3
+        13: aload_0
+        14: lload_1
+        15: aload_3
+        16: invokevirtual #36                 // Method dispatchReadyMessages$com_github_TekFive_relaykt:(JLkotlin/jvm/functions/Function0;)I
+        19: ireturn
+
+  public final int recoverStalledMessages$com_github_TekFive_relaykt(long, kotlin.jvm.functions.Function0<kotlin.Unit>);
+    Code:
+         0: aload_3
+         1: ldc           #27                 // String checkIn
+         3: invokestatic  #33                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+         6: new           #73                 // class kotlin/jvm/internal/Ref$IntRef
+         9: dup
+        10: invokespecial #74                 // Method kotlin/jvm/internal/Ref$IntRef."<init>":()V
+        13: astore        4
+        15: lload_1
+        16: getstatic     #18                 // Field maxPendingMinutesAck:Lorg/tekfive/ack/Ack;
+        19: invokevirtual #104                // Method org/tekfive/ack/Ack.invoke:()Ljava/lang/Object;
+        22: checkcast     #106                // class java/lang/Number
+        25: invokevirtual #109                // Method java/lang/Number.longValue:()J
+        28: ldc2_w        #110                // long 60000l
+        31: lmul
+        32: lsub
+        33: lstore        5
+        35: iconst_0
+        36: iconst_0
+        37: aload_3
+        38: aload         4
+        40: lload         5
+        42: invokedynamic #116,  0            // InvokeDynamic #3:invoke:(Lkotlin/jvm/functions/Function0;Lkotlin/jvm/internal/Ref$IntRef;J)Lkotlin/jvm/functions/Function0;
+        47: iconst_3
+        48: aconst_null
+        49: invokestatic  #88                 // Method org/tekfive/keep/db/DbConnectionKt.db$default:(ZZLkotlin/jvm/functions/Function0;ILjava/lang/Object;)Ljava/lang/Object;
+        52: pop
+        53: aload         4
+        55: getfield      #92                 // Field kotlin/jvm/internal/Ref$IntRef.element:I
+        58: ireturn
+
+  public static int recoverStalledMessages$com_github_TekFive_relaykt$default(org.tekfive.relaykt.queue.MessageQueueProcessor, long, kotlin.jvm.functions.Function0, int, java.lang.Object);
+    Code:
+         0: iload         4
+         2: iconst_2
+         3: iand
+         4: ifeq          13
+         7: invokedynamic #124,  0            // InvokeDynamic #4:invoke:()Lkotlin/jvm/functions/Function0;
+        12: astore_3
+        13: aload_0
+        14: lload_1
+        15: aload_3
+        16: invokevirtual #39                 // Method recoverStalledMessages$com_github_TekFive_relaykt:(JLkotlin/jvm/functions/Function0;)I
+        19: ireturn
+
+  private static final kotlin.Unit processOnce$lambda$0();
+    Code:
+         0: getstatic     #130                // Field kotlin/Unit.INSTANCE:Lkotlin/Unit;
+         3: areturn
+
+  private static final org.jetbrains.exposed.v1.core.Op dispatchReadyMessages$lambda$1$0(long);
+    Code:
+         0: getstatic     #137                // Field org/tekfive/relaykt/queue/QueuedMessageTable.INSTANCE:Lorg/tekfive/relaykt/queue/QueuedMessageTable;
+         3: invokevirtual #141                // Method org/tekfive/relaykt/queue/QueuedMessageTable.getState:()Lorg/jetbrains/exposed/v1/core/Column;
+         6: checkcast     #143                // class org/jetbrains/exposed/v1/core/ExpressionWithColumnType
+         9: getstatic     #149                // Field org/tekfive/relaykt/queue/QueuedMessageState.QUEUED:Lorg/tekfive/relaykt/queue/QueuedMessageState;
+        12: invokestatic  #155                // Method org/jetbrains/exposed/v1/core/OpBuilderKt.eq:(Lorg/jetbrains/exposed/v1/core/ExpressionWithColumnType;Ljava/lang/Object;)Lorg/jetbrains/exposed/v1/core/Op;
+        15: checkcast     #157                // class org/jetbrains/exposed/v1/core/Expression
+        18: getstatic     #137                // Field org/tekfive/relaykt/queue/QueuedMessageTable.INSTANCE:Lorg/tekfive/relaykt/queue/QueuedMessageTable;
+        21: invokevirtual #160                // Method org/tekfive/relaykt/queue/QueuedMessageTable.getDeliverAfter:()Lorg/jetbrains/exposed/v1/core/Column;
+        24: checkcast     #157                // class org/jetbrains/exposed/v1/core/Expression
+        27: invokestatic  #164                // Method org/jetbrains/exposed/v1/core/OpBuilderKt.isNull:(Lorg/jetbrains/exposed/v1/core/Expression;)Lorg/jetbrains/exposed/v1/core/Op;
+        30: checkcast     #157                // class org/jetbrains/exposed/v1/core/Expression
+        33: getstatic     #137                // Field org/tekfive/relaykt/queue/QueuedMessageTable.INSTANCE:Lorg/tekfive/relaykt/queue/QueuedMessageTable;
+        36: invokevirtual #160                // Method org/tekfive/relaykt/queue/QueuedMessageTable.getDeliverAfter:()Lorg/jetbrains/exposed/v1/core/Column;
+        39: checkcast     #143                // class org/jetbrains/exposed/v1/core/ExpressionWithColumnType
+        42: lload_0
+        43: invokestatic  #170                // Method java/lang/Long.valueOf:(J)Ljava/lang/Long;
+        46: checkcast     #172                // class java/lang/Comparable
+        49: invokestatic  #176                // Method org/jetbrains/exposed/v1/core/OpBuilderKt.lessEq:(Lorg/jetbrains/exposed/v1/core/ExpressionWithColumnType;Ljava/lang/Comparable;)Lorg/jetbrains/exposed/v1/core/LessEqOp;
+        52: checkcast     #157                // class org/jetbrains/exposed/v1/core/Expression
+        55: invokestatic  #180                // Method org/jetbrains/exposed/v1/core/OpBuilderKt.or:(Lorg/jetbrains/exposed/v1/core/Expression;Lorg/jetbrains/exposed/v1/core/Expression;)Lorg/jetbrains/exposed/v1/core/Op;
+        58: checkcast     #157                // class org/jetbrains/exposed/v1/core/Expression
+        61: invokestatic  #183                // Method org/jetbrains/exposed/v1/core/OpBuilderKt.and:(Lorg/jetbrains/exposed/v1/core/Expression;Lorg/jetbrains/exposed/v1/core/Expression;)Lorg/jetbrains/exposed/v1/core/Op;
+        64: checkcast     #157                // class org/jetbrains/exposed/v1/core/Expression
+        67: getstatic     #137                // Field org/tekfive/relaykt/queue/QueuedMessageTable.INSTANCE:Lorg/tekfive/relaykt/queue/QueuedMessageTable;
+        70: invokevirtual #141                // Method org/tekfive/relaykt/queue/QueuedMessageTable.getState:()Lorg/jetbrains/exposed/v1/core/Column;
+        73: checkcast     #143                // class org/jetbrains/exposed/v1/core/ExpressionWithColumnType
+        76: getstatic     #186                // Field org/tekfive/relaykt/queue/QueuedMessageState.WAITING_TO_RETRY:Lorg/tekfive/relaykt/queue/QueuedMessageState;
+        79: invokestatic  #155                // Method org/jetbrains/exposed/v1/core/OpBuilderKt.eq:(Lorg/jetbrains/exposed/v1/core/ExpressionWithColumnType;Ljava/lang/Object;)Lorg/jetbrains/exposed/v1/core/Op;
+        82: checkcast     #157                // class org/jetbrains/exposed/v1/core/Expression
+        85: getstatic     #137                // Field org/tekfive/relaykt/queue/QueuedMessageTable.INSTANCE:Lorg/tekfive/relaykt/queue/QueuedMessageTable;
+        88: invokevirtual #189                // Method org/tekfive/relaykt/queue/QueuedMessageTable.getNextAttemptAt:()Lorg/jetbrains/exposed/v1/core/Column;
+        91: checkcast     #157                // class org/jetbrains/exposed/v1/core/Expression
+        94: invokestatic  #164                // Method org/jetbrains/exposed/v1/core/OpBuilderKt.isNull:(Lorg/jetbrains/exposed/v1/core/Expression;)Lorg/jetbrains/exposed/v1/core/Op;
+        97: checkcast     #157                // class org/jetbrains/exposed/v1/core/Expression
+       100: getstatic     #137                // Field org/tekfive/relaykt/queue/QueuedMessageTable.INSTANCE:Lorg/tekfive/relaykt/queue/QueuedMessageTable;
+       103: invokevirtual #189                // Method org/tekfive/relaykt/queue/QueuedMessageTable.getNextAttemptAt:()Lorg/jetbrains/exposed/v1/core/Column;
+       106: checkcast     #143                // class org/jetbrains/exposed/v1/core/ExpressionWithColumnType
+       109: lload_0
+       110: invokestatic  #170                // Method java/lang/Long.valueOf:(J)Ljava/lang/Long;
+       113: checkcast     #172                // class java/lang/Comparable
+       116: invokestatic  #176                // Method org/jetbrains/exposed/v1/core/OpBuilderKt.lessEq:(Lorg/jetbrains/exposed/v1/core/ExpressionWithColumnType;Ljava/lang/Comparable;)Lorg/jetbrains/exposed/v1/core/LessEqOp;
+       119: checkcast     #157                // class org/jetbrains/exposed/v1/core/Expression
+       122: invokestatic  #180                // Method org/jetbrains/exposed/v1/core/OpBuilderKt.or:(Lorg/jetbrains/exposed/v1/core/Expression;Lorg/jetbrains/exposed/v1/core/Expression;)Lorg/jetbrains/exposed/v1/core/Op;
+       125: checkcast     #157                // class org/jetbrains/exposed/v1/core/Expression
+       128: invokestatic  #183                // Method org/jetbrains/exposed/v1/core/OpBuilderKt.and:(Lorg/jetbrains/exposed/v1/core/Expression;Lorg/jetbrains/exposed/v1/core/Expression;)Lorg/jetbrains/exposed/v1/core/Op;
+       131: checkcast     #157                // class org/jetbrains/exposed/v1/core/Expression
+       134: invokestatic  #180                // Method org/jetbrains/exposed/v1/core/OpBuilderKt.or:(Lorg/jetbrains/exposed/v1/core/Expression;Lorg/jetbrains/exposed/v1/core/Expression;)Lorg/jetbrains/exposed/v1/core/Op;
+       137: areturn
+
+  private static final org.jetbrains.exposed.v1.core.Op dispatchReadyMessages$lambda$1$2(long, org.tekfive.relaykt.queue.QueuedMessageState);
+    Code:
+         0: getstatic     #137                // Field org/tekfive/relaykt/queue/QueuedMessageTable.INSTANCE:Lorg/tekfive/relaykt/queue/QueuedMessageTable;
+         3: invokevirtual #195                // Method org/tekfive/relaykt/queue/QueuedMessageTable.getId:()Lorg/jetbrains/exposed/v1/core/Column;
+         6: checkcast     #143                // class org/jetbrains/exposed/v1/core/ExpressionWithColumnType
+         9: lload_0
+        10: invokestatic  #170                // Method java/lang/Long.valueOf:(J)Ljava/lang/Long;
+        13: invokestatic  #155                // Method org/jetbrains/exposed/v1/core/OpBuilderKt.eq:(Lorg/jetbrains/exposed/v1/core/ExpressionWithColumnType;Ljava/lang/Object;)Lorg/jetbrains/exposed/v1/core/Op;
+        16: checkcast     #157                // class org/jetbrains/exposed/v1/core/Expression
+        19: getstatic     #137                // Field org/tekfive/relaykt/queue/QueuedMessageTable.INSTANCE:Lorg/tekfive/relaykt/queue/QueuedMessageTable;
+        22: invokevirtual #141                // Method org/tekfive/relaykt/queue/QueuedMessageTable.getState:()Lorg/jetbrains/exposed/v1/core/Column;
+        25: checkcast     #143                // class org/jetbrains/exposed/v1/core/ExpressionWithColumnType
+        28: aload_2
+        29: invokestatic  #155                // Method org/jetbrains/exposed/v1/core/OpBuilderKt.eq:(Lorg/jetbrains/exposed/v1/core/ExpressionWithColumnType;Ljava/lang/Object;)Lorg/jetbrains/exposed/v1/core/Op;
+        32: checkcast     #157                // class org/jetbrains/exposed/v1/core/Expression
+        35: invokestatic  #183                // Method org/jetbrains/exposed/v1/core/OpBuilderKt.and:(Lorg/jetbrains/exposed/v1/core/Expression;Lorg/jetbrains/exposed/v1/core/Expression;)Lorg/jetbrains/exposed/v1/core/Op;
+        38: areturn
+
+  private static final kotlin.Unit dispatchReadyMessages$lambda$1$3(org.tekfive.relaykt.queue.QueuedMessageTable, org.jetbrains.exposed.v1.core.statements.UpdateStatement);
+    Code:
+         0: aload_0
+         1: ldc           #201                // String $this$update
+         3: invokestatic  #33                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+         6: aload_1
+         7: ldc           #203                // String statement
+         9: invokestatic  #33                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+        12: aload_1
+        13: getstatic     #137                // Field org/tekfive/relaykt/queue/QueuedMessageTable.INSTANCE:Lorg/tekfive/relaykt/queue/QueuedMessageTable;
+        16: invokevirtual #141                // Method org/tekfive/relaykt/queue/QueuedMessageTable.getState:()Lorg/jetbrains/exposed/v1/core/Column;
+        19: getstatic     #206                // Field org/tekfive/relaykt/queue/QueuedMessageState.PENDING:Lorg/tekfive/relaykt/queue/QueuedMessageState;
+        22: invokevirtual #212                // Method org/jetbrains/exposed/v1/core/statements/UpdateStatement.set:(Lorg/jetbrains/exposed/v1/core/Column;Ljava/lang/Object;)V
+        25: aload_1
+        26: getstatic     #137                // Field org/tekfive/relaykt/queue/QueuedMessageTable.INSTANCE:Lorg/tekfive/relaykt/queue/QueuedMessageTable;
+        29: invokevirtual #215                // Method org/tekfive/relaykt/queue/QueuedMessageTable.getLastStateChangeAt:()Lorg/jetbrains/exposed/v1/core/Column;
+        32: invokestatic  #50                 // Method java/lang/System.currentTimeMillis:()J
+        35: invokestatic  #170                // Method java/lang/Long.valueOf:(J)Ljava/lang/Long;
+        38: invokevirtual #212                // Method org/jetbrains/exposed/v1/core/statements/UpdateStatement.set:(Lorg/jetbrains/exposed/v1/core/Column;Ljava/lang/Object;)V
+        41: getstatic     #130                // Field kotlin/Unit.INSTANCE:Lkotlin/Unit;
+        44: areturn
+
+  private static final kotlin.Unit dispatchReadyMessages$lambda$1$4(long, org.tekfive.jfk.JsonObjectBuilder);
+    Code:
+         0: aload_2
+         1: ldc           #220                // String $this$json
+         3: invokestatic  #33                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+         6: aload_2
+         7: ldc           #222                // String queuedMessageId
+         9: lload_0
+        10: invokestatic  #170                // Method java/lang/Long.valueOf:(J)Ljava/lang/Long;
+        13: checkcast     #106                // class java/lang/Number
+        16: invokevirtual #227                // Method org/tekfive/jfk/JsonObjectBuilder.set:(Ljava/lang/String;Ljava/lang/Number;)V
+        19: getstatic     #130                // Field kotlin/Unit.INSTANCE:Lkotlin/Unit;
+        22: areturn
+
+  private static final kotlin.Unit dispatchReadyMessages$lambda$1(kotlin.jvm.functions.Function0, kotlin.jvm.internal.Ref$IntRef, long);
+    Code:
+         0: getstatic     #137                // Field org/tekfive/relaykt/queue/QueuedMessageTable.INSTANCE:Lorg/tekfive/relaykt/queue/QueuedMessageTable;
+         3: checkcast     #230                // class org/jetbrains/exposed/v1/core/ColumnSet
+         6: getstatic     #137                // Field org/tekfive/relaykt/queue/QueuedMessageTable.INSTANCE:Lorg/tekfive/relaykt/queue/QueuedMessageTable;
+         9: invokevirtual #195                // Method org/tekfive/relaykt/queue/QueuedMessageTable.getId:()Lorg/jetbrains/exposed/v1/core/Column;
+        12: checkcast     #157                // class org/jetbrains/exposed/v1/core/Expression
+        15: iconst_1
+        16: anewarray     #157                // class org/jetbrains/exposed/v1/core/Expression
+        19: astore        5
+        21: aload         5
+        23: iconst_0
+        24: getstatic     #137                // Field org/tekfive/relaykt/queue/QueuedMessageTable.INSTANCE:Lorg/tekfive/relaykt/queue/QueuedMessageTable;
+        27: invokevirtual #141                // Method org/tekfive/relaykt/queue/QueuedMessageTable.getState:()Lorg/jetbrains/exposed/v1/core/Column;
+        30: aastore
+        31: aload         5
+        33: invokestatic  #236                // Method org/jetbrains/exposed/v1/jdbc/QueriesKt.select:(Lorg/jetbrains/exposed/v1/core/ColumnSet;Lorg/jetbrains/exposed/v1/core/Expression;[Lorg/jetbrains/exposed/v1/core/Expression;)Lorg/jetbrains/exposed/v1/jdbc/Query;
+        36: lload_2
+        37: invokedynamic #244,  0            // InvokeDynamic #5:invoke:(J)Lkotlin/jvm/functions/Function0;
+        42: invokevirtual #250                // Method org/jetbrains/exposed/v1/jdbc/Query.where:(Lkotlin/jvm/functions/Function0;)Lorg/jetbrains/exposed/v1/jdbc/Query;
+        45: getstatic     #137                // Field org/tekfive/relaykt/queue/QueuedMessageTable.INSTANCE:Lorg/tekfive/relaykt/queue/QueuedMessageTable;
+        48: invokevirtual #195                // Method org/tekfive/relaykt/queue/QueuedMessageTable.getId:()Lorg/jetbrains/exposed/v1/core/Column;
+        51: checkcast     #157                // class org/jetbrains/exposed/v1/core/Expression
+        54: aconst_null
+        55: iconst_2
+        56: aconst_null
+        57: invokestatic  #254                // Method org/jetbrains/exposed/v1/jdbc/Query.orderBy$default:(Lorg/jetbrains/exposed/v1/jdbc/Query;Lorg/jetbrains/exposed/v1/core/Expression;Lorg/jetbrains/exposed/v1/core/SortOrder;ILjava/lang/Object;)Lorg/jetbrains/exposed/v1/jdbc/Query;
+        60: getstatic     #256                // Field INSTANCE:Lorg/tekfive/relaykt/queue/MessageQueueProcessor;
+        63: pop
+        64: getstatic     #22                 // Field batchSizeAck:Lorg/tekfive/ack/Ack;
+        67: invokevirtual #104                // Method org/tekfive/ack/Ack.invoke:()Ljava/lang/Object;
+        70: checkcast     #106                // class java/lang/Number
+        73: invokevirtual #260                // Method java/lang/Number.intValue:()I
+        76: invokevirtual #264                // Method org/jetbrains/exposed/v1/jdbc/Query.limit:(I)Lorg/jetbrains/exposed/v1/jdbc/Query;
+        79: checkcast     #266                // class java/lang/Iterable
+        82: astore        5
+        84: nop
+        85: iconst_0
+        86: istore        6
+        88: aload         5
+        90: astore        7
+        92: new           #268                // class java/util/ArrayList
+        95: dup
+        96: aload         5
+        98: bipush        10
+       100: invokestatic  #274                // Method kotlin/collections/CollectionsKt.collectionSizeOrDefault:(Ljava/lang/Iterable;I)I
+       103: invokespecial #277                // Method java/util/ArrayList."<init>":(I)V
+       106: checkcast     #279                // class java/util/Collection
+       109: astore        8
+       111: iconst_0
+       112: istore        9
+       114: aload         7
+       116: invokeinterface #283,  1          // InterfaceMethod java/lang/Iterable.iterator:()Ljava/util/Iterator;
+       121: astore        10
+       123: aload         10
+       125: invokeinterface #289,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+       130: ifeq          199
+       133: aload         10
+       135: invokeinterface #292,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       140: astore        11
+       142: aload         8
+       144: aload         11
+       146: checkcast     #294                // class org/jetbrains/exposed/v1/core/ResultRow
+       149: astore        12
+       151: astore        14
+       153: iconst_0
+       154: istore        13
+       156: aload         12
+       158: getstatic     #137                // Field org/tekfive/relaykt/queue/QueuedMessageTable.INSTANCE:Lorg/tekfive/relaykt/queue/QueuedMessageTable;
+       161: invokevirtual #195                // Method org/tekfive/relaykt/queue/QueuedMessageTable.getId:()Lorg/jetbrains/exposed/v1/core/Column;
+       164: checkcast     #157                // class org/jetbrains/exposed/v1/core/Expression
+       167: invokevirtual #298                // Method org/jetbrains/exposed/v1/core/ResultRow.get:(Lorg/jetbrains/exposed/v1/core/Expression;)Ljava/lang/Object;
+       170: aload         12
+       172: getstatic     #137                // Field org/tekfive/relaykt/queue/QueuedMessageTable.INSTANCE:Lorg/tekfive/relaykt/queue/QueuedMessageTable;
+       175: invokevirtual #141                // Method org/tekfive/relaykt/queue/QueuedMessageTable.getState:()Lorg/jetbrains/exposed/v1/core/Column;
+       178: checkcast     #157                // class org/jetbrains/exposed/v1/core/Expression
+       181: invokevirtual #298                // Method org/jetbrains/exposed/v1/core/ResultRow.get:(Lorg/jetbrains/exposed/v1/core/Expression;)Ljava/lang/Object;
+       184: invokestatic  #304                // Method kotlin/TuplesKt.to:(Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/Pair;
+       187: aload         14
+       189: swap
+       190: invokeinterface #308,  2          // InterfaceMethod java/util/Collection.add:(Ljava/lang/Object;)Z
+       195: pop
+       196: goto          123
+       199: aload         8
+       201: checkcast     #310                // class java/util/List
+       204: nop
+       205: astore        4
+       207: aload         4
+       209: invokeinterface #311,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+       214: astore        5
+       216: aload         5
+       218: invokeinterface #289,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+       223: ifeq          359
+       226: aload         5
+       228: invokeinterface #292,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       233: checkcast     #313                // class kotlin/Pair
+       236: astore        6
+       238: aload         6
+       240: invokevirtual #316                // Method kotlin/Pair.component1:()Ljava/lang/Object;
+       243: checkcast     #106                // class java/lang/Number
+       246: invokevirtual #109                // Method java/lang/Number.longValue:()J
+       249: lstore        7
+       251: aload         6
+       253: invokevirtual #319                // Method kotlin/Pair.component2:()Ljava/lang/Object;
+       256: checkcast     #145                // class org/tekfive/relaykt/queue/QueuedMessageState
+       259: astore        9
+       261: aload_0
+       262: invokeinterface #322,  1          // InterfaceMethod kotlin/jvm/functions/Function0.invoke:()Ljava/lang/Object;
+       267: pop
+       268: getstatic     #137                // Field org/tekfive/relaykt/queue/QueuedMessageTable.INSTANCE:Lorg/tekfive/relaykt/queue/QueuedMessageTable;
+       271: checkcast     #324                // class org/jetbrains/exposed/v1/core/Table
+       274: lload         7
+       276: aload         9
+       278: invokedynamic #330,  0            // InvokeDynamic #6:invoke:(JLorg/tekfive/relaykt/queue/QueuedMessageState;)Lkotlin/jvm/functions/Function0;
+       283: aconst_null
+       284: invokedynamic #339,  0            // InvokeDynamic #7:invoke:()Lkotlin/jvm/functions/Function2;
+       289: iconst_2
+       290: aconst_null
+       291: invokestatic  #343                // Method org/jetbrains/exposed/v1/jdbc/QueriesKt.update$default:(Lorg/jetbrains/exposed/v1/core/Table;Lkotlin/jvm/functions/Function0;Ljava/lang/Integer;Lkotlin/jvm/functions/Function2;ILjava/lang/Object;)I
+       294: istore        10
+       296: iload         10
+       298: iconst_1
+       299: if_icmpne     216
+       302: getstatic     #348                // Field org/tekfive/keep/job/db/JobRecordsTable.INSTANCE:Lorg/tekfive/keep/job/db/JobRecordsTable;
+       305: getstatic     #354                // Field org/tekfive/relaykt/queue/SendQueuedMessageJob.Companion:Lorg/tekfive/relaykt/queue/SendQueuedMessageJob$Companion;
+       308: checkcast     #356                // class org/tekfive/keep/job/JobSpec
+       311: aconst_null
+       312: aconst_null
+       313: lload         7
+       315: invokedynamic #366,  0            // InvokeDynamic #8:invoke:(J)Lkotlin/jvm/functions/Function1;
+       320: invokestatic  #372                // Method org/tekfive/jfk/JsonBuilderKt.json:(Lkotlin/jvm/functions/Function1;)Lorg/tekfive/jfk/JsonObject;
+       323: aconst_null
+       324: iconst_0
+       325: aconst_null
+       326: aconst_null
+       327: aconst_null
+       328: aconst_null
+       329: aconst_null
+       330: sipush        2038
+       333: aconst_null
+       334: invokestatic  #376                // Method org/tekfive/keep/job/db/JobRecordsTable.insertJob$default:(Lorg/tekfive/keep/job/db/JobRecordsTable;Lorg/tekfive/keep/job/JobSpec;Lorg/tekfive/keep/job/JobContext;Ljava/lang/Long;Lorg/tekfive/jfk/JsonObject;Ljava/lang/Long;ILjava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;ILjava/lang/Object;)J
+       337: pop2
+       338: invokestatic  #379                // Method org/tekfive/keep/db/DbConnectionKt.dbCommit:()Z
+       341: pop
+       342: aload_1
+       343: getfield      #92                 // Field kotlin/jvm/internal/Ref$IntRef.element:I
+       346: istore        11
+       348: aload_1
+       349: iload         11
+       351: iconst_1
+       352: iadd
+       353: putfield      #92                 // Field kotlin/jvm/internal/Ref$IntRef.element:I
+       356: goto          216
+       359: getstatic     #130                // Field kotlin/Unit.INSTANCE:Lkotlin/Unit;
+       362: areturn
+
+  private static final kotlin.Unit dispatchReadyMessages$lambda$0();
+    Code:
+         0: getstatic     #130                // Field kotlin/Unit.INSTANCE:Lkotlin/Unit;
+         3: areturn
+
+  private static final org.jetbrains.exposed.v1.core.Op recoverStalledMessages$lambda$1$0(long);
+    Code:
+         0: getstatic     #137                // Field org/tekfive/relaykt/queue/QueuedMessageTable.INSTANCE:Lorg/tekfive/relaykt/queue/QueuedMessageTable;
+         3: invokevirtual #141                // Method org/tekfive/relaykt/queue/QueuedMessageTable.getState:()Lorg/jetbrains/exposed/v1/core/Column;
+         6: checkcast     #143                // class org/jetbrains/exposed/v1/core/ExpressionWithColumnType
+         9: iconst_2
+        10: anewarray     #145                // class org/tekfive/relaykt/queue/QueuedMessageState
+        13: astore_2
+        14: aload_2
+        15: iconst_0
+        16: getstatic     #206                // Field org/tekfive/relaykt/queue/QueuedMessageState.PENDING:Lorg/tekfive/relaykt/queue/QueuedMessageState;
+        19: aastore
+        20: aload_2
+        21: iconst_1
+        22: getstatic     #401                // Field org/tekfive/relaykt/queue/QueuedMessageState.PROCESSING:Lorg/tekfive/relaykt/queue/QueuedMessageState;
+        25: aastore
+        26: aload_2
+        27: invokestatic  #405                // Method kotlin/collections/CollectionsKt.listOf:([Ljava/lang/Object;)Ljava/util/List;
+        30: checkcast     #266                // class java/lang/Iterable
+        33: invokestatic  #409                // Method org/jetbrains/exposed/v1/core/OpBuilderKt.inList:(Lorg/jetbrains/exposed/v1/core/ExpressionWithColumnType;Ljava/lang/Iterable;)Lorg/jetbrains/exposed/v1/core/ops/InListOrNotInListBaseOp;
+        36: checkcast     #157                // class org/jetbrains/exposed/v1/core/Expression
+        39: getstatic     #137                // Field org/tekfive/relaykt/queue/QueuedMessageTable.INSTANCE:Lorg/tekfive/relaykt/queue/QueuedMessageTable;
+        42: invokevirtual #215                // Method org/tekfive/relaykt/queue/QueuedMessageTable.getLastStateChangeAt:()Lorg/jetbrains/exposed/v1/core/Column;
+        45: checkcast     #143                // class org/jetbrains/exposed/v1/core/ExpressionWithColumnType
+        48: lload_0
+        49: invokestatic  #170                // Method java/lang/Long.valueOf:(J)Ljava/lang/Long;
+        52: checkcast     #172                // class java/lang/Comparable
+        55: invokestatic  #176                // Method org/jetbrains/exposed/v1/core/OpBuilderKt.lessEq:(Lorg/jetbrains/exposed/v1/core/ExpressionWithColumnType;Ljava/lang/Comparable;)Lorg/jetbrains/exposed/v1/core/LessEqOp;
+        58: checkcast     #157                // class org/jetbrains/exposed/v1/core/Expression
+        61: invokestatic  #183                // Method org/jetbrains/exposed/v1/core/OpBuilderKt.and:(Lorg/jetbrains/exposed/v1/core/Expression;Lorg/jetbrains/exposed/v1/core/Expression;)Lorg/jetbrains/exposed/v1/core/Op;
+        64: areturn
+
+  private static final org.jetbrains.exposed.v1.core.Op recoverStalledMessages$lambda$1$2(long, org.tekfive.relaykt.queue.QueuedMessageState);
+    Code:
+         0: getstatic     #137                // Field org/tekfive/relaykt/queue/QueuedMessageTable.INSTANCE:Lorg/tekfive/relaykt/queue/QueuedMessageTable;
+         3: invokevirtual #195                // Method org/tekfive/relaykt/queue/QueuedMessageTable.getId:()Lorg/jetbrains/exposed/v1/core/Column;
+         6: checkcast     #143                // class org/jetbrains/exposed/v1/core/ExpressionWithColumnType
+         9: lload_0
+        10: invokestatic  #170                // Method java/lang/Long.valueOf:(J)Ljava/lang/Long;
+        13: invokestatic  #155                // Method org/jetbrains/exposed/v1/core/OpBuilderKt.eq:(Lorg/jetbrains/exposed/v1/core/ExpressionWithColumnType;Ljava/lang/Object;)Lorg/jetbrains/exposed/v1/core/Op;
+        16: checkcast     #157                // class org/jetbrains/exposed/v1/core/Expression
+        19: getstatic     #137                // Field org/tekfive/relaykt/queue/QueuedMessageTable.INSTANCE:Lorg/tekfive/relaykt/queue/QueuedMessageTable;
+        22: invokevirtual #141                // Method org/tekfive/relaykt/queue/QueuedMessageTable.getState:()Lorg/jetbrains/exposed/v1/core/Column;
+        25: checkcast     #143                // class org/jetbrains/exposed/v1/core/ExpressionWithColumnType
+        28: aload_2
+        29: invokestatic  #155                // Method org/jetbrains/exposed/v1/core/OpBuilderKt.eq:(Lorg/jetbrains/exposed/v1/core/ExpressionWithColumnType;Ljava/lang/Object;)Lorg/jetbrains/exposed/v1/core/Op;
+        32: checkcast     #157                // class org/jetbrains/exposed/v1/core/Expression
+        35: invokestatic  #183                // Method org/jetbrains/exposed/v1/core/OpBuilderKt.and:(Lorg/jetbrains/exposed/v1/core/Expression;Lorg/jetbrains/exposed/v1/core/Expression;)Lorg/jetbrains/exposed/v1/core/Op;
+        38: areturn
+
+  private static final kotlin.Unit recoverStalledMessages$lambda$1$3(org.tekfive.relaykt.queue.QueuedMessageState, org.tekfive.relaykt.queue.QueuedMessageTable, org.jetbrains.exposed.v1.core.statements.UpdateStatement);
+    Code:
+         0: aload_1
+         1: ldc           #201                // String $this$update
+         3: invokestatic  #33                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+         6: aload_2
+         7: ldc           #203                // String statement
+         9: invokestatic  #33                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+        12: aload_2
+        13: getstatic     #137                // Field org/tekfive/relaykt/queue/QueuedMessageTable.INSTANCE:Lorg/tekfive/relaykt/queue/QueuedMessageTable;
+        16: invokevirtual #141                // Method org/tekfive/relaykt/queue/QueuedMessageTable.getState:()Lorg/jetbrains/exposed/v1/core/Column;
+        19: aload_0
+        20: invokevirtual #212                // Method org/jetbrains/exposed/v1/core/statements/UpdateStatement.set:(Lorg/jetbrains/exposed/v1/core/Column;Ljava/lang/Object;)V
+        23: aload_2
+        24: getstatic     #137                // Field org/tekfive/relaykt/queue/QueuedMessageTable.INSTANCE:Lorg/tekfive/relaykt/queue/QueuedMessageTable;
+        27: invokevirtual #215                // Method org/tekfive/relaykt/queue/QueuedMessageTable.getLastStateChangeAt:()Lorg/jetbrains/exposed/v1/core/Column;
+        30: invokestatic  #50                 // Method java/lang/System.currentTimeMillis:()J
+        33: invokestatic  #170                // Method java/lang/Long.valueOf:(J)Ljava/lang/Long;
+        36: invokevirtual #212                // Method org/jetbrains/exposed/v1/core/statements/UpdateStatement.set:(Lorg/jetbrains/exposed/v1/core/Column;Ljava/lang/Object;)V
+        39: getstatic     #130                // Field kotlin/Unit.INSTANCE:Lkotlin/Unit;
+        42: areturn
+
+  private static final kotlin.Unit recoverStalledMessages$lambda$1(kotlin.jvm.functions.Function0, kotlin.jvm.internal.Ref$IntRef, long);
+    Code:
+         0: getstatic     #137                // Field org/tekfive/relaykt/queue/QueuedMessageTable.INSTANCE:Lorg/tekfive/relaykt/queue/QueuedMessageTable;
+         3: checkcast     #230                // class org/jetbrains/exposed/v1/core/ColumnSet
+         6: getstatic     #137                // Field org/tekfive/relaykt/queue/QueuedMessageTable.INSTANCE:Lorg/tekfive/relaykt/queue/QueuedMessageTable;
+         9: invokevirtual #195                // Method org/tekfive/relaykt/queue/QueuedMessageTable.getId:()Lorg/jetbrains/exposed/v1/core/Column;
+        12: checkcast     #157                // class org/jetbrains/exposed/v1/core/Expression
+        15: iconst_1
+        16: anewarray     #157                // class org/jetbrains/exposed/v1/core/Expression
+        19: astore        5
+        21: aload         5
+        23: iconst_0
+        24: getstatic     #137                // Field org/tekfive/relaykt/queue/QueuedMessageTable.INSTANCE:Lorg/tekfive/relaykt/queue/QueuedMessageTable;
+        27: invokevirtual #141                // Method org/tekfive/relaykt/queue/QueuedMessageTable.getState:()Lorg/jetbrains/exposed/v1/core/Column;
+        30: aastore
+        31: aload         5
+        33: invokestatic  #236                // Method org/jetbrains/exposed/v1/jdbc/QueriesKt.select:(Lorg/jetbrains/exposed/v1/core/ColumnSet;Lorg/jetbrains/exposed/v1/core/Expression;[Lorg/jetbrains/exposed/v1/core/Expression;)Lorg/jetbrains/exposed/v1/jdbc/Query;
+        36: lload_2
+        37: invokedynamic #418,  0            // InvokeDynamic #9:invoke:(J)Lkotlin/jvm/functions/Function0;
+        42: invokevirtual #250                // Method org/jetbrains/exposed/v1/jdbc/Query.where:(Lkotlin/jvm/functions/Function0;)Lorg/jetbrains/exposed/v1/jdbc/Query;
+        45: getstatic     #137                // Field org/tekfive/relaykt/queue/QueuedMessageTable.INSTANCE:Lorg/tekfive/relaykt/queue/QueuedMessageTable;
+        48: invokevirtual #195                // Method org/tekfive/relaykt/queue/QueuedMessageTable.getId:()Lorg/jetbrains/exposed/v1/core/Column;
+        51: checkcast     #157                // class org/jetbrains/exposed/v1/core/Expression
+        54: aconst_null
+        55: iconst_2
+        56: aconst_null
+        57: invokestatic  #254                // Method org/jetbrains/exposed/v1/jdbc/Query.orderBy$default:(Lorg/jetbrains/exposed/v1/jdbc/Query;Lorg/jetbrains/exposed/v1/core/Expression;Lorg/jetbrains/exposed/v1/core/SortOrder;ILjava/lang/Object;)Lorg/jetbrains/exposed/v1/jdbc/Query;
+        60: getstatic     #256                // Field INSTANCE:Lorg/tekfive/relaykt/queue/MessageQueueProcessor;
+        63: pop
+        64: getstatic     #22                 // Field batchSizeAck:Lorg/tekfive/ack/Ack;
+        67: invokevirtual #104                // Method org/tekfive/ack/Ack.invoke:()Ljava/lang/Object;
+        70: checkcast     #106                // class java/lang/Number
+        73: invokevirtual #260                // Method java/lang/Number.intValue:()I
+        76: invokevirtual #264                // Method org/jetbrains/exposed/v1/jdbc/Query.limit:(I)Lorg/jetbrains/exposed/v1/jdbc/Query;
+        79: checkcast     #266                // class java/lang/Iterable
+        82: astore        5
+        84: nop
+        85: iconst_0
+        86: istore        6
+        88: aload         5
+        90: astore        7
+        92: new           #268                // class java/util/ArrayList
+        95: dup
+        96: aload         5
+        98: bipush        10
+       100: invokestatic  #274                // Method kotlin/collections/CollectionsKt.collectionSizeOrDefault:(Ljava/lang/Iterable;I)I
+       103: invokespecial #277                // Method java/util/ArrayList."<init>":(I)V
+       106: checkcast     #279                // class java/util/Collection
+       109: astore        8
+       111: iconst_0
+       112: istore        9
+       114: aload         7
+       116: invokeinterface #283,  1          // InterfaceMethod java/lang/Iterable.iterator:()Ljava/util/Iterator;
+       121: astore        10
+       123: aload         10
+       125: invokeinterface #289,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+       130: ifeq          199
+       133: aload         10
+       135: invokeinterface #292,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       140: astore        11
+       142: aload         8
+       144: aload         11
+       146: checkcast     #294                // class org/jetbrains/exposed/v1/core/ResultRow
+       149: astore        12
+       151: astore        14
+       153: iconst_0
+       154: istore        13
+       156: aload         12
+       158: getstatic     #137                // Field org/tekfive/relaykt/queue/QueuedMessageTable.INSTANCE:Lorg/tekfive/relaykt/queue/QueuedMessageTable;
+       161: invokevirtual #195                // Method org/tekfive/relaykt/queue/QueuedMessageTable.getId:()Lorg/jetbrains/exposed/v1/core/Column;
+       164: checkcast     #157                // class org/jetbrains/exposed/v1/core/Expression
+       167: invokevirtual #298                // Method org/jetbrains/exposed/v1/core/ResultRow.get:(Lorg/jetbrains/exposed/v1/core/Expression;)Ljava/lang/Object;
+       170: aload         12
+       172: getstatic     #137                // Field org/tekfive/relaykt/queue/QueuedMessageTable.INSTANCE:Lorg/tekfive/relaykt/queue/QueuedMessageTable;
+       175: invokevirtual #141                // Method org/tekfive/relaykt/queue/QueuedMessageTable.getState:()Lorg/jetbrains/exposed/v1/core/Column;
+       178: checkcast     #157                // class org/jetbrains/exposed/v1/core/Expression
+       181: invokevirtual #298                // Method org/jetbrains/exposed/v1/core/ResultRow.get:(Lorg/jetbrains/exposed/v1/core/Expression;)Ljava/lang/Object;
+       184: invokestatic  #304                // Method kotlin/TuplesKt.to:(Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/Pair;
+       187: aload         14
+       189: swap
+       190: invokeinterface #308,  2          // InterfaceMethod java/util/Collection.add:(Ljava/lang/Object;)Z
+       195: pop
+       196: goto          123
+       199: aload         8
+       201: checkcast     #310                // class java/util/List
+       204: nop
+       205: astore        4
+       207: aload         4
+       209: invokeinterface #311,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+       214: astore        5
+       216: aload         5
+       218: invokeinterface #289,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+       223: ifeq          384
+       226: aload         5
+       228: invokeinterface #292,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       233: checkcast     #313                // class kotlin/Pair
+       236: astore        6
+       238: aload         6
+       240: invokevirtual #316                // Method kotlin/Pair.component1:()Ljava/lang/Object;
+       243: checkcast     #106                // class java/lang/Number
+       246: invokevirtual #109                // Method java/lang/Number.longValue:()J
+       249: lstore        7
+       251: aload         6
+       253: invokevirtual #319                // Method kotlin/Pair.component2:()Ljava/lang/Object;
+       256: checkcast     #145                // class org/tekfive/relaykt/queue/QueuedMessageState
+       259: astore        9
+       261: aload_0
+       262: invokeinterface #322,  1          // InterfaceMethod kotlin/jvm/functions/Function0.invoke:()Ljava/lang/Object;
+       267: pop
+       268: aload         9
+       270: getstatic     #206                // Field org/tekfive/relaykt/queue/QueuedMessageState.PENDING:Lorg/tekfive/relaykt/queue/QueuedMessageState;
+       273: if_acmpne     282
+       276: getstatic     #149                // Field org/tekfive/relaykt/queue/QueuedMessageState.QUEUED:Lorg/tekfive/relaykt/queue/QueuedMessageState;
+       279: goto          285
+       282: getstatic     #421                // Field org/tekfive/relaykt/queue/QueuedMessageState.TIMED_OUT:Lorg/tekfive/relaykt/queue/QueuedMessageState;
+       285: astore        10
+       287: getstatic     #137                // Field org/tekfive/relaykt/queue/QueuedMessageTable.INSTANCE:Lorg/tekfive/relaykt/queue/QueuedMessageTable;
+       290: checkcast     #324                // class org/jetbrains/exposed/v1/core/Table
+       293: lload         7
+       295: aload         9
+       297: invokedynamic #425,  0            // InvokeDynamic #10:invoke:(JLorg/tekfive/relaykt/queue/QueuedMessageState;)Lkotlin/jvm/functions/Function0;
+       302: aconst_null
+       303: aload         10
+       305: invokedynamic #431,  0            // InvokeDynamic #11:invoke:(Lorg/tekfive/relaykt/queue/QueuedMessageState;)Lkotlin/jvm/functions/Function2;
+       310: iconst_2
+       311: aconst_null
+       312: invokestatic  #343                // Method org/jetbrains/exposed/v1/jdbc/QueriesKt.update$default:(Lorg/jetbrains/exposed/v1/core/Table;Lkotlin/jvm/functions/Function0;Ljava/lang/Integer;Lkotlin/jvm/functions/Function2;ILjava/lang/Object;)I
+       315: istore        11
+       317: iload         11
+       319: iconst_1
+       320: if_icmpne     216
+       323: getstatic     #435                // Field log:Lorg/slf4j/Logger;
+       326: ldc_w         #437                // String Queued message {} stalled in {} and was moved to {}.
+       329: iconst_3
+       330: anewarray     #4                  // class java/lang/Object
+       333: astore        12
+       335: aload         12
+       337: iconst_0
+       338: lload         7
+       340: invokestatic  #170                // Method java/lang/Long.valueOf:(J)Ljava/lang/Long;
+       343: aastore
+       344: aload         12
+       346: iconst_1
+       347: aload         9
+       349: aastore
+       350: aload         12
+       352: iconst_2
+       353: aload         10
+       355: aastore
+       356: aload         12
+       358: invokeinterface #443,  3          // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;[Ljava/lang/Object;)V
+       363: invokestatic  #379                // Method org/tekfive/keep/db/DbConnectionKt.dbCommit:()Z
+       366: pop
+       367: aload_1
+       368: getfield      #92                 // Field kotlin/jvm/internal/Ref$IntRef.element:I
+       371: istore        12
+       373: aload_1
+       374: iload         12
+       376: iconst_1
+       377: iadd
+       378: putfield      #92                 // Field kotlin/jvm/internal/Ref$IntRef.element:I
+       381: goto          216
+       384: getstatic     #130                // Field kotlin/Unit.INSTANCE:Lkotlin/Unit;
+       387: areturn
+
+  private static final kotlin.Unit recoverStalledMessages$lambda$0();
+    Code:
+         0: getstatic     #130                // Field kotlin/Unit.INSTANCE:Lkotlin/Unit;
+         3: areturn
+
+  static {};
+    Code:
+         0: new           #2                  // class org/tekfive/relaykt/queue/MessageQueueProcessor
+         3: dup
+         4: invokespecial #449                // Method "<init>":()V
+         7: putstatic     #256                // Field INSTANCE:Lorg/tekfive/relaykt/queue/MessageQueueProcessor;
+        10: ldc           #2                  // class org/tekfive/relaykt/queue/MessageQueueProcessor
+        12: invokestatic  #455                // Method org/slf4j/LoggerFactory.getLogger:(Ljava/lang/Class;)Lorg/slf4j/Logger;
+        15: putstatic     #435                // Field log:Lorg/slf4j/Logger;
+        18: getstatic     #458                // Field org/tekfive/ack/Ack.Companion:Lorg/tekfive/ack/Ack$Companion;
+        21: ldc_w         #460                // String MAX_PENDING_MINUTES
+        24: bipush        30
+        26: invokestatic  #465                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+        29: iconst_1
+        30: invokestatic  #465                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+        33: aconst_null
+        34: ldc_w         #467                // String RELAY_QUEUE
+        37: ldc_w         #469                // String Minutes a message may stay in PENDING or PROCESSING before being considered stalled.
+        40: bipush        8
+        42: aconst_null
+        43: invokestatic  #475                // Method org/tekfive/ack/Ack$Companion.int$default:(Lorg/tekfive/ack/Ack$Companion;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lorg/tekfive/ack/Ack;
+        46: putstatic     #18                 // Field maxPendingMinutesAck:Lorg/tekfive/ack/Ack;
+        49: getstatic     #458                // Field org/tekfive/ack/Ack.Companion:Lorg/tekfive/ack/Ack$Companion;
+        52: ldc_w         #477                // String BATCH_SIZE
+        55: bipush        100
+        57: invokestatic  #465                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+        60: iconst_1
+        61: invokestatic  #465                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+        64: aconst_null
+        65: ldc_w         #467                // String RELAY_QUEUE
+        68: ldc_w         #479                // String Maximum messages loaded per dispatch or recovery batch. Each sweep drains successive batches.
+        71: bipush        8
+        73: aconst_null
+        74: invokestatic  #475                // Method org/tekfive/ack/Ack$Companion.int$default:(Lorg/tekfive/ack/Ack$Companion;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lorg/tekfive/ack/Ack;
+        77: putstatic     #22                 // Field batchSizeAck:Lorg/tekfive/ack/Ack;
+        80: return
+}
